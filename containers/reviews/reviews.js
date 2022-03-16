@@ -1,12 +1,8 @@
 import classes from "./reviews.module.css";
-import utils from "../../styles/utils.module.css";
 import SectionTitle from "../../components/ui/section-title/section-title";
 import Review from "../../components/review/review";
 import { Pagination, Scrollbar } from "swiper";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// import Swiper core and required modules
 import SwiperCore from "swiper/core";
 
 // install Swiper modules
@@ -40,7 +36,7 @@ function Reviews() {
   ];
 
   return (
-    <section className={classes.gmc__reviews}>
+    <section id="reviews" className={classes.gmc__reviews}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#385CAD"

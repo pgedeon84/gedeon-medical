@@ -1,10 +1,10 @@
 
 .gmc__reviews_header {
-    padding-top: 4rem;
+    padding-top: 2rem;
 }
 
 .gmc__reviews__review_container {
-    padding: 6rem 0 8rem;
+    padding: 4rem 0 8rem;
     background: #ffffff url("../../public/images/Intersect.png") no-repeat center;
     margin: 3rem 0 0;
     background-size: cover;
