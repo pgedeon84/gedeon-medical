@@ -6,11 +6,8 @@ function Footer() {
   return (
     <div className={classes.gmc__footer}>
       <div className={classes.gmc__footer_content}>
-        <div className={classes.gmc__footer_image}>
-          <Image src={logoLrg} alt="Logo" layout="responsive" />
-        </div>
         <p>
-          11011 SHERIDAN STREET, SUITE 215/216, COOPER CITY, FLORIDA 33026,
+          11011 SHERIDAN STREET, SUITE 215/216 COOPER CITY, FLORIDA 33026,
           <br />
           UNITED STATES
         </p>
@@ -18,7 +15,9 @@ function Footer() {
       <div className={classes.gmc__footer_copyrights}>
         <p>© 2022 GEDEON MEDICAL CENTER</p>
 
-        <p>Created by Webifi.io</p>
+        <p>
+          Created by <span>Webifi.io</span>
+        </p>
       </div>
     </div>
   );

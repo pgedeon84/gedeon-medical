@@ -1,30 +1,40 @@
 .gmc__footer {
-    padding: 8rem 0 0;
+    /* padding: 6rem 0 0; */
     background: var(--bg-color-dark);
+    background: rgb(25, 34, 58);
 }
 
 .gmc__footer_content {
-    background: #fff;
+    /* background: #fff; */
     padding: 3rem;
+
 }
 
 .gmc__footer_content p {
     padding: 1rem 0 0;
     text-align: center;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-text-alt);
     font-family: var(--font-family-text);
 }
 
 .gmc__footer_copyrights {
    text-align: center;
-   padding: 2rem 0;
-   background: var(--color-accent);
-   color: #274877;
+   padding: 0 0 2rem;
+   color: var(--color-text-alt);
    font-family: var(--font-family-text);
+   background: rgb(25, 34, 58);
 }
 
 .gmc__footer_copyrights p:first-of-type {
     margin-bottom: .3rem;
     font-weight: 700;
+}
+
+.gmc__footer_copyrights p:last-of-type {
+    font-size: 10px;
+}
+
+.gmc__footer_copyrights span {
+    font-style: italic;
 }

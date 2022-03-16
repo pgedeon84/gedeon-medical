@@ -49,7 +49,7 @@ function Header() {
               className={classes.gmc__header_content__button_icon}
             />
           </span>
-          Resquest an Appointment
+          Book an Appointment
         </button>
         <Dots />
       </div>

@@ -1,35 +1,8 @@
 
 .gmc__service_header {
     margin: 0 0 4rem;
-    position: relative;
 }
 
-.gmc__service_header::before {
-    content: "";
-    position: absolute;
-    width: 122px;
-    height: 127px;
-    background: rgba(106, 191, 75, 0.3);
-    filter: blur(22px);
-    top: 20rem;
-    right: -25px;
-    z-index: -10;
-}
-
-.gmc__service_card__container {
-    position: relative;
-}
-
-.gmc__service_card__container::before {
-    content: "";
-    position: absolute;
-    width: 122px;
-    height: 127px;
-    background: rgba(180, 201, 253, 0.4);
-    filter: blur(22px);
-    top: -20px;
-    left: -30px;
-}
 
 .gmc__service_card__container span {
     margin-right: .8rem;

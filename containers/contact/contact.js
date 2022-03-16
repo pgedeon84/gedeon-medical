@@ -30,10 +30,10 @@ function Contact() {
   }
 
   return (
-    <section className={classes.gmc__contact}>
-      <div className={classes.gmc__contact_header}>
-        <SectionTitle title={"contact us"} />
-      </div>
+    <section id="contact" className={classes.gmc__contact}>
+      {/* <div className={classes.gmc__contact_header}>
+        <SectionTitle title={"contact"} />
+      </div> */}
       <div className={classes.gmc__contact_header__form_container}>
         <Widget
           id="mgvknHds"

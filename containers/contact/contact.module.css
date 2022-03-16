@@ -1,16 +1,15 @@
+.gmc__contact {
+    margin-top: -.5rem;
+}
+
 .gmc__contact_form {
     width: 100%;
     height: 550px;
 }
 
-.gmc__contact {
-    margin-top: 6rem;
-}
-
 .gmc__contact_header__form_container {
-    background: linear-gradient(180deg, #B4C9FD -107.24%, #FFFFFF 64.22%);
-    padding-top: .5rem;
-    margin-top: 3rem;
+    background: var(--bg-color-dark);
+    padding: 2rem 0 6rem;
 }
 
 .gmc__contact_header__form_container h1 {
