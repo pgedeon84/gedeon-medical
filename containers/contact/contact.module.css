@@ -2,6 +2,13 @@
     margin-top: -.5rem;
 }
 
+/* .gmc__contact_header {
+    padding-top: 3rem;
+    background: var(--bg-color-dark);
+}
+.gmc__contact_header h1 {
+    color: #fff;
+} */
 .gmc__contact_form {
     width: 100%;
     height: 550px;
