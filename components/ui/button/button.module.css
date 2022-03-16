@@ -1,0 +1,39 @@
+.gmc__button {
+    padding: .8rem 3rem;
+    /* background: var(--color-btn); */
+    color: var(--color-text);
+    box-shadow: 0px 0px 2.2px rgba(56, 92, 173, 0.02),
+    0px 0px 5.3px rgba(56, 92, 173, 0.028),
+    0px 0px 10px rgba(56, 92, 173, 0.035),
+    0px 0px 17.9px rgba(56, 92, 173, 0.042),
+    0px 0px 33.4px rgba(56, 92, 173, 0.05),
+    0px 0px 80px rgba(56, 92, 173, 0.07);
+    border-radius: 5px;
+    font-family: var(--font-family-heading);
+    text-transform: uppercase;
+   
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+
+    letter-spacing: -0.01em;
+
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.gmc__button:hover {
+     background-color: #6abf4b79;
+}
+
+
+
+@media screen and (min-width: 1050px) {
+    .gmc__button {
+        padding: 1rem 2rem;
+        font-size: 14px;
+        line-height: 20px;
+    }
+}

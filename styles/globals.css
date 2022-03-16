@@ -1,16 +1,40 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@300;400;500&display=swap');
+:root {
+  --font-family-heading: 'Lato', sans-serif;
+  --font-family-text: 'Poppins', sans-serif;
 
-a {
-  color: inherit;
-  text-decoration: none;
+  --color-text: #385bad;
+  --color-subtext: #748DC6;
+  --color-text-dark: #385CAD;
+  --color-text-alt: #EBEEF4;
+  --color-accent: #6abf4b;
+  --color-btn: #B4C9FD;
+  --color-star: #F6B703;
+  --bg-color-dark: #385CAD;
+  --bg-color-gradient: linear-gradient(180deg, #B4C9FD -107.24%, #FFFFFF 64.22%);
+  /* Swiper Colors */
+  --swiper-pagination-bullet-inactive-color: #748DC6 !important;
+  --swiper-theme-color: #6abf4b !important;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
+
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+body {
+  max-width: 1440px;
+}
+

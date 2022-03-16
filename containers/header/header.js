@@ -1,0 +1,67 @@
+import classes from "./header.module.css";
+import Image from "next/image";
+import Dots from "../../components/ui/dots/dots";
+import { Proof } from "../../components";
+import nurses from "../../public/images/image.png";
+import nurses_lg from "../../public/images/nurses-lg.png";
+import { RiCalendar2Line } from "react-icons/ri";
+import utils from "../../styles/utils.module.css";
+
+function Header() {
+  return (
+    <div id="home" className={`${classes.gmc__header}`}>
+      <div className={classes.gmc__header_content}>
+        <h1>
+          Gedeon <br /> Medical Center
+        </h1>
+        <p>Get started on your path to health!</p>
+        <div className={classes.gmc__header_content__trust_container}>
+          <div className={classes.gmc__header_content__trust_container_item}>
+            <svg
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.5 27C20.944 27 27 20.944 27 13.5C27 6.05602 20.944 0 13.5 0C6.05602 0 0 6.05602 0 13.5C0 20.944 6.05602 27 13.5 27ZM8.24259 12.7697L11.1763 15.6676L18.1575 7.05375L20.3057 8.94839L11.4029 19.9323L6.3083 14.9015L8.24259 12.7697Z"
+                fill="#6ABF4B"
+              />
+            </svg>
+            <p>Over 120,000 patients cared for</p>
+          </div>
+          <div className={classes.gmc__header_content__trust_container_item}>
+            <svg
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.5 27C20.944 27 27 20.944 27 13.5C27 6.05602 20.944 0 13.5 0C6.05602 0 0 6.05602 0 13.5C0 20.944 6.05602 27 13.5 27ZM8.24259 12.7697L11.1763 15.6676L18.1575 7.05375L20.3057 8.94839L11.4029 19.9323L6.3083 14.9015L8.24259 12.7697Z"
+                fill="#6ABF4B"
+              />
+            </svg>
+            <p>Medical Board Certified Doctor</p>
+          </div>
+        </div>
+        <button className={utils.gradient_animation} type="button">
+          <span>
+            <RiCalendar2Line
+              className={classes.gmc__header_content__button_icon}
+            />
+          </span>
+          Resquest an Appointment
+        </button>
+        <Dots />
+      </div>
+      <div className={classes.gmc__header_image}>
+        <Image src={nurses} alt="Nurses" layout="responsive" />
+      </div>
+      <div className={classes.gmc__header_image_lg}>
+        <Image src={nurses_lg} alt="Nurses" layout="responsive" />
+      </div>
+      <div className={classes.gmc__header_proof}>{/* <Proof /> */}</div>
+    </div>
+  );
+}
+
+export default Header;

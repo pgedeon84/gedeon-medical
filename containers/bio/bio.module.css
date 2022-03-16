@@ -1,0 +1,137 @@
+.gmc__bio {
+    padding-top: 4rem;
+
+}
+
+.gmc__bio_header {
+    margin-bottom: 3rem;
+}
+
+.gmc__bio_content {
+    padding: 3rem 2rem;
+    background: var(--bg-color-dark);
+    box-shadow: 9.91px 9.91px 35px #a4b7e63b,
+    -9.91px -9.91px 35px #c4dbff8f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gmc__bio_content_container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding-top: 2rem;
+}
+
+.gmc__bio_content> p {
+    font-family: var(--font-family-text);
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+
+    color: var(--color-text-alt);
+    margin-top: 2em;
+}
+
+.gmc__bio_content_container__image {
+    width: 12rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+
+.gmc__bio_content_container__image img {
+    border-radius: 5px;
+}
+
+.gmc__bio_content_container__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gmc__bio_content_container__content h1 {
+    font-family: var(--font-family-heading);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-alt);
+}
+
+.gmc__bio_content_container__content p {
+    font-family: var(--font-family-heading);
+    font-size: 14px;
+    line-height: 16px;
+    
+    color: var(--color-text-alt);
+}
+
+.gmc__bio_content_container__content_rating {
+    color: var(--color-text-alt);
+    display: flex;
+    justify-content: center;
+
+    margin: .4rem 0;
+}
+
+.gmc__bio_content_container__content_rating p {
+    font-family: var(--font-family-heading);
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    margin-left: .5rem;
+}
+
+@media screen and (min-width: 1050px) {
+    .gmc__bio_content{
+        padding: 6rem 16rem;
+    }
+
+    .gmc__bio_content>p {
+        font-size: 18px;
+    }
+
+    .gmc__bio_content_container {
+        width: 100%;
+        flex-direction: row;
+        justify-content:flex-start;
+    }
+
+    .gmc__bio_content_container__content {
+        align-items: flex-start;
+        margin-left: 3%;
+    }
+
+     .gmc__bio_content_container__content h1 {
+         font-size: 36px;
+         margin-bottom: 3%;
+     }
+
+     .gmc__bio_content_container__content p {
+         font-size: 18px;
+     }
+
+     .gmc__bio_content_container__content_rating {
+         margin: .6rem 0;
+     }
+
+     .gmc__bio_content_container__content_rating span {
+        font-size: 22px;
+     }
+
+      .gmc__bio_content_container__content_rating p {
+          font-size: 22px;
+          line-height: 22px;
+      }
+    
+      .gmc__bio_content_container__image {
+          width: 16rem;
+      }
+
+}

@@ -1,0 +1,21 @@
+
+.gmc__reviews_header {
+    padding-top: 4rem;
+}
+
+.gmc__reviews__review_container {
+    padding: 6rem 0 8rem;
+    background: #ffffff url("../../public/images/Intersect.png") no-repeat center;
+    margin: 3rem 0 0;
+    background-size: cover;
+}
+
+.gmc__reviews__review_container>p {
+    color: var(--color-accent);
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-top: 2rem;
+    text-align: center;
+    cursor: pointer;
+}

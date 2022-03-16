@@ -1,0 +1,81 @@
+import classes from "./reviews.module.css";
+import utils from "../../styles/utils.module.css";
+import SectionTitle from "../../components/ui/section-title/section-title";
+import Review from "../../components/review/review";
+import { Pagination, Scrollbar } from "swiper";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required modules
+import SwiperCore from "swiper/core";
+
+// install Swiper modules
+SwiperCore.use([Scrollbar]);
+
+import "swiper/css/bundle";
+
+function Reviews() {
+  const reviewsList = [
+    {
+      patientName: "Noel",
+      patientReview:
+        "Dr. Gedeon is the perfect mix of professional, personable, and patient. He took the time to get to know my father and even personally repeated his blood pressure manually. I would happily recommend family and friends to Dr. Gedeon.",
+      date: "Dec 08, 2021",
+      key: Math.random(),
+    },
+    {
+      patientName: "Noel",
+      patientReview:
+        "Dr. Gedeon is the perfect mix of professional, personable, and patient. He took the time to get to know my father and even personally repeated his blood pressure manually. I would happily recommend family and friends to Dr. Gedeon.",
+      date: "Dec 08, 2021",
+      key: Math.random(),
+    },
+    {
+      patientName: "Noel",
+      patientReview:
+        "Dr. Gedeon is the perfect mix of professional, personable, and patient. He took the time to get to know my father and even personally repeated his blood pressure manually. I would happily recommend family and friends to Dr. Gedeon.",
+      date: "Dec 08, 2021",
+      key: Math.random(),
+    },
+  ];
+
+  return (
+    <section className={classes.gmc__reviews}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#385CAD"
+          d="M0,288L120,256C240,224,480,160,720,122.7C960,85,1200,75,1320,69.3L1440,64L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
+        ></path>
+      </svg>
+
+      <div className={classes.gmc__reviews_header}>
+        <SectionTitle title={"Patient Reviews"} />
+        <div className={classes.gmc__reviews__review_container}>
+          <Swiper modules={[Pagination]} pagination={{ clickable: true }}>
+            <ul>
+              {reviewsList.map((review) => (
+                <SwiperSlide key={review.key}>
+                  <Review
+                    name={review.patientName}
+                    review={review.patientReview}
+                    date={review.date}
+                  />
+                </SwiperSlide>
+              ))}
+              ;
+            </ul>
+          </Swiper>
+          <p className={classes.something}>see more reviews</p>
+        </div>
+      </div>
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1440 32L1320 64C1200 96 960 160 720 197.3C480 235 240 245 120 250.7L0 256V320H120C240 320 480 320 720 320C960 320 1200 320 1320 320H1440V32Z"
+          fill="#385CAD"
+        />
+      </svg>
+    </section>
+  );
+}
+
+export default Reviews;

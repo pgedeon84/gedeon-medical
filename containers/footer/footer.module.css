@@ -1,0 +1,30 @@
+.gmc__footer {
+    padding: 8rem 0 0;
+    background: var(--bg-color-dark);
+}
+
+.gmc__footer_content {
+    background: #fff;
+    padding: 3rem;
+}
+
+.gmc__footer_content p {
+    padding: 1rem 0 0;
+    text-align: center;
+    line-height: 1.6;
+    color: var(--color-text);
+    font-family: var(--font-family-text);
+}
+
+.gmc__footer_copyrights {
+   text-align: center;
+   padding: 2rem 0;
+   background: var(--color-accent);
+   color: #274877;
+   font-family: var(--font-family-text);
+}
+
+.gmc__footer_copyrights p:first-of-type {
+    margin-bottom: .3rem;
+    font-weight: 700;
+}

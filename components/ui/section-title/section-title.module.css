@@ -1,0 +1,48 @@
+.gmc_section_title {
+    text-align: center;
+}
+
+.gmc_section_title h1 {
+    color: var(--color-text);
+    font-family: var(--font-family-heading);
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.gmc_section_title h1::before {
+    content: "";
+    height: 3px;
+    width: 36px;
+    position: absolute;
+    background: var(--color-accent);
+    top: -10px;
+    animation: leftBounce 3000ms ease-in-out infinite;
+}
+
+@keyframes leftBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(25px);
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    .gmc_section_title h1 {
+        font-size: 34px;
+        line-height: 40px;
+        margin-top: 2rem;
+    }
+
+    .gmc_section_title h1::before {
+        height: 4px;
+        width: 44px;
+    }
+}

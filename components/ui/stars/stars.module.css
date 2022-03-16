@@ -1,0 +1,7 @@
+.gmc__stars_container {
+    display: flex;
+}
+
+.gmc__stars_container span {
+    display: flex;
+}

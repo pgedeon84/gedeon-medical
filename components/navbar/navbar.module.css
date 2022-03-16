@@ -1,0 +1,151 @@
+.gmc__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0 1rem;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+
+    background: rgba(255, 255, 255, 0.178);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 25px #a4b7e613,
+    0 0 25px #c4dbff21;
+}
+
+.gmc__navbar_links__logo {
+    display: none;
+}
+
+.gmc__navbar_links__container ul {
+    display: none;
+}
+
+.gmc__navbar_links__logo_fav {
+    display: inline-block;
+    width: 55px;
+}
+
+.gmc__navbar_links__contact button {
+    display: none;
+}
+
+.gmc__navbar_hamburger {
+    position: relative;
+    margin-right: .5rem;
+}
+
+.gmc__navbar_hamburger svg {
+    cursor: pointer;
+}
+
+.gmc__navbar_hamburger_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+
+    text-align: start;
+    padding: 2rem;
+    position: absolute;
+    right: 0;
+    top:50px;
+    min-width: 210px;
+    background: var(--color-text);
+    border-radius: 5px;
+    box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.gmc__navbar_hamburger_container li {
+    margin: 1rem 0;
+}
+
+.gmc__navbar_hamburger_container__links,
+.gmc__navbar_links__container li {
+    color: var(--color-text-alt);
+    font-family: var(--font-family-text);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+    text-transform: capitalize;
+    margin: 0 1rem;
+}
+
+.gmc__navbar_hamburger_container__links li:first-of-type {
+    margin-top: 0;
+}
+
+.gmc__navbar_hamburger_container__links a:hover,
+.gmc__navbar_links__container a:hover {
+    color: var(--color-accent);
+}
+
+
+.gmc__navbar_links__contact button,
+.gmc__navbar_hamburger_container__links_contact button {
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: var(--color-text);
+    background-color: var(--color-btn);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.gmc__navbar_links__contact button:hover {
+   color: var(--color-text);
+   background-color: #6abf4b79;
+}
+
+.gmc__navbar_hamburger_container__links_contact button:hover {
+    background-color: #6abf4b79;
+}
+
+@media screen and (min-width: 1050px){
+    .gmc__navbar {
+        padding: .5rem 6rem;
+    }
+     .gmc__navbar_hamburger {
+        display: none;
+     }
+
+     .gmc__navbar_links__logo_fav {
+        display: none;
+     }
+
+    .gmc__navbar_links__container ul {
+        display: flex;
+    }
+
+    .gmc__navbar_links__container li {
+        color: var(--color-text);
+        font-size: 16px;
+    }
+
+    .gmc__navbar_links {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .gmc__navbar_links__contact button {
+        display: block;
+        margin-right: 0.7rem;
+    }
+    
+    .gmc__navbar_links__logo {
+        display: block;
+        width: 220px;
+        height: 100px;
+    }
+}

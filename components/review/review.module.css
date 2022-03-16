@@ -1,0 +1,43 @@
+.gmc__review_card {
+ padding: 0 2rem 5rem;
+}
+
+.gmc__review_card__content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+
+    box-shadow: 0 8px 32px 0 rgba(197, 201, 248, 0.347);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.gmc__review_card__content__review {
+    padding: 1rem 0;
+    line-height: 1.6;
+    font-family: var(--font-family-text);
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--color-text)
+}
+
+.gmc__review_card__content__link {
+    padding-bottom: 1rem;
+    color: var(--color-accent);
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    line-height: 1.6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.gmc__review_card__content__name {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-dark);
+}
+
+.gmc__review_card__content__name span {
+    font-style: italic;
+}

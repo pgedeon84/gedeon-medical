@@ -1,0 +1,17 @@
+.gmc__proof {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    padding: .5rem 1rem;
+}
+
+.gmc__proof div {
+    min-width: 70px;
+}
+
+@media screen and (min-width: 1040px) {
+    .gmc__proof div {
+        width: 120px;
+    }
+}
