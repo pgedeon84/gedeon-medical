@@ -16,7 +16,7 @@ function Footer() {
         <p>© 2022 GEDEON MEDICAL CENTER</p>
 
         <p>
-          Created by <span>Webifi.io</span>
+          Designed and Built by <span>Webifi.io</span>
         </p>
       </div>
     </div>
