@@ -38,3 +38,28 @@ body {
   max-width: 1440px;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+@media screen and (min-width: 1050px){
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: block !important;
+    top: 35% !important;
+  }
+
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    left: 150px !important;
+    right: auto;
+  }
+
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    right: 150px !important;
+    left: auto;
+  }
+}

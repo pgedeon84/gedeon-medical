@@ -1,16 +1,16 @@
 
-.gmc__reviews_header {
-    padding-top: 2rem;
+.gmc__reviews_container {
+    padding-top: 4rem;
 }
 
-.gmc__reviews__review_container {
+.gmc__reviews__review_swiper__container {
     padding: 4rem 0 8rem;
+    margin: 2rem 0 0;
     background: #ffffff url("../../public/images/Intersect.png") no-repeat center;
-    margin: 3rem 0 0;
     background-size: cover;
 }
 
-.gmc__reviews__review_container>p {
+.gmc__reviews__review_swiper__container>p {
     color: var(--color-accent);
     font-family: var(--font-family-heading);
     font-weight: 700;
@@ -19,3 +19,18 @@
     text-align: center;
     cursor: pointer;
 }
+
+
+
+@media screen and (min-width: 1050px) {
+
+    .gmc__reviews_container {
+        padding: 3rem 0;
+    }
+    .gmc__reviews__review_swiper__container {
+        background: rgba(180, 201, 253, 0.15);
+        height: 500px;
+        margin: 6rem 0 0;
+    }
+}
+

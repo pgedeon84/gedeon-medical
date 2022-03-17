@@ -5,3 +5,9 @@
 .gmc__stars_container span {
     display: flex;
 }
+
+@media screen and (min-width: 1050px){
+    .gmc__stars_container span {
+        font-size: 24px;
+    }
+}

@@ -1,14 +1,16 @@
 import classes from "./reviews.module.css";
 import SectionTitle from "../../components/ui/section-title/section-title";
 import Review from "../../components/review/review";
-import { Pagination, Scrollbar } from "swiper";
+import { Navigation, Pagination, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper/core";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 // install Swiper modules
 SwiperCore.use([Scrollbar]);
-
-import "swiper/css/bundle";
 
 function Reviews() {
   const reviewsList = [
@@ -44,10 +46,14 @@ function Reviews() {
         ></path>
       </svg>
 
-      <div className={classes.gmc__reviews_header}>
+      <div className={classes.gmc__reviews_container}>
         <SectionTitle title={"Patient Reviews"} />
-        <div className={classes.gmc__reviews__review_container}>
-          <Swiper modules={[Pagination]} pagination={{ clickable: true }}>
+        <div className={classes.gmc__reviews__review_swiper__container}>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            pagination={{ clickable: true }}
+            navigation
+          >
             <ul>
               {reviewsList.map((review) => (
                 <SwiperSlide key={review.key}>
@@ -61,7 +67,7 @@ function Reviews() {
               ;
             </ul>
           </Swiper>
-          <p className={classes.something}>see more reviews</p>
+          <p>see more reviews</p>
         </div>
       </div>
       <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">

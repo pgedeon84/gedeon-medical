@@ -2,21 +2,20 @@
     margin-top: -.5rem;
 }
 
-/* .gmc__contact_header {
-    padding-top: 3rem;
-    background: var(--bg-color-dark);
-}
-.gmc__contact_header h1 {
-    color: #fff;
-} */
-.gmc__contact_form {
+
+.gmc__contact_form_survey {
     width: 100%;
-    height: 550px;
+    height: 400px;
 }
 
 .gmc__contact_header__form_container {
     background: var(--bg-color-dark);
-    padding: 2rem 0 6rem;
+    padding: 0 0 6rem;
+}
+
+.gmc__contact_header__form_image {
+    width: 20rem;
+    margin: 0 auto;
 }
 
 .gmc__contact_header__form_container h1 {
@@ -25,4 +24,15 @@
     color: var(--color-text-alt);
     padding: 5rem 0;
     text-align: center;
+}
+
+@media screen and (min-width:1050px) {
+    .gmc__contact_form_survey {
+        width: 100%;
+        height: 450px;
+    }
+
+    .gmc__contact_header__form_image {
+        width: 25rem;
+    }
 }

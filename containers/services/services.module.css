@@ -1,3 +1,6 @@
+.gmc__service {
+    
+}
 
 .gmc__service_header {
     margin: 0 0 4rem;
@@ -38,7 +41,7 @@
     }
 
     .gmc__service_card__container span svg{
-        width: 55px;
-        height: 55px;
+        width: 2.8rem;
+        height: 2.8rem;
     }
 }

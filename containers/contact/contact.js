@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import classes from "./contact.module.css";
-import SectionTitle from "../../components/ui/section-title/section-title";
 import { Widget } from "@typeform/embed-react";
+import Image from "next/image";
+import logo from "../../public/images/GMC-logo-white-bg.png";
 
 function Contact() {
   const firstNameInputRef = useRef();
@@ -35,8 +36,11 @@ function Contact() {
         <Widget
           id="mgvknHds"
           style={{ width: "100%" }}
-          className={classes.gmc__contact_form}
+          className={classes.gmc__contact_form_survey}
         />
+      </div>
+      <div className={classes.gmc__contact_header__form_image}>
+        <Image src={logo} alt="GMC Logo" layout="responsive" />
       </div>
     </section>
   );

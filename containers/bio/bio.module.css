@@ -10,23 +10,13 @@
 .gmc__bio_content {
     padding: 3rem 2rem;
     background: var(--bg-color-dark);
-    box-shadow: 9.91px 9.91px 35px #a4b7e63b,
-    -9.91px -9.91px 35px #c4dbff8f;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.gmc__bio_content_container {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     padding-top: 2rem;
-}
-
-.gmc__bio_content> p {
+.gmc__bio_content>p {
     font-family: var(--font-family-text);
     font-size: 16px;
     line-height: 28px;
@@ -35,6 +25,16 @@
 
     color: var(--color-text-alt);
     margin-top: 2em;
+    max-height: 35ch;
+    overflow-y: scroll;
+}
+
+.gmc__bio_content_container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding-top: 2rem;
 }
 
 .gmc__bio_content_container__image {
@@ -121,9 +121,9 @@
          margin: .6rem 0;
      }
 
-     .gmc__bio_content_container__content_rating span {
+     /* .gmc__bio_content_container__content_rating span {
         font-size: 22px;
-     }
+     } */
 
       .gmc__bio_content_container__content_rating p {
           font-size: 22px;

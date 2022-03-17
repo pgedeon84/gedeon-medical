@@ -41,3 +41,20 @@
 .gmc__review_card__content__name span {
     font-style: italic;
 }
+
+@media screen and (min-width: 1050px) {
+    .gmc__review_card {
+        width: 50rem;
+        margin: 0 auto;
+        font-size: 18px;
+        padding-bottom: 9rem;
+    }
+
+    .gmc__review_card__content {
+        padding: 4rem;
+    }
+
+    .gmc__review_card__content__review {
+        font-size: 18px;
+    }
+}
