@@ -110,16 +110,16 @@ function Navbar() {
                   classes.gmc__navbar_hamburger_container__links_contact
                 }
               >
-                <button
-                  className={utils.gradient_animation}
-                  type="button"
-                  onClick={() => setToggleMenu(false)}
-                >
-                  {" "}
-                  <Link href="#contact">
+                <Link href="#contact" passHref>
+                  <button
+                    className={utils.gradient_animation}
+                    type="button"
+                    onClick={() => setToggleMenu(false)}
+                  >
+                    {" "}
                     <a>Contact</a>
-                  </Link>
-                </button>
+                  </button>
+                </Link>
               </div>
             </nav>
           </div>

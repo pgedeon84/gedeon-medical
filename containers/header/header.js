@@ -4,6 +4,7 @@ import Dots from "../../components/ui/dots/dots";
 import illustration from "../../public/images/illus-doctor-nurse.svg";
 import { RiCalendar2Line } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
@@ -59,14 +60,16 @@ function Header() {
             <p>Medical Board Certified Doctor</p>
           </div>
         </div>
-        <button className={utils.gradient_animation} type="button">
-          <span>
-            <RiCalendar2Line
-              className={classes.gmc__header_content__button_icon}
-            />
-          </span>
-          Book an Appointment
-        </button>
+        <Link href="#contact" passHref>
+          <button className={utils.gradient_animation} type="button">
+            <span>
+              <RiCalendar2Line
+                className={classes.gmc__header_content__button_icon}
+              />
+            </span>
+            Book an Appointment
+          </button>
+        </Link>
         <Dots />
       </motion.div>
       <div className={classes.gmc__header_image_sm}>

@@ -4,57 +4,16 @@
  }
 
 
-.scale_up_center {
-    -webkit-animation: scale_up_center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    animation: scale_up_center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
 .gradient_animation {
     background: linear-gradient(300deg, #6abf4b79, var(--color-btn));
     animation: gradient_animation 8s ease infinite;
 }
 
-@-webkit-keyframes scale_up_center {
-    0% {
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@keyframes scale_up_center {
-    0% {
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-.scale_down_center {   
-  animation: scale_down_center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
 
 .scale_in_tr {
-    animation: scale_in_tr .5s ease 0s 1 normal none;
+    animation: scale_in_tr .3s ease 0s 1 normal none;
 }
 
-@keyframes scale_down_center {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(.2);
-    }
-}
 
 @keyframes scale_in_tr {
     0% {
