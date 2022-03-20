@@ -11,9 +11,7 @@ function Review({ name, review, date }) {
         <p className={classes.gmc__review_card__content__name}>
           {name}
           {" -"}
-          <span>
-            <date> {date}</date>
-          </span>
+          <span>{date}</span>
         </p>
       </div>
     </li>

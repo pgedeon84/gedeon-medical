@@ -1,8 +1,19 @@
 import classes from "./dots.module.css";
+import { motion } from "framer-motion";
 
 function Dots() {
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
-    <div className={classes.gmc__effect_wrap}>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+      className={classes.gmc__effect_wrap}
+    >
       <div className={classes.gmc__effect}>
         <div className={classes.gmc__effect_dots}>
           <div></div>
@@ -63,7 +74,7 @@ function Dots() {
           <div></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

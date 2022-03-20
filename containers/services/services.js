@@ -2,8 +2,8 @@ import classes from "./services.module.css";
 import utils from "../../styles/utils.module.css";
 import Card from "../../components/card/card";
 import SectionTitle from "../../components/ui/section-title/section-title";
-import generalCare from "../../public/images/general-care.jpg";
-import cosmeticCare from "../../public/images/cosmetic-care.jpg";
+import generalCare from "../../public/images/general-care.svg";
+import cosmeticCare from "../../public/images/cosmetic-care.svg";
 
 function Services() {
   return (

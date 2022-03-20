@@ -4,7 +4,7 @@
 }
 
 .gmc__about_header p {
-    margin: 0.5rem 0 2rem 0;
+    padding: 0.8rem 0 2rem 0;
     font-family: var(--font-family-text);
     font-size: 10px;
     line-height: 16px;
@@ -25,14 +25,16 @@
     font-family: var(--font-family-text);
     color: var(--color-subtext);
     font-weight: 300;
-    line-height: 26px;
+    line-height: 1.6;
     letter-spacing: -0.01em;
-    padding: 0 1rem;
-    margin-bottom: 2rem;
+    padding: 3rem 1rem;
 }
 
 
 @media screen and (min-width: 1050px) {
+    .gmc__about {
+        padding: 6rem;;
+    }
     .gmc__about_header p {
         font-family: var(--font-family-text);
         font-size: 14px;
@@ -43,9 +45,7 @@
     }
 
     .gmc__about_content__container {
-        margin-top: 6rem;
-        padding: 0 6rem;
-        max-width: 90%;
+        padding: 6rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,12 +56,13 @@
     }
 
     .gmc__about_content {
-         /* align-items: flex-start; */
+         align-items: flex-start;
+         padding-left: 4rem;
     }
 
     .gmc__about_content p {
         font-size: 21px;
         line-height: 38px;
-
+        padding: 0 0 2rem;
     }
 }

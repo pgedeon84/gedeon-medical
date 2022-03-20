@@ -1,16 +1,32 @@
 import classes from "./header.module.css";
 import Image from "next/image";
 import Dots from "../../components/ui/dots/dots";
-import { Proof } from "../../components";
-import nurses from "../../public/images/image.png";
-import nurses_lg from "../../public/images/nurses-lg.png";
+import illustration from "../../public/images/illus-doctor-nurse.svg";
 import { RiCalendar2Line } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
 
+import { motion } from "framer-motion";
+
 function Header() {
+  // Framer Motion props
+  const fadeIn = {
+    hidden: { opacity: 0.3 },
+    visible: { opacity: 1 },
+  };
+
+  const right_left = {
+    hidden: { translateX: 30 },
+    visible: { translateX: 0 },
+  };
+
   return (
-    <div id="home" className={`${classes.gmc__header}`}>
-      <div className={classes.gmc__header_content}>
+    <div className={`${classes.gmc__header}`}>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        className={classes.gmc__header_content}
+      >
         <h1>
           Gedeon <br /> Medical Center
         </h1>
@@ -52,14 +68,13 @@ function Header() {
           Book an Appointment
         </button>
         <Dots />
-      </div>
-      <div className={classes.gmc__header_image}>
-        <Image src={nurses} alt="Nurses" layout="responsive" />
+      </motion.div>
+      <div className={classes.gmc__header_image_sm}>
+        <Image src={illustration} alt="Nurses" layout="responsive" priority />
       </div>
       <div className={classes.gmc__header_image_lg}>
-        <Image src={nurses_lg} alt="Nurses" layout="responsive" />
+        <Image src={illustration} alt="Nurses" layout="responsive" priority />
       </div>
-      <div className={classes.gmc__header_proof}>{/* <Proof /> */}</div>
     </div>
   );
 }

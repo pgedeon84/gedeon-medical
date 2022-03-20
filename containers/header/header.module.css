@@ -1,6 +1,5 @@
 .gmc__header {
-    margin-top: 7rem;
-    
+    margin-top: 6rem;
 }
 .gmc__header_content {
     flex: 1;
@@ -8,8 +7,12 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding: 1.2rem 1rem 0 2rem;
-    
+    padding: 2rem 1rem 0 2rem;
+     -webkit-animation-duration: .5s;
+     animation-duration: .5s;
+     -webkit-animation-name: fadeIn;
+     animation-name: fadeIn;
+     background: url(../../public/images/medical-insignia.svg) no-repeat bottom right;
 }
 
 .gmc__header_content h1 {
@@ -55,7 +58,6 @@
     text-align: center;
     text-transform: uppercase;
     letter-spacing: -0.01em;
-    position: relative;
 
     color: var(--color-text);
     padding: .8rem 1rem;
@@ -116,6 +118,15 @@
 }
 
 
+.gmc__header_image_sm {
+    padding: 2rem;
+    margin-top: 2rem;
+     -webkit-animation-duration: .5s;
+     animation-duration: .5s;
+     -webkit-animation-name: fadeIn;
+     animation-name: fadeIn;
+}
+
 .gmc__header_image_lg {
     display: none;
 }
@@ -129,13 +140,15 @@
     .gmc__header {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 15rem;
+        margin-top: 10.5rem;
+        padding: 0 6rem;
     }
     
     .gmc__header_content {
-        padding-left: 10rem;
+        /* padding-left: 10rem; */
         padding-bottom: 8rem;
-        margin-top: -70px;
+        margin-top: -40px;
+        background: none;
     }
 
     .gmc__header_content h1 {   
@@ -195,6 +208,11 @@
      .gmc__header_image_lg {
          display: block;
          flex: 1.5;
+         /* padding: 0 6rem 0 0; */
+          -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+          -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
      }
 
 }
@@ -210,4 +228,21 @@
     50% {
         transform: translateX(25px);
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: translate3d(0, 10%, 0);
+        transform: translate3d(0, 10%, 0);
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
 }

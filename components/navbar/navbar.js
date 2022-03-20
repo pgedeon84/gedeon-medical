@@ -8,48 +8,67 @@ import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import classes from "./navbar.module.css";
 import utils from "../../styles/utils.module.css";
 
+import { motion } from "framer-motion";
+
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  //Framer Motion props
+  const top_down = {
+    hidden: { opacity: 0, translateY: -10 },
+    visible: { opacity: 1, translateY: 0 },
+  };
 
   function NavbarLinks() {
     return (
       <ul>
         <li>
           <Link href="#about">
-            <a>About us</a>
+            <a onClick={() => setToggleMenu(false)}>About us</a>
           </Link>
         </li>
         <li>
           <Link href="#services">
-            <a>Services</a>
+            <a onClick={() => setToggleMenu(false)}>Services</a>
           </Link>
         </li>
         <li>
           <Link href="#meetthedoc">
-            <a>Meet the Doc</a>
+            <a onClick={() => setToggleMenu(false)}>Meet the Doc</a>
           </Link>
         </li>
         <li>
           <Link href="#reviews">
-            <a>Reviews</a>
+            <a onClick={() => setToggleMenu(false)}>Reviews</a>
           </Link>
         </li>
       </ul>
     );
   }
+
+  function scrollToTop() {
+    document.documentElement.scrollTop = 0;
+    setToggleMenu(false);
+  }
+
   return (
-    <div className={classes.gmc__navbar}>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={top_down}
+      className={classes.gmc__navbar}
+    >
       <div className={classes.gmc__navbar_links}>
         <div className={classes.gmc__navbar_links__logo}>
           <Link href="#home">
-            <a>
+            <a onClick={() => (document.documentElement.scrollTop = 0)}>
               <Image src={logo} alt="Logo" />
             </a>
           </Link>
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
           <Link href="#home">
-            <a>
+            <a onClick={scrollToTop}>
               <Image src={logo_favi} alt="Logo" layout="responsive" />
             </a>
           </Link>
@@ -59,9 +78,11 @@ function Navbar() {
         </nav>
       </div>
       <div className={classes.gmc__navbar_links__contact}>
-        <button className={utils.gradient_animation} type="button">
-          Contact
-        </button>
+        <Link href="#contact" passHref>
+          <button className={utils.gradient_animation} type="button">
+            <a>Contact</a>
+          </button>
+        </Link>
       </div>
       {/* Hamburger Menu */}
       <div className={classes.gmc__navbar_hamburger}>
@@ -80,7 +101,7 @@ function Navbar() {
         )}
         {toggleMenu && (
           <div
-            className={`${classes.gmc__navbar_hamburger_container} ${utils.scale_up_center}`}
+            className={`${classes.gmc__navbar_hamburger_container} ${utils.scale_in_tr}`}
           >
             <nav className={classes.gmc__navbar_hamburger_container__links}>
               <NavbarLinks />
@@ -89,13 +110,22 @@ function Navbar() {
                   classes.gmc__navbar_hamburger_container__links_contact
                 }
               >
-                <button type="button">Contact</button>
+                <button
+                  className={utils.gradient_animation}
+                  type="button"
+                  onClick={() => setToggleMenu(false)}
+                >
+                  {" "}
+                  <Link href="#contact">
+                    <a>Contact</a>
+                  </Link>
+                </button>
               </div>
             </nav>
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
