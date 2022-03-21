@@ -1,7 +1,7 @@
 import classes from "./bio.module.css";
 import Image from "next/image";
 import SectionTitle from "../../components/ui/section-title/section-title";
-import doctor from "../../public/images/doctor.svg";
+import doctor from "../../public/images/Steph.jpg";
 import Stars from "../../components/ui/stars/stars";
 
 function Bio() {

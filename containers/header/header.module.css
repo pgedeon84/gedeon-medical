@@ -18,11 +18,10 @@
 .gmc__header_content h1 {
     font-family: var(--font-family-heading);
     font-weight: 900;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 34px;
+    line-height: 40px;
     letter-spacing: 0.02em;
     color: var(--color-text);
-    margin-bottom: 0.5rem;
     position: relative;
 }
 
@@ -36,14 +35,15 @@
     animation: leftBounce 3000ms ease-in-out infinite;
 }
 
-.gmc__header_content p {
+.gmc__header_content> p {
     font-family: var(--font-family-text);
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.01em;
 
     color: var(--color-subtext);
+    padding: .5rem 0 0;
 }
 
 .gmc__header_content button {
@@ -60,7 +60,7 @@
     letter-spacing: -0.01em;
 
     color: var(--color-text);
-    padding: .8rem 1rem;
+    padding: 1rem 2rem;
     margin-top: 1rem;
     /* background: #B4C9FD; */
     box-shadow: 0.3px 2.1px 2.2px rgba(56, 92, 173, 0.02),
@@ -110,11 +110,13 @@
 
 
 .gmc__header_content__trust_container_item p {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.6;
     margin-left: 5px;
     font-weight: 400;
     font-family: var(--font-family-heading);
     letter-spacing: 0.03em;
+    color: var(--color-subtext);
 }
 
 

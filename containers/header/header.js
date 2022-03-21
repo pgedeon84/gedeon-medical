@@ -21,7 +21,7 @@ function Header() {
   };
 
   return (
-    <div className={`${classes.gmc__header}`}>
+    <header className={`${classes.gmc__header}`}>
       <motion.div
         initial="hidden"
         animate="visible"
@@ -78,7 +78,7 @@ function Header() {
       <div className={classes.gmc__header_image_lg}>
         <Image src={illustration} alt="Nurses" layout="responsive" priority />
       </div>
-    </div>
+    </header>
   );
 }
 
