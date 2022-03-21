@@ -92,7 +92,7 @@
 }
 
 .gmc__header_content__trust_container {
-    margin-top: .8rem;
+    margin: .8rem .8rem 0 ;
 }
 
 .gmc__header_content__trust_container_item svg {
@@ -147,9 +147,8 @@
     }
     
     .gmc__header_content {
-        /* padding-left: 10rem; */
+        padding-left: 6rem;
         padding-bottom: 8rem;
-        margin-top: -20px;
         background: none;
     }
 
