@@ -7,9 +7,10 @@
     font-family: var(--font-family-heading);
     font-size: 24px;
     line-height: 30px;
-    font-weight: 400;
+    font-weight: 700;
     text-transform: uppercase;
     position: relative;
+    letter-spacing: 0.03em;
 }
 
 .gmc_section_title h1::before {

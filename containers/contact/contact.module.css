@@ -29,13 +29,17 @@
 
 @media screen and (min-width:1050px) {
 
-    .gmc__contact_header__form_container{}
-
     .gmc__contact_form_survey {
         width: 50% !important;
         height: 575px;
         margin: -.4rem auto 0;
         padding: 4rem 0 0;
+    }
+
+    .gmc__contact_header__form_image {
+        width: 25rem;
+        padding: 3rem;
+        margin: 0 auto;
     }
 
 }

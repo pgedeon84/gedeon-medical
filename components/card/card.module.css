@@ -97,7 +97,9 @@
     }
 
     .gmc__card_content_container h1::before {
-        width: 215px;
+        width: 205px;
+        bottom: -10px;
+        height: 7px;
     }
 
     .gmc__card_content_container ul {
