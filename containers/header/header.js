@@ -15,11 +15,6 @@ function Header() {
     visible: { opacity: 1 },
   };
 
-  const right_left = {
-    hidden: { translateX: 30 },
-    visible: { translateX: 0 },
-  };
-
   return (
     <header className={`${classes.gmc__header}`}>
       <motion.div

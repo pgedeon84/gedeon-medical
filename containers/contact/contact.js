@@ -2,33 +2,32 @@ import { useRef } from "react";
 import classes from "./contact.module.css";
 import { Widget } from "@typeform/embed-react";
 import Image from "next/image";
-import logo from "../../public/images/GMC-logo-white-bg.png";
+import logo from "../../public/images/GMC-alternate-logo-large.svg";
 
 function Contact() {
-  const firstNameInputRef = useRef();
-  const lastNameInputRef = useRef();
-  const emailInputRef = useRef();
-  const phoneInputRef = useRef();
-  const messageInputRef = useRef();
+  // const firstNameInputRef = useRef();
+  // const lastNameInputRef = useRef();
+  // const emailInputRef = useRef();
+  // const phoneInputRef = useRef();
+  // const messageInputRef = useRef();
 
-  function onSubmitHandler(event) {
-    event.preventDefault();
-    const enteredFirstName = firstNameInputRef.current.value;
-    const enteredLastName = lastNameInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPhone = phoneInputRef.current.value;
-    const enteredMessage = messageInputRef.current.value;
+  // function onSubmitHandler(event) {
+  //   event.preventDefault();
+  //   const enteredFirstName = firstNameInputRef.current.value;
+  //   const enteredLastName = lastNameInputRef.current.value;
+  //   const enteredEmail = emailInputRef.current.value;
+  //   const enteredPhone = phoneInputRef.current.value;
+  //   const enteredMessage = messageInputRef.current.value;
 
-    const patientInfo = {
-      firstName: enteredFirstName,
-      lastName: enteredLastName,
-      email: enteredEmail,
-      phone: enteredPhone,
-      message: enteredMessage,
-    };
+  //   const patientInfo = {
+  //     firstName: enteredFirstName,
+  //     lastName: enteredLastName,
+  //     email: enteredEmail,
+  //     phone: enteredPhone,
+  //     message: enteredMessage,
+  //   };
 
-    console.log(patientInfo);
-  }
+  // }
 
   return (
     <section className={classes.gmc__contact}>

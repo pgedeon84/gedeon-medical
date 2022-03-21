@@ -1,9 +1,9 @@
 import classes from "./proof.module.css";
 import Image from "next/image";
-import medicare from "../../public/images/medicare.png";
-import cigna from "../../public/images/cigna.png";
-import blue_cross from "../../public/images/blue-cross.png";
-import united from "../../public/images/united.png";
+import medicare from "../../public/images/medicare.svg";
+import cigna from "../../public/images/cigna.svg";
+import blue_cross from "../../public/images/blue-cross.svg";
+import united from "../../public/images/united-healthcare.svg";
 
 function Proof() {
   return (
