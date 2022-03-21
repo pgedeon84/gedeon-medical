@@ -3,6 +3,10 @@
     position: relative;
 }
 
+.gmc__about_header {
+    margin-bottom: 2rem;
+}
+
 .gmc__about_header p {
     padding: 0.8rem 0 2rem 0;
     font-family: var(--font-family-text);
@@ -30,11 +34,21 @@
     padding: 3rem 1rem;
 }
 
+ .gmc__about_content__image {
+     width: 20rem;
+     margin: 0 auto;
+ }
+
 
 @media screen and (min-width: 1050px) {
     .gmc__about {
         padding: 6rem;;
     }
+
+    .gmc__about_header {
+        margin-bottom: 0;
+    }
+
     .gmc__about_header p {
         font-family: var(--font-family-text);
         font-size: 14px;
@@ -52,7 +66,7 @@
     }
 
     .gmc__about_content__image {
-        width: 85rem;
+        width: 95rem;
     }
 
     .gmc__about_content {
