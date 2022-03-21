@@ -12,7 +12,7 @@
      animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
-     background: url(../../public/images/medical-insignia.svg) no-repeat bottom right;
+     /* background: url(../../public/images/medical-insignia.svg) no-repeat bottom right; */
 }
 
 .gmc__header_content h1 {
@@ -62,7 +62,6 @@
     color: var(--color-text);
     padding: 1rem 2rem;
     margin-top: 1.5rem;
-    /* background: #B4C9FD; */
     box-shadow: 0.3px 2.1px 2.2px rgba(56, 92, 173, 0.02),
     0.8px 5.1px 5.3px rgba(56, 92, 173, 0.028),
     1.5px 9.5px 10px rgba(56, 92, 173, 0.035),
