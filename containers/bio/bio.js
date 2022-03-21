@@ -2,6 +2,7 @@ import classes from "./bio.module.css";
 import Image from "next/image";
 import SectionTitle from "../../components/ui/section-title/section-title";
 import doctor from "../../public/images/Steph.jpg";
+import wave from "../../public/images/wave_alt.svg";
 import Stars from "../../components/ui/stars/stars";
 
 function Bio() {
@@ -10,6 +11,7 @@ function Bio() {
       <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
       </div>
+      <Image src={wave} alt="wave" layout="responsive" />
       <div className={classes.gmc__bio_content}>
         <div className={classes.gmc__bio_content_container}>
           <div className={classes.gmc__bio_content_container__image}>
