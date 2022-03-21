@@ -1,5 +1,5 @@
 .gmc__header {
-    margin-top: 6rem;
+    margin-top: 5rem;
 }
 .gmc__header_content {
     flex: 1;
@@ -27,7 +27,7 @@
 
 .gmc__header_content h1::before {
     content: "";
-    height: 3px;
+    height: 4px;
     width: 36px;
     position: absolute;
     background: var(--color-accent);
@@ -112,7 +112,7 @@
 .gmc__header_content__trust_container_item p {
     font-size: 12px;
     line-height: 1.6;
-    margin-left: 5px;
+    margin-left: 8px;
     font-weight: 400;
     font-family: var(--font-family-heading);
     letter-spacing: 0.03em;
@@ -121,10 +121,10 @@
 
 
 .gmc__header_image_sm {
-    padding: 2rem;
+    padding: 2rem 2rem 1rem;
     margin-top: 2rem;
-     -webkit-animation-duration: .5s;
-     animation-duration: .5s;
+     -webkit-animation-duration: .8s;
+     animation-duration: .8s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
 }

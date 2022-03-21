@@ -3,11 +3,11 @@
     justify-content: space-around;
     align-items: center;
     background: #fff;
-    padding: .5rem 1rem;
+    padding: 0 .8rem 1rem;
 }
 
 .gmc__proof div {
-    min-width: 70px;
+    min-width: 80px;
 }
 
 @media screen and (min-width: 1040px) {
