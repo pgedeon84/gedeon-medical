@@ -15,17 +15,31 @@ SwiperCore.use([Scrollbar]);
 function Reviews() {
   const reviewsList = [
     {
-      patientName: "Noel",
+      patientName: "David Ehrich",
       patientReview:
-        "Dr. Gedeon is the perfect mix of professional, personable, and patient. He took the time to get to know my father and even personally repeated his blood pressure manually. I would happily recommend family and friends to Dr. Gedeon.",
-      date: "Dec 08, 2021",
+        "Dr Gedeon & the entire staff were friendly & professional. I highly recommend Dr Gedeon for his knowledgeable & friendly service. He explained each test needed to monitor my on-going good health.",
+      date: "Mar 10, 2021",
       key: Math.random(),
     },
     {
-      patientName: "Noel",
+      patientName: "Jakob Likholat",
       patientReview:
-        "Dr. Gedeon is the perfect mix of professional, personable, and patient. He took the time to get to know my father and even personally repeated his blood pressure manually. I would happily recommend family and friends to Dr. Gedeon.",
-      date: "Dec 08, 2021",
+        "Excellent doctor! Very knowledgeable and courteous! Dr. Gedeon spent a great deal of time going over my health history and recommending the plan of treatment for me. The staff is very professional and nice. I highly recommend this doctor!",
+      date: "Jun 23, 2021",
+      key: Math.random(),
+    },
+    {
+      patientName: "Betty F Williams",
+      patientReview:
+        "Dr Gideon he is a great doctor he listens he cares he is the best he was my doctor about 3 years ago and I am so glad to be back under his care",
+      date: "Mar 17, 2021 ",
+      key: Math.random(),
+    },
+    {
+      patientName: "N/A",
+      patientReview:
+        "Very professional friendly good understanding care about his patient and take time to listen to his patient I feel that I finally found the Dr that I was looking for.",
+      date: "Jun 17, 2021",
       key: Math.random(),
     },
     {

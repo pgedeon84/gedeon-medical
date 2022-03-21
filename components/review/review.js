@@ -10,7 +10,7 @@ function Review({ name, review, date }) {
         <p className={classes.gmc__review_card__content__link}>More details</p>
         <p className={classes.gmc__review_card__content__name}>
           {name}
-          {" -"}
+          {" - "}
           <span>{date}</span>
         </p>
       </div>
