@@ -13,16 +13,27 @@ function Proof() {
           src={blue_cross}
           alt="blue-cross insurance"
           layout="responsive"
+          priority
         />
       </div>
       <div>
-        <Image src={cigna} alt="cigna insurance" layout="responsive" />
+        <Image src={cigna} alt="cigna insurance" layout="responsive" priority />
       </div>
       <div>
-        <Image src={united} alt="united insurance" layout="responsive" />
+        <Image
+          src={united}
+          alt="united insurance"
+          layout="responsive"
+          priority
+        />
       </div>
       <div>
-        <Image src={medicare} alt="medicare insurance" layout="responsive" />
+        <Image
+          src={medicare}
+          alt="medicare insurance"
+          layout="responsive"
+          priority
+        />
       </div>
     </div>
   );

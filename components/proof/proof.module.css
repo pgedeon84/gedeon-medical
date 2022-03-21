@@ -4,8 +4,8 @@
     align-items: center;
     background: #fff;
     padding: 0 .8rem 1rem;
-     -webkit-animation-duration: .5s;
-     animation-duration: .5s;
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
 }
@@ -33,8 +33,8 @@
     from {
         opacity: 0;
         visibility: hidden;
-        -webkit-transform: translate3d(0, 10%, 0);
-        transform: translate3d(0, 10%, 0);
+        -webkit-transform: translate3d(0, 20%, 0);
+        transform: translate3d(0, 20%, 0);
     }
 
     to {

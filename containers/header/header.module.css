@@ -8,8 +8,8 @@
     align-items: flex-start;
     flex-direction: column;
     padding: 2rem 1rem 0 2rem;
-     -webkit-animation-duration: .5s;
-     animation-duration: .5s;
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
      background: url(../../public/images/medical-insignia.svg) no-repeat bottom right;
@@ -123,8 +123,8 @@
 .gmc__header_image_sm {
     padding: 2rem 2rem 1rem;
     margin-top: 2rem;
-     -webkit-animation-duration: .8s;
-     animation-duration: .8s;
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
 }
@@ -214,8 +214,8 @@
          display: block;
          flex: 1.5;
          /* padding: 0 6rem 0 0; */
-          -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+          -webkit-animation-duration: 1s;
+          animation-duration: 1s;
           -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
      }

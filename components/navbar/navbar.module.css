@@ -48,25 +48,25 @@
 
 .gmc__navbar_hamburger_container {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 
     text-align: start;
     padding: 2rem;
     position: absolute;
-    right: 0;
-    top:50px;
-    min-width: 210px;
+    right: -25px;
+    top: 45px;
+    min-width: 250px;
     background:linear-gradient(132deg, rgba(56, 91, 173, 1) 0%, rgba(44, 69, 145, 1) 100%);
-    border-radius: 5px;
+    border-radius: 0 0 0 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
     z-index: 10;
     transition: all 3s ease-in-out;
 }
 
 .gmc__navbar_hamburger_container li {
-    margin: 1.5rem 0;
+    margin: 1.8rem 0;
 }
 
 .gmc__navbar_hamburger_container__links,
