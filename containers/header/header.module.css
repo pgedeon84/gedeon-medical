@@ -49,7 +49,7 @@
 .gmc__header_content button {
     font-family: var(--font-family-heading);
     font-weight: 700;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 14px;
 
     display: flex;
@@ -142,14 +142,14 @@
     .gmc__header {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 10.5rem;
+        margin-top: 8.5rem;
         padding: 0 6rem;
     }
     
     .gmc__header_content {
         /* padding-left: 10rem; */
         padding-bottom: 8rem;
-        margin-top: -40px;
+        margin-top: -20px;
         background: none;
     }
 
@@ -179,6 +179,10 @@
         padding: 1.3rem 3rem;
         font-size: 18px;
         font-weight: 700;
+     }
+
+     .gmc__header_content__button_icon {
+         margin-right: .5rem;
      }
 
      .gmc__header_content button svg {

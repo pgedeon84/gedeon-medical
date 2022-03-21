@@ -11,8 +11,16 @@
 }
 
 @media screen and (min-width: 1040px) {
+    .gmc__proof {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: #fff;
+        padding: 3rem 8rem 2rem;
+    }
+
     .gmc__proof div {
-        width: 130px;
-        padding: 1rem 0;
+        width: 140px;
+        /* padding: 1rem 0; */
     }
 }
