@@ -65,7 +65,7 @@
     font-family: var(--font-family-heading);
     font-size: 14px;
     line-height: 16px;
-    
+    font-style: italic;
     color: var(--color-text-alt);
 }
 
@@ -84,6 +84,7 @@
     letter-spacing: -0.01em;
     margin-left: .5rem;
 }
+
 
 @media screen and (min-width: 1050px) {
     .gmc__bio {
