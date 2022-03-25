@@ -10,8 +10,8 @@ function Bio() {
     <div id="meetthedoc" className={classes.gmc__bio}>
       <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
+        <Image src={wave} alt="wave" layout="responsive" />
       </div>
-      <Image src={wave} alt="wave" layout="responsive" />
       <div className={classes.gmc__bio_content}>
         <div className={classes.gmc__bio_content_container}>
           <div className={classes.gmc__bio_content_container__image}>

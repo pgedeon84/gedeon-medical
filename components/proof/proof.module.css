@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #fff;
+    background-color: #fff;
     padding: 0 .8rem 1rem;
      -webkit-animation-duration: 1s;
      animation-duration: 1s;
@@ -19,12 +19,12 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: #fff;
-        padding: 3rem 8rem 2rem;
+        background-color: #fff;
+        padding: 3rem 10rem 2rem;
     }
 
     .gmc__proof div {
-        width: 140px;
+        width: 120px;
         /* padding: 1rem 0; */
     }
 }

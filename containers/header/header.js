@@ -1,6 +1,6 @@
 import classes from "./header.module.css";
 import Image from "next/image";
-import Dots from "../../components/ui/dots/dots";
+import DotsHeader from "../../components/ui/dots/header/dots-header";
 import illustration from "../../public/images/illus-doctor-nurse.svg";
 import { RiCalendar2Line } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
@@ -65,7 +65,7 @@ function Header() {
             Book an Appointment
           </button>
         </Link>
-        <Dots />
+        <DotsHeader />
       </motion.div>
       <div className={classes.gmc__header_image_sm}>
         <Image src={illustration} alt="Nurses" layout="responsive" priority />

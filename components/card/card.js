@@ -10,7 +10,7 @@ function Card(props) {
         <Image src={image} alt={title} layout="responsive" />
       </div>
       <div className={classes.gmc__card_content_container}>
-        <h1>{title}</h1>
+        <h2>{title}</h2>
         <ul>{props.children}</ul>
         <Button label="learn more" />
       </div>

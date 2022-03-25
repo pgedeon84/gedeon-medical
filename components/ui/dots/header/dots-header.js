@@ -1,8 +1,19 @@
-import classes from "./dots-left.module.css";
+import classes from "./dots-header.module.css";
+import { motion } from "framer-motion";
 
-function DotsLeft() {
+function DotsHeader() {
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
-    <div className={classes.gmc__effect_wrap}>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+      className={classes.gmc__effect_wrap}
+    >
       <div className={classes.gmc__effect}>
         <div className={classes.gmc__effect_dots}>
           <div></div>
@@ -63,8 +74,8 @@ function DotsLeft() {
           <div></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-export default DotsLeft;
+export default DotsHeader;

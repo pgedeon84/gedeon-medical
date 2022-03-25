@@ -1,6 +1,5 @@
 .gmc__bio {
-    padding-top: 6rem;
-
+    padding-top: 4rem;
 }
 
 .gmc__bio_content {
@@ -86,6 +85,10 @@
 }
 
 @media screen and (min-width: 1050px) {
+    .gmc__bio {
+        padding-top: 9rem;
+    }
+
     .gmc__bio_content{
         padding: 6rem 16rem;
     }

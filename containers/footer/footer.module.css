@@ -2,25 +2,33 @@
     /* padding: 6rem 0 0; */
     background: var(--bg-color-dark);
     background: rgb(25, 34, 58);
+    padding: 3rem;
 }
 
 .gmc__footer_content {
-    /* background: #fff; */
-    padding: 3rem;
-
+    padding-bottom: 2rem;
 }
 
 .gmc__footer_content p {
-    padding: 1rem 0 0;
     text-align: center;
     line-height: 1.6;
     color: var(--color-text-alt);
     font-family: var(--font-family-text);
 }
 
+.gmc__footer_share_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 12rem;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
 .gmc__footer_copyrights {
    text-align: center;
-   padding: 0 0 2rem;
    color: var(--color-text-alt);
    font-family: var(--font-family-text);
    background: rgb(25, 34, 58);

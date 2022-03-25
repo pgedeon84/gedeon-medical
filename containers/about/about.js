@@ -4,7 +4,7 @@ import utils from "../../styles/utils.module.css";
 import SectionTitle from "../../components/ui/section-title/section-title";
 import nurse from "../../public/images/illus-doctor-child.svg";
 import Button from "../../components/ui/button/button";
-import DotsLeft from "../../components/ui/dots-left/dots-left";
+import DotsAbout from "../../components/ui/dots/about/dots-about";
 
 function About() {
   return (
@@ -33,7 +33,7 @@ function About() {
           <Button label="learn more" />
         </div>
       </div>
-      <DotsLeft />
+      <DotsAbout />
     </div>
   );
 }
