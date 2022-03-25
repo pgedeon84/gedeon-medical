@@ -13,8 +13,8 @@
     padding: 0 0 6rem;
 }
 
-.gmc__contact_header__form_image {
-    width: 15rem;
+.gmc__contact_header__form_image_container {
+    width: 14rem;
     padding: 0 0 2rem;
     margin: 0 auto;
 }

@@ -1,6 +1,8 @@
 import classes from "./reviews.module.css";
 import SectionTitle from "../../components/ui/section-title/section-title";
 import Review from "../../components/review/review";
+import DotsReviews from "../../components/ui/dots/reviews/dots-reviews";
+
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper/core";
@@ -61,6 +63,7 @@ function Reviews() {
       </svg>
 
       <div className={classes.gmc__reviews_container}>
+        {/* <DotsReviews /> */}
         <SectionTitle title={"Patient Reviews"} />
         <div className={classes.gmc__reviews__review_swiper__container}>
           <Swiper

@@ -1,10 +1,11 @@
 
 .gmc__reviews_container {
     padding-top: 4rem;
+    position: relative;
 }
 
 .gmc__reviews__review_swiper__container {
-    padding: 4rem 0 8rem;
+    padding: 4rem 0 6rem;
     margin: 2rem 0 0;
     background: #ffffff url("../../public/images/Intersect.png") no-repeat center;
     background-size: cover;

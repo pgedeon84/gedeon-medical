@@ -46,7 +46,7 @@ function Contact() {
         />
       </div>
       <Image src={waves} alt="waves" layout="responsive" />
-      <div className={classes.gmc__contact_header__form_image}>
+      <div className={classes.gmc__contact_header__form_image_container}>
         <Image src={logo} alt="GMC Logo" layout="responsive" />
       </div>
     </section>

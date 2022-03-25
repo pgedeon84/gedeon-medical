@@ -1,11 +1,13 @@
-.gmc__effect_wrap  {
+.gmc__effect_wrap {
     position: absolute;
     z-index: -1;
-    top: 24rem;
-     -webkit-animation-duration: 2.5s;
-     animation-duration: 2.5s;
-     -webkit-animation-name: fadeIn;
-     animation-name: fadeIn;
+    top: -1rem;
+    left: 2rem;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+
 }
 
 .gmc__effect_dots {
@@ -28,6 +30,7 @@
 }
 
 @keyframes topBounce {
+
     0%,
     100% {
         transform: translateY(0);
@@ -53,9 +56,9 @@
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform:0 20% 0;
+        transform: 0 20% 0;
         visibility: hidden;
-       
+
     }
 
     45% {
@@ -64,7 +67,7 @@
 
     100% {
         opacity: 1;
-        transform:0 0 0;
+        transform: 0 0 0;
         visibility: visible;
     }
 }
