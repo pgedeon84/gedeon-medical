@@ -17,10 +17,10 @@ function Footer() {
         </p>
       </div>
       <div className={classes.gmc__footer_share_container}>
-        <EmailIcon size={32} round={true} />
-        <FacebookIcon size={32} round={true} />
-        <WhatsappIcon size={32} round={true} />
-        <LinkedinIcon size={32} round={true} />
+        <EmailIcon size={42} round={true} />
+        <FacebookIcon size={42} round={true} />
+        <WhatsappIcon size={42} round={true} />
+        <LinkedinIcon size={42} round={true} />
       </div>
       <div className={classes.gmc__footer_copyrights}>
         <p>© 2022 GEDEON MEDICAL CENTER</p>
