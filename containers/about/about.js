@@ -5,10 +5,13 @@ import SectionTitle from "../../components/ui/section-title/section-title";
 import nurse from "../../public/images/illus-doctor-child.svg";
 import Button from "../../components/ui/button/button";
 import DotsAbout from "../../components/ui/dots/about/dots-about";
+import { motion, useViewportScroll } from "framer-motion";
 
 function About() {
+  const { scrollYProgress } = useViewportScroll();
+
   return (
-    <div
+    <motion.div
       id="about"
       className={`${classes.gmc__about} ${utils.section__padding}`}
     >
@@ -34,7 +37,7 @@ function About() {
         </div>
       </div>
       <DotsAbout />
-    </div>
+    </motion.div>
   );
 }
 

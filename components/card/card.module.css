@@ -44,7 +44,7 @@
     content: "";
     height: 5px;
     width: 160px;
-    background-color: var(--color-accent);
+    background: linear-gradient(274.93deg, rgba(110, 199, 77, 0.77) -15.76%, rgba(145, 196, 168, 0.6) 38.17%, rgba(161, 198, 208, 0.63) 71.28%, #B4C9FD 111.59%);
     position: absolute;
     bottom: -4px;
     left: 20%;
