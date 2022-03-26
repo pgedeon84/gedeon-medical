@@ -63,7 +63,7 @@ function Reviews() {
       </svg>
 
       <div className={classes.gmc__reviews_container}>
-        {/* <DotsReviews /> */}
+        <DotsReviews />
         <SectionTitle title={"Patient Reviews"} />
         <div className={classes.gmc__reviews__review_swiper__container}>
           <Swiper

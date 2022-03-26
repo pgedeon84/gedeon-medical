@@ -1,7 +1,7 @@
 .gmc__effect_wrap {
     position: absolute;
     z-index: 100;
-    bottom: 2rem;
+    top: -3rem;
     right: 2rem;
 }
 
