@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="initail-scale=1.0, width=device-width" />
-        <link rel="icon" type="svg" sizes="16x16" href="GMC-favicon-logo.svg" />
+        <link rel="icon" href="GMC-favicon-logo.svg" />
       </Head>
       <Component {...pageProps} />
     </>

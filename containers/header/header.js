@@ -2,7 +2,7 @@ import classes from "./header.module.css";
 import Image from "next/image";
 import DotsHeader from "../../components/ui/dots/header/dots-header";
 import illustration from "../../public/images/illus-doctor-nurse.svg";
-import { RiCalendar2Line } from "react-icons/ri";
+import { RiArrowRightSLine } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
 import Link from "next/link";
 
@@ -59,7 +59,7 @@ function Header() {
           <button className={utils.gradient_animation} type="button">
             Book an Appointment
             <span>
-              <RiCalendar2Line
+              <RiArrowRightSLine
                 className={classes.gmc__header_content__button_icon}
               />
             </span>
