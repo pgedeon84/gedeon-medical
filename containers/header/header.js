@@ -57,12 +57,12 @@ function Header() {
         </div>
         <Link href="#contact" passHref>
           <button className={utils.gradient_animation} type="button">
+            Book an Appointment
             <span>
               <RiCalendar2Line
                 className={classes.gmc__header_content__button_icon}
               />
             </span>
-            Book an Appointment
           </button>
         </Link>
         <DotsHeader />
