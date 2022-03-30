@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="initail-scale=1.0, width=device-width" />
+        <link rel="icon" type="svg" sizes="16x16" href="GMC-favicon-logo.svg" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
