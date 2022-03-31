@@ -117,7 +117,7 @@ function Navbar() {
                     onClick={() => setToggleMenu(false)}
                   >
                     {" "}
-                    <a>Contact</a>
+                    Contact
                   </button>
                 </Link>
               </div>
