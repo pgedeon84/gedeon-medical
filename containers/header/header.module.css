@@ -1,6 +1,4 @@
-.gmc__header {
-    margin-top: 5rem;
-}
+
 .gmc__header_content {
     flex: 1;
     display: flex;
@@ -120,7 +118,7 @@
 
 
 .gmc__header_image_sm {
-    padding: 2rem 2rem 1rem;
+    padding: 2rem 2rem 2rem;
     margin-top: 2rem;
      -webkit-animation-duration: 1s;
      animation-duration: 1s;
