@@ -55,7 +55,7 @@
 }
 
 .gmc__card_content_container li {
-    color: var(--color-subtext);
+    color: var(--color-text);
     font-family: var(--font-family-text);
     font-weight: 400;
     font-size: 14px;

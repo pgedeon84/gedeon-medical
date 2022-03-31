@@ -14,7 +14,7 @@ function Home() {
   return (
     <main>
       <Head>
-        <title>Gedeon Medical Center</title>
+        <title>Gedeon Medical Center | Your path to health!</title>
         <meta
           name="description"
           content="Not feeling well or need an annual medical exam? We do it all! Our doctor also
