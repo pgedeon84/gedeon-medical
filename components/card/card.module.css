@@ -32,7 +32,7 @@
     color: var(--color-text);
     font-family: var(--font-family-heading);
     font-weight: 400;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 30px;
     letter-spacing: -0.01em;
     margin: 1.8rem 0 1rem;
@@ -43,11 +43,12 @@
 .gmc__card_content_container h2::before {
     content: "";
     height: 5px;
-    width: 160px;
+    width: 180px;
     background: linear-gradient(274.93deg, rgba(110, 199, 77, 0.77) -15.76%, rgba(145, 196, 168, 0.6) 38.17%, rgba(161, 198, 208, 0.63) 71.28%, #B4C9FD 111.59%);
     position: absolute;
-    bottom: -4px;
+    bottom: -6px;
     left: 20%;
+    border-radius: 5px;
 }
 
 .gmc__card_content_container ul {
