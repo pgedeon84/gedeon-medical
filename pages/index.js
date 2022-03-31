@@ -12,7 +12,7 @@ import {
 
 function Home() {
   return (
-    <div>
+    <main>
       <Head>
         <title>Gedeon Medical Center</title>
         <meta
@@ -30,7 +30,7 @@ function Home() {
       <Reviews />
       <Contact />
       <Footer />
-    </div>
+    </main>
   );
 }
 

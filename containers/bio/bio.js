@@ -8,7 +8,7 @@ import DotsBio from "../../components/ui/dots/bio/dots-bio";
 
 function Bio() {
   return (
-    <div id="meetthedoc" className={classes.gmc__bio}>
+    <section id="meetthedoc" className={classes.gmc__bio}>
       <DotsBio />
       <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
@@ -47,7 +47,7 @@ function Bio() {
           at Cleveland Clinic Akron General in Akron, Ohio.
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

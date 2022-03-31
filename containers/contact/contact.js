@@ -4,32 +4,7 @@ import Image from "next/image";
 import logo from "../../public/images/GMC-alternate-logo-large.svg";
 import waves from "../../public/images/wave.svg";
 
-// import { useRef } from "react";
 function Contact() {
-  // const firstNameInputRef = useRef();
-  // const lastNameInputRef = useRef();
-  // const emailInputRef = useRef();
-  // const phoneInputRef = useRef();
-  // const messageInputRef = useRef();
-
-  // function onSubmitHandler(event) {
-  //   event.preventDefault();
-  //   const enteredFirstName = firstNameInputRef.current.value;
-  //   const enteredLastName = lastNameInputRef.current.value;
-  //   const enteredEmail = emailInputRef.current.value;
-  //   const enteredPhone = phoneInputRef.current.value;
-  //   const enteredMessage = messageInputRef.current.value;
-
-  //   const patientInfo = {
-  //     firstName: enteredFirstName,
-  //     lastName: enteredLastName,
-  //     email: enteredEmail,
-  //     phone: enteredPhone,
-  //     message: enteredMessage,
-  //   };
-
-  // }
-
   return (
     <section className={classes.gmc__contact}>
       <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">

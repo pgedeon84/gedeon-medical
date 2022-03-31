@@ -7,7 +7,7 @@ import cosmeticCare from "../../public/images/cosmetic-care.svg";
 
 function Services() {
   return (
-    <div
+    <section
       id="services"
       className={`${classes.gmc__service} ${utils.section__padding}`}
     >
@@ -355,7 +355,7 @@ function Services() {
           </li>
         </Card>
       </div>
-    </div>
+    </section>
   );
 }
 
