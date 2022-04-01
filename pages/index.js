@@ -1,14 +1,14 @@
 import { Navbar, Proof } from "../components";
 import Head from "next/head";
-import {
-  Header,
-  About,
-  Services,
-  Bio,
-  Reviews,
-  Contact,
-  Footer,
-} from "../containers";
+import dynamic from "next/dynamic";
+import { Header } from "../containers";
+
+const AboutLazy = dynamic(() => import("../containers/about/about"));
+const ServicesLazy = dynamic(() => import("../containers/services/services"));
+const BioLazy = dynamic(() => import("../containers/bio/bio"));
+const ReviewsLazy = dynamic(() => import("../containers/reviews/reviews"));
+const ContactLazy = dynamic(() => import("../containers/contact/contact"));
+const FooterLazy = dynamic(() => import("../containers/footer/footer"));
 
 function Home() {
   return (
@@ -19,12 +19,12 @@ function Home() {
       <Navbar />
       <Header />
       <Proof />
-      <About />
-      <Services />
-      <Bio />
-      <Reviews />
-      <Contact />
-      <Footer />
+      <AboutLazy />
+      <ServicesLazy />
+      <BioLazy />
+      <ReviewsLazy />
+      <ContactLazy />
+      <FooterLazy />
     </main>
   );
 }

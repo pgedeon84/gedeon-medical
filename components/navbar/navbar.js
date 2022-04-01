@@ -15,8 +15,8 @@ function Navbar() {
 
   //Framer Motion props
   const top_down = {
-    hidden: { opacity: 0, translateY: -10 },
-    visible: { opacity: 1, translateY: 0 },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
 
   function NavbarLinks() {

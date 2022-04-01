@@ -4,7 +4,7 @@
     border-radius: 5px;
     overflow: hidden;
 
-    box-shadow: 0 8px 32px 0 rgba(197, 201, 248, 0.347);
+    box-shadow: 0 8px 35px 0 rgba(163, 162, 162, 0.157);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
@@ -56,9 +56,9 @@
 }
 
 .gmc__card_content_container li {
-    color: var(--color-text);
+    color: var(--color-subtext);
     font-family: var(--font-family-text);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.01em;
@@ -67,7 +67,6 @@
 
 .gmc__card_content_container button {
     margin: 0 auto 3rem;
-    /* margin-left: 5rem; */
 }
 
 @media screen and (min-width: 1050px) {

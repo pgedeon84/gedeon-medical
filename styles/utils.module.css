@@ -6,7 +6,7 @@
 
 .gradient_animation {
     background: linear-gradient(274.93deg, rgba(110, 199, 77, 0.77) -15.76%, rgba(145, 196, 168, 0.6) 38.17%, rgba(161, 198, 208, 0.63) 71.28%, #B4C9FD 111.59%);
-    animation: gradient_animation 8s ease infinite;
+    /* animation: gradient_animation 8s ease infinite; */
 }
 
 

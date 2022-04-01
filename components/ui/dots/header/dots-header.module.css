@@ -1,11 +1,7 @@
 .gmc__effect_wrap  {
     position: absolute;
     z-index: -1;
-    top: 24rem;
-     -webkit-animation-duration: 2.5s;
-     animation-duration: 2.5s;
-     -webkit-animation-name: fadeIn;
-     animation-name: fadeIn;
+    top: 23rem;
 }
 
 .gmc__effect_dots {

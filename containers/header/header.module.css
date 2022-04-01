@@ -6,11 +6,7 @@
     align-items: flex-start;
     flex-direction: column;
     padding: 2rem 1rem 0 2rem;
-     -webkit-animation-duration: 1s;
-     animation-duration: 1s;
-     -webkit-animation-name: fadeIn;
-     animation-name: fadeIn;
-     background: url(../../public/images/medical-insignia.svg) no-repeat bottom right;
+    background: url(../../public/images/medical-insignia.svg) no-repeat bottom right;
 }
 
 .gmc__header_content h1 {
@@ -21,6 +17,10 @@
     letter-spacing: 0.02em;
     color: var(--color-text);
     position: relative;
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
+     -webkit-animation-name: fadeIn;
+     animation-name: fadeIn;
 }
 
 .gmc__header_content h1::before {
@@ -42,6 +42,10 @@
 
     color: var(--color-subtext);
     padding: .5rem 0 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 
 .gmc__header_content button {
@@ -70,6 +74,10 @@
     border: none;
     outline: none;
     cursor: pointer;
+    /* -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn; */
 }
 
  .gmc__header_content button:hover {
@@ -90,6 +98,10 @@
 
 .gmc__header_content__trust_container {
     margin: .8rem .8rem 0 ;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
 }
 
 .gmc__header_content__trust_container_item svg {
@@ -245,6 +257,19 @@
         visibility: visible;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+    }
+
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
     }
 
 }
