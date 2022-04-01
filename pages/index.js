@@ -1,6 +1,6 @@
-import { Navbar, Proof } from "../components";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { Navbar, Proof } from "../components";
 import { Header } from "../containers";
 
 const AboutLazy = dynamic(() => import("../containers/about/about"));
@@ -12,20 +12,22 @@ const FooterLazy = dynamic(() => import("../containers/footer/footer"));
 
 function Home() {
   return (
-    <main>
+    <>
       <Head>
-        <title>Gedeon Medical Center | Your path to health!</title>
+        <title>Gedeon Medical Center | Book an appointment</title>
       </Head>
-      <Navbar />
-      <Header />
-      <Proof />
-      <AboutLazy />
-      <ServicesLazy />
-      <BioLazy />
-      <ReviewsLazy />
-      <ContactLazy />
-      <FooterLazy />
-    </main>
+      <main>
+        <Navbar />
+        <Header />
+        <Proof />
+        <AboutLazy />
+        <ServicesLazy />
+        <BioLazy />
+        <ReviewsLazy />
+        <ContactLazy />
+        <FooterLazy />
+      </main>
+    </>
   );
 }
 
