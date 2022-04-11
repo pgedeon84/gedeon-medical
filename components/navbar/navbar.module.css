@@ -60,7 +60,7 @@
     background-color:var(--bg-color-dark);
     border-radius: 5px 0 0 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
-    z-index: 10;
+    z-index: 100;
     transition: all 3s ease-in-out;
 }
 
