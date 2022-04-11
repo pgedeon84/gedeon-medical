@@ -22,19 +22,19 @@ function Navbar() {
   function NavbarLinks() {
     return (
       <ul>
-        <li>
+        <li onClick={() => setToggleMenu(false)}>
           <Link href="#about">
-            <a onClick={() => setToggleMenu(false)}>About us</a>
+            <a>About us</a>
           </Link>
         </li>
-        <li>
+        <li onClick={() => setToggleMenu(false)}>
           <Link href="#services">
-            <a onClick={() => setToggleMenu(false)}>Services</a>
+            <a>Services</a>
           </Link>
         </li>
-        <li>
+        <li onClick={() => setToggleMenu(false)}>
           <Link href="#meetthedoc">
-            <a onClick={() => setToggleMenu(false)}>Meet the Doc</a>
+            <a>Meet the Doc</a>
           </Link>
         </li>
         <li>

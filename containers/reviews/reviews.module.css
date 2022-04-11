@@ -1,3 +1,6 @@
+.gmc__reviews>svg>path {
+    width: auto;
+}
 
 .gmc__reviews_container {
     padding-top: 4rem;

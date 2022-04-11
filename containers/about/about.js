@@ -28,10 +28,10 @@ function About() {
         </div>
         <div className={classes.gmc__about_content}>
           <p>
-            Not feeling well or just need an annual exam? We do it all! We also
-            perform sports physicals and referrals for injuries. Whether
-            you&apos;re sick or only need some routine maintenance, we&apos;re
-            here for you!
+            With years of experience, our medical team will assess you and
+            create a custom recovery plan that&apos;s right for you. We
+            understand the importance of educating you on the most effective
+            ways to take care of your body, so that you can heal quickly.
           </p>
           <Button label="learn more" />
         </div>

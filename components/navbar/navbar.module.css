@@ -52,7 +52,7 @@
     flex-direction: column;
 
     text-align: start;
-    padding: 2rem;
+    padding: 3.6rem 2rem;
     position: absolute;
     right: -25px;
     top: 45px;
@@ -66,6 +66,7 @@
 
 .gmc__navbar_hamburger_container li {
     margin: 1.8rem 0;
+    padding: 1rem;
 }
 
 .gmc__navbar_hamburger_container__links,
@@ -81,6 +82,7 @@
 
 .gmc__navbar_hamburger_container__links li:first-of-type {
     margin-top: 0;
+    padding-top:0;
 }
 
 .gmc__navbar_hamburger_container__links a:hover,
@@ -91,7 +93,7 @@
 
 .gmc__navbar_links__contact button,
 .gmc__navbar_hamburger_container__links_contact button {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     font-family: var(--font-family-heading);
     font-weight: 700;
     font-size: 18px;
