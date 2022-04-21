@@ -11,7 +11,7 @@ function About() {
   const { scrollYProgress } = useViewportScroll();
 
   return (
-    <motion.section
+    <section
       id="about"
       className={`${classes.gmc__about} ${utils.section__padding}`}
     >
@@ -37,7 +37,7 @@ function About() {
         </div>
       </div>
       <DotsAbout />
-    </motion.section>
+    </section>
   );
 }
 
