@@ -18,9 +18,10 @@ function About() {
       <div className={classes.gmc__about_header}>
         <SectionTitle title="WELCOME TO GEDEON MEDICAL CENTER" />
         <p>
-          11011 SHERIDAN STREET, SUITE 215/216, COOPER CITY, FLORIDA 33026,
-          UNITED STATES
+          11011 SHERIDAN STREET, SUITE 215, COOPER CITY, FLORIDA 33026, UNITED
+          STATES
         </p>
+        <p>954-842-4285</p>
       </div>
       <div className={classes.gmc__about_content__container}>
         <div className={classes.gmc__about_content__image}>

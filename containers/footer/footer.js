@@ -11,7 +11,7 @@ function Footer() {
     <footer className={classes.gmc__footer}>
       <div className={classes.gmc__footer_content}>
         <p>
-          11011 SHERIDAN STREET, SUITE 215/216 COOPER CITY, FLORIDA 33026,
+          11011 SHERIDAN STREET, SUITE 215 COOPER CITY, FLORIDA 33026,
           <br />
           UNITED STATES
         </p>

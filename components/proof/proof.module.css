@@ -12,6 +12,7 @@
 
 .gmc__proof div {
     min-width: 80px;
+    /* min-height: 20px; */
 }
 
 @media screen and (min-width: 1040px) {
