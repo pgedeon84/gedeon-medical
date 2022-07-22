@@ -21,6 +21,7 @@ function Contact() {
         />
       </div> */}
       <iframe
+        id="contact"
         title="Book online appointments with Leon Gedeon | Patient Fusion"
         frameBorder="0"
         src="https://www.patientfusion.com/external/appointment/fd00a13d-d36a-4def-985b-a1e590b9ac9e?origin=doctor"
