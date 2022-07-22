@@ -43,6 +43,14 @@ body {
   display: none !important;
 }
 
+.step-number {
+  color: red !important;
+}
+
+#appointment-steps {
+    font-size: 0px !important;
+}
+
 @media screen and (min-width: 1050px){
 
   .swiper-button-next,
