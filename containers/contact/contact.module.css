@@ -31,6 +31,10 @@
 
 /* iFrame */
 
+.gmc__contact_iFrame {
+    width: 380px;
+    height: 400px;
+}
 
 @media screen and (min-width:1050px) {
 
