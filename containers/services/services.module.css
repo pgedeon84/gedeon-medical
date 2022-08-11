@@ -30,6 +30,7 @@
         flex-direction: column;
         width: 90%;
         margin: 0 auto;
+        margin-bottom: 5rem;
     }
     .gmc__service_card__container {
         display: flex;

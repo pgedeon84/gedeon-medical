@@ -1,7 +1,7 @@
 import classes from "./bio.module.css";
 import Image from "next/image";
 import SectionTitle from "../../components/ui/section-title/section-title";
-import doctor from "../../public/images/drgedeon.svg";
+import doctor from "../../public/images/doctor.svg";
 import wave from "../../public/images/wave_alt.svg";
 import Stars from "../../components/ui/stars/stars";
 import DotsBio from "../../components/ui/dots/bio/dots-bio";
@@ -12,8 +12,8 @@ function Bio() {
       <DotsBio />
       <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
-        <Image src={wave} alt="wave" layout="responsive" />
       </div>
+      <Image src={wave} alt="wave" layout="responsive" />
       <div className={classes.gmc__bio_content}>
         <div className={classes.gmc__bio_content_container}>
           <div className={classes.gmc__bio_content_container__image}>

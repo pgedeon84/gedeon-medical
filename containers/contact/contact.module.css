@@ -45,10 +45,9 @@
         padding: 4rem 0 0;
     }
 
-    .gmc__contact_header__form_image {
-        width: 25rem;
-        padding: 3rem;
-        margin: 0 auto;
+    .gmc__contact_header__form_image_container {
+        width: 20rem;
+        margin-bottom: 3rem;
     }
 
     .gmc__contact_iFrame {

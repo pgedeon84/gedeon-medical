@@ -5,12 +5,13 @@
 
 .gmc__bio_content {
     padding: 3rem 2rem;
-    background: var(--bg-color-dark);
+    background: linear-gradient(180deg, #B4C9FD -107.24%, #FFFFFF 64.22%);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: -10px;
+    margin-bottom: 2rem;
 }
 
 .gmc__bio_content>p {
@@ -19,11 +20,10 @@
     line-height: 1.6;
     font-weight: 300;
     letter-spacing: -0.01em;
-
-    color: var(--color-text-alt);
+    color: var(--color-text);
     margin-top: 2em;
-    /* max-height: 35ch; */
     overflow-y: scroll;
+    /* max-height: 35ch; */
 }
 
 .gmc__bio_content_container {
@@ -35,7 +35,7 @@
 }
 
 .gmc__bio_content_container__image {
-    width: 12rem;
+    width: 23rem;
     margin-bottom: 1rem;
     position: relative;
 }
@@ -58,7 +58,7 @@
     font-size: 24px;
     line-height: 36px;
     letter-spacing: -0.01em;
-    color: var(--color-text-alt);
+    color: var(--color-text);
 }
 
 .gmc__bio_content_container__content p {
@@ -66,11 +66,11 @@
     font-size: 14px;
     line-height: 16px;
     font-style: italic;
-    color: var(--color-text-alt);
+    color: var(--color-text);
 }
 
 .gmc__bio_content_container__content_rating {
-    color: var(--color-text-alt);
+    color: var(--color-text);
     display: flex;
     justify-content: center;
 
@@ -88,7 +88,16 @@
 
 @media screen and (min-width: 1050px) {
     .gmc__bio {
-        padding-top: 9rem;
+        padding-top: 5rem;
+    }
+
+    .gmc__bio_header {
+     margin-bottom: -375px;
+     /* z-index: 40; */
+    }
+
+    .gmc__bio_title {
+        margin-top: 50rem;
     }
 
     .gmc__bio_content{
@@ -97,6 +106,7 @@
 
     .gmc__bio_content>p {
         font-size: 18px;
+         margin-top: 0;
     }
 
     .gmc__bio_content_container {
@@ -117,6 +127,7 @@
 
      .gmc__bio_content_container__content p {
          font-size: 18px;
+         padding: .2rem 0;
      }
 
      .gmc__bio_content_container__content_rating {
@@ -133,7 +144,7 @@
       }
     
       .gmc__bio_content_container__image {
-          width: 16rem;
+          width: 26rem;
       }
 
 }
