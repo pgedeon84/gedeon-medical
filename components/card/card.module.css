@@ -56,10 +56,10 @@
 }
 
 .gmc__card_content_container li {
-    color: var(--color-subtext);
+    color: var(--color-text);
     font-family: var(--font-family-text);
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 18px;
     letter-spacing: -0.01em;
     margin: 1rem 0;
