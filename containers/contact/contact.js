@@ -20,13 +20,14 @@ function Contact() {
           className={classes.gmc__contact_form_survey}
         />
       </div> */}
-      <iframe
-        id="contact"
-        title="Book online appointments with Leon Gedeon | Patient Fusion"
-        frameBorder="0"
-        src="https://www.patientfusion.com/external/appointment/fd00a13d-d36a-4def-985b-a1e590b9ac9e?origin=doctor"
-        className={classes.gmc__contact_iFrame}
-      ></iframe>
+      <div className={classes.gmc__contact_iFrame_Container}>
+        <iframe
+          title="Book online appointments with Leon Gedeon | Patient Fusion"
+          className={classes.gmc__contact_iFrame}
+          frameBorder="0"
+          src="https://www.patientfusion.com/external/appointment/fd00a13d-d36a-4def-985b-a1e590b9ac9e?origin=doctor"
+        />
+      </div>
       <Image src={waves} alt="waves" layout="responsive" />
       <div className={classes.gmc__contact_header__form_image_container}>
         <Image src={logo} alt="GMC Logo" layout="responsive" />
