@@ -16,7 +16,7 @@ function Header() {
   };
 
   return (
-    <header className={`${classes.gmc__header}`}>
+    <header className={classes.gmc__header}>
       <motion.div
         initial="hidden"
         animate="visible"

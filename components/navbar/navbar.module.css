@@ -60,13 +60,14 @@
     background-color:var(--bg-color-dark);
     border-radius: 5px 0 0 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
-    z-index: 100;
     transition: all 3s ease-in-out;
+    z-index: 100;
 }
 
 .gmc__navbar_hamburger_container li {
     margin: 1.8rem 0;
     padding: .2rem 0;
+    z-index: 200;
 }
 
 .gmc__navbar_hamburger_container__links,
@@ -117,8 +118,8 @@
 
 @media screen and (min-width: 1050px){
     .gmc__navbar {
-         position: fixed;
-         top: 0;
+        position: fixed;
+        top: 0;
         padding: .5rem 6rem;
     }
      .gmc__navbar_hamburger {

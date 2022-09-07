@@ -24,6 +24,7 @@
      animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
+     z-index: -1;
 }
 
 .gmc__header_content h1::before {
@@ -139,7 +140,7 @@
      animation-duration: 1s;
      -webkit-animation-name: fadeIn;
      animation-name: fadeIn;
-     z-index: -10;
+     z-index: -100;
 }
 
 .gmc__header_image_lg {
