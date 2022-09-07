@@ -79,6 +79,7 @@
     line-height: 32px;
     text-transform: capitalize;
     margin: 0 1rem;
+    z-index: 100;
 }
 
 .gmc__navbar_hamburger_container__links li:first-of-type {

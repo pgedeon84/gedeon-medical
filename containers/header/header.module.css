@@ -143,6 +143,10 @@
      z-index: -100;
 }
 
+.gmc__header_image_sm span {
+    z-index: -100;
+}
+
 .gmc__header_image_lg {
     display: none;
 }
