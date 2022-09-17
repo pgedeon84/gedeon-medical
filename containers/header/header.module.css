@@ -160,7 +160,7 @@
     .gmc__header {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 9rem;
+        margin-top: 10rem;
         padding: 0 6rem;
     }
     
@@ -174,7 +174,7 @@
         font-size: 56px;
         line-height: 65px;
         position: relative;
-
+        letter-spacing: -0.02em;
     }
 
     .gmc__header_content h1::before {
@@ -190,6 +190,7 @@
      .gmc__header_content p {
         font-size: 22px;
         line-height: 28px;
+        letter-spacing: -0.02em;
      }
 
      .gmc__header_content button {
@@ -230,7 +231,7 @@
 
      .gmc__header_image_lg {
          display: block;
-         flex: 1.5;
+         flex: 1.3;
          /* padding: 0 6rem 0 0; */
           -webkit-animation-duration: 1s;
           animation-duration: 1s;

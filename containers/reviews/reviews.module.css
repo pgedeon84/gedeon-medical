@@ -3,8 +3,9 @@
 }
 
 .gmc__reviews_container {
-    padding-top: 4rem;
+    padding-top: 5rem;
     position: relative;
+    margin-bottom: 4 rem;
 }
 
 .gmc__reviews__review_swiper__container {
@@ -30,11 +31,12 @@
 
     .gmc__reviews_container {
         padding: 3rem 0;
+        margin-top: 4rem;
     }
     .gmc__reviews__review_swiper__container {
         background: rgba(180, 201, 253, 0.15);
         height: 500px;
-        margin: 6rem 0 0;
+        margin: 8rem 0 6rem 0;
     }
 }
 

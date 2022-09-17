@@ -46,3 +46,11 @@
 .gmc__footer_copyrights span {
     font-style: italic;
 }
+
+@media screen and (min-width: 1050px) {
+
+.gmc__footer {
+        padding: 6rem;
+    }
+}
+

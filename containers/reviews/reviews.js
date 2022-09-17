@@ -55,12 +55,12 @@ function Reviews() {
 
   return (
     <section id="reviews" className={classes.gmc__reviews}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#385CAD"
           d="M0,288L120,256C240,224,480,160,720,122.7C960,85,1200,75,1320,69.3L1440,64L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
         ></path>
-      </svg>
+      </svg> */}
 
       <div className={classes.gmc__reviews_container}>
         <DotsReviews />
