@@ -14,9 +14,9 @@
 }
 
 .gmc__contact_header__form_image_container {
-    width: 14rem;
+    width: 12rem;
     padding: 0 0 2rem;
-    margin: -4rem auto 0;
+    margin: -1rem auto 1rem;
 }
 
 .gmc__contact_header__form_container h1 {
@@ -43,6 +43,8 @@
     height: 450px;
 }
 
+
+
 @media screen and (min-width:1050px) {
 
     .gmc__contact_form_survey {
@@ -54,7 +56,6 @@
 
     .gmc__contact_iFrame_Container {
         margin-top: 5rem;
-        /* margin-bottom: 5rem; */
     }
 
     .gmc__contact_iFrame {
@@ -64,7 +65,7 @@
 
     .gmc__contact_header__form_image_container {
         width: 24rem;
-        margin-top: 2rem;
+        margin-top: -2rem;
         margin-bottom: 5rem;
     }
 }

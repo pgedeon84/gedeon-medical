@@ -55,12 +55,12 @@ function Reviews() {
 
   return (
     <section id="reviews" className={classes.gmc__reviews}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#e2eafd"
           d="M0,288L120,256C240,224,480,160,720,122.7C960,85,1200,75,1320,69.3L1440,64L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
         ></path>
-      </svg>
+      </svg> */}
 
       <div className={classes.gmc__reviews_container}>
         <DotsReviews />
@@ -87,14 +87,14 @@ function Reviews() {
           <p>see more reviews</p>
         </div>
       </div>
-      <div className={classes.gmc__bottom_svg}>
+      {/* <div className={classes.gmc__bottom_svg}>
         <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1440 32L1320 64C1200 96 960 160 720 197.3C480 235 240 245 120 250.7L0 256V320H120C240 320 480 320 720 320C960 320 1200 320 1320 320H1440V32Z"
             fill="#e2eafd"
           />
         </svg>
-      </div>
+      </div> */}
     </section>
   );
 }

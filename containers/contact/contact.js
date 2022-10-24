@@ -15,7 +15,7 @@ function Contact() {
           className={classes.gmc__contact_form_survey}
         />
       </div> */}
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 60 }}>
         <SectionTitle title="Book Now" />
       </div>
       <div className={classes.gmc__contact_iFrame_Container}>
