@@ -5,7 +5,6 @@
 .gmc__reviews_container {
     padding-top: 5rem;
     position: relative;
-    margin-bottom: 4 rem;
 }
 
 .gmc__reviews__review_swiper__container {
@@ -25,13 +24,10 @@
     cursor: pointer;
 }
 
-
-
 @media screen and (min-width: 1050px) {
 
     .gmc__reviews_container {
-        padding: 3rem 0;
-        margin-top: 4rem;
+       margin-top: -6rem;
     }
     .gmc__reviews__review_swiper__container {
         background: rgba(180, 201, 253, 0.15);
