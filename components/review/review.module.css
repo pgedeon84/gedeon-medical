@@ -35,7 +35,7 @@
 
 .gmc__review_card__content__name {
     font-family: var(--font-family-heading);
-    color: var(--color-text-dark);
+    color: var(--color-text);
 }
 
 .gmc__review_card__content__name span {

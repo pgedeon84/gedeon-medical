@@ -1,7 +1,6 @@
 .gmc__footer {
     /* padding: 6rem 0 0; */
-    background: var(--bg-color-dark);
-    background: rgb(25, 34, 58);
+    background: #19223A;
     padding: 3rem;
 }
 
@@ -31,7 +30,6 @@
    text-align: center;
    color: var(--color-text-alt);
    font-family: var(--font-family-text);
-   background: rgb(25, 34, 58);
 }
 
 .gmc__footer_copyrights p:first-of-type {

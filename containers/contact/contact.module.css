@@ -14,7 +14,7 @@
 }
 
 .gmc__contact_header__form_image_container {
-    width: 12rem;
+    width: 14rem;
     padding: 0 0 2rem;
     margin: -1rem auto 1rem;
 }
@@ -33,7 +33,7 @@
 
 .gmc__contact_iFrame_Container {
     text-align: center;
-    margin-top: 3.5rem;
+    margin: 3.5rem 0;
     /* background-color: #46008B; */
     padding-top: 0.8rem;
 }
@@ -47,12 +47,12 @@
 
 @media screen and (min-width:1050px) {
 
-    .gmc__contact_form_survey {
+    /* .gmc__contact_form_survey {
         width: 50% !important;
         height: 575px;
         margin: -.4rem auto 0;
         padding: 4rem 0 0;
-    }
+    } */
 
     .gmc__contact_iFrame_Container {
         margin-top: 5rem;
@@ -65,7 +65,7 @@
 
     .gmc__contact_header__form_image_container {
         width: 24rem;
-        margin-top: -2rem;
+        margin-top: -6rem;
         margin-bottom: 5rem;
     }
 }
