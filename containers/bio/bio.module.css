@@ -61,7 +61,7 @@
 }
 
 .gmc__bio_content_container__content h1 {
-    font-family: var(--font-family-heading);
+    font-family: var(--font-family-text);
     font-weight: 400;
     font-size: 24px;
     line-height: 36px;
@@ -72,7 +72,7 @@
 .gmc__bio_content_container__content h3 {
         font-family: var(--font-family-heading);
         font-weight: 400;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 26px;
         letter-spacing: -0.01em;
         color: var(--color-subtext);
@@ -115,9 +115,9 @@
         width: 400px;
         position: absolute;
         top: 25%;
-        right: 15%;
-        opacity: .6;
-        background: url(../../public//images/medical-insignia3.svg) no-repeat top right;
+        right: 18%;
+        /* opacity: .6; */
+        background: url(../../public//images/medical-insignia4.svg) no-repeat top right;
     }
 
     .gmc__bio_header {
