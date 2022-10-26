@@ -1,12 +1,22 @@
 .gmc__aboutCard {
     padding: 1.3rem 1rem;
     margin-top: 2rem;
-    background: #f6f8ff;
-    background: url(../../public/images/medical-insignia.svg) no-repeat top right;
+    background-color: #f6f8ff;
     border: 5px solid #FFFFFF;
     box-shadow: 0px 30px 45px rgba(177, 187, 210, 0.2);
     border-radius: 5px;
     max-width: 500px;
+    position: relative;
+}
+
+.gmc__aboutCard::after {
+    content: "";
+    height: 150px;
+    width: 150px;
+    background: url(../../public/images/medical-insignia.svg) no-repeat top right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .gmc__aboutCard_icon {
@@ -20,7 +30,6 @@
     line-height: 1.7;
     color: var(--color-text);
     font-family: var(--font-family-heading);
-
 }
 
 .gmc__aboutCard_description {
