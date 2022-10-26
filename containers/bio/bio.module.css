@@ -61,7 +61,7 @@
 }
 
 .gmc__bio_content_container__content h1 {
-    font-family: var(--font-family-text);
+    font-family: var(--font-family-heading);
     font-weight: 400;
     font-size: 24px;
     line-height: 36px;
@@ -70,13 +70,13 @@
 }
 
 .gmc__bio_content_container__content h3 {
-        font-family: var(--font-family-heading);
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 26px;
-        letter-spacing: -0.01em;
-        color: var(--color-subtext);
-        margin-bottom: 1rem;
+    font-family: var(--font-family-text);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: -0.01em;
+    color: var(--color-subtext);
+    margin-bottom: 1rem;
 }
 
 .gmc__bio_content_container__content p {
@@ -122,7 +122,6 @@
 
     .gmc__bio_header {
         margin-bottom: -375px;
-        /* z-index: 40; */
     }
 
     .gmc__bio_title {
@@ -157,7 +156,7 @@
     }
 
     .gmc__bio_content_container__content h3 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .gmc__bio_content_container__content p {
