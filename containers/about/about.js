@@ -26,7 +26,9 @@ function About() {
           11011 SHERIDAN STREET, SUITE 215, COOPER CITY, FLORIDA 33026, UNITED
           STATES
         </p>
-        <p>954-842-4285</p>
+        <p>
+          <b>954-842-4285</b>
+        </p>
       </div>
       <div className={classes.gmc__about_content__container}>
         <div className={classes.gmc__about_content__image}>

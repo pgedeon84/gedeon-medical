@@ -1,7 +1,7 @@
 .gmc__proof_title {
     color: var(--color-text);
     text-align: center;
-    margin: 3rem 0 .3rem 0;
+    margin: 3rem 0 .2rem 0;
     font-family: var(--font-family-text);
 }
 
@@ -13,10 +13,10 @@
     padding: 0 .8rem 1rem;
     margin: 0 auto;
     background-color: #fdfdfd;
-     -webkit-animation-duration: 1s;
-     animation-duration: 1s;
-     -webkit-animation-name: fadeIn;
-     animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 
 .gmc__proof div {
@@ -28,7 +28,7 @@
 @media screen and (min-width: 1040px) {
     .gmc__proof_title {
         font-size: 18px;
-        margin-top: 1rem;
+        margin-top: 2rem;
     }
 
     .gmc__proof {
