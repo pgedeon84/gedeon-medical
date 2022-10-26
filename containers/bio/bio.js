@@ -23,7 +23,7 @@ function Bio() {
             <h1>Dr. Leon S. Gedeon</h1>
             <h3>Primary Care - Family Medicine</h3>
             <div className={classes.gmc__bio_content_container__content_rating}>
-              <p>Patient Experience Rating</p>
+              <p>Patient Experience Rating -</p>
               <Stars hexColor={"#F6B703"} />
             </div>
             <p>U.S. News and World Report</p>

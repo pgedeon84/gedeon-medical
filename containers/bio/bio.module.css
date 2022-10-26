@@ -114,8 +114,8 @@
         height: 400px;
         width: 400px;
         position: absolute;
-        top: 15%;
-        right: 12%;
+        top: 25%;
+        right: 15%;
         opacity: .6;
         background: url(../../public//images/medical-insignia3.svg) no-repeat top right;
     }
@@ -148,7 +148,7 @@
     .gmc__bio_content_container__content {
         align-items: flex-start;
         margin-left: 1%;
-        margin-top: 8rem;
+        margin-top: 6rem;
     }
 
     .gmc__bio_content_container__content h1 {
@@ -161,20 +161,20 @@
     }
 
     .gmc__bio_content_container__content p {
-        font-size: 18px;
-        padding: .2rem 0;
+        font-size: 16px;
+        padding: 0;
     }
 
     .gmc__bio_content_container__content_rating {
         margin: .4rem 0;
     }
 
-     /* .gmc__bio_content_container__content_rating span {
-        font-size: 22px;
-     } */
+     .gmc__bio_content_container__content_rating span {
+        font-size: 18px;
+     }
 
       .gmc__bio_content_container__content_rating p {
-          font-size: 20px;
+          font-size: 16px;
           line-height: 22px;
       }
     
