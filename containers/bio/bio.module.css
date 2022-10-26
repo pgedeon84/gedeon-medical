@@ -99,8 +99,8 @@
     }
 
     .gmc__bio_header {
-     margin-bottom: -375px;
-     /* z-index: 40; */
+        margin-bottom: -375px;
+        /* z-index: 40; */
     }
 
     .gmc__bio_title {
@@ -108,7 +108,7 @@
     }
 
     .gmc__bio_content{
-        padding: 6rem 16rem;
+        padding: 6rem 14rem;
     }
 
     .gmc__bio_content>p {
@@ -127,19 +127,19 @@
         margin-left: 3%;
     }
 
-     .gmc__bio_content_container__content h1 {
-         font-size: 36px;
-         margin-bottom: 3%;
-     }
+    .gmc__bio_content_container__content h1 {
+    font-size: 36px;
+    margin-bottom: 3%;
+    }
 
-     .gmc__bio_content_container__content p {
-         font-size: 18px;
-         padding: .2rem 0;
-     }
+    .gmc__bio_content_container__content p {
+    font-size: 18px;
+    padding: .2rem 0;
+    }
 
-     .gmc__bio_content_container__content_rating {
-         margin: .6rem 0;
-     }
+    .gmc__bio_content_container__content_rating {
+    margin: .6rem 0;
+    }
 
      /* .gmc__bio_content_container__content_rating span {
         font-size: 22px;

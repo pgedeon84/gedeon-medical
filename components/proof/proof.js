@@ -12,65 +12,83 @@ import devoted from "../../public/images/DevotedHealth.svg";
 
 function Proof() {
   return (
-    <div className={classes.gmc__proof}>
-      <div>
-        <Image
-          src={blue_cross}
-          alt="blue-cross insurance"
-          layout="responsive"
-          priority
-        />
+    <>
+      <p className={classes.gmc__proof_title}>Accepted Insurances</p>
+      <div className={classes.gmc__proof}>
+        <div>
+          <Image
+            src={blue_cross}
+            alt="blue-cross insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={brightHealth}
+            alt="bright health care"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={medicare}
+            alt="medicare insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={mhn}
+            alt="memorial healthcare network"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={medicade}
+            alt="medicade insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={oscar}
+            alt="oscar insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={devoted}
+            alt="devoted health insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={cigna}
+            alt="cigna insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={solis}
+            alt="solis insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
       </div>
-      <div>
-        <Image
-          src={brightHealth}
-          alt="bright health care"
-          layout="responsive"
-          priority
-        />
-      </div>
-      <div>
-        <Image
-          src={medicare}
-          alt="medicare insurance"
-          layout="responsive"
-          priority
-        />
-      </div>
-      <div>
-        <Image
-          src={mhn}
-          alt="memorial healthcare network"
-          layout="responsive"
-          priority
-        />
-      </div>
-      <div>
-        <Image
-          src={medicade}
-          alt="medicade insurance"
-          layout="responsive"
-          priority
-        />
-      </div>
-      <div>
-        <Image src={oscar} alt="oscar insurance" layout="responsive" priority />
-      </div>
-      <div>
-        <Image
-          src={devoted}
-          alt="devoted health insurance"
-          layout="responsive"
-          priority
-        />
-      </div>
-      <div>
-        <Image src={cigna} alt="cigna insurance" layout="responsive" priority />
-      </div>
-      <div>
-        <Image src={solis} alt="solis insurance" layout="responsive" priority />
-      </div>
-    </div>
+    </>
   );
 }
 
