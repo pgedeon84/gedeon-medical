@@ -2,6 +2,7 @@
     padding: 1.3rem 1rem;
     margin-top: 2rem;
     background: #f6f8ff;
+    background: url(../../public/images/medical-insignia.svg) no-repeat top right;
     border: 5px solid #FFFFFF;
     box-shadow: 0px 30px 45px rgba(177, 187, 210, 0.2);
     border-radius: 5px;
