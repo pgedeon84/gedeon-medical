@@ -19,8 +19,8 @@ function Services() {
           <li>
             <span>
               <svg
-                width="54"
-                height="54"
+                width="40"
+                height="40"
                 viewBox="0 0 60 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,8 +105,8 @@ function Services() {
           <li>
             <span>
               <svg
-                width="62"
-                height="62"
+                width="40"
+                height="40"
                 viewBox="0 0 62 62"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -225,8 +225,8 @@ function Services() {
           <li>
             <span>
               <svg
-                width="56"
-                height="52"
+                width="40"
+                height="40"
                 viewBox="0 0 56 52"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -260,8 +260,8 @@ function Services() {
           <li>
             <span>
               <svg
-                width="60"
-                height="60"
+                width="40"
+                height="40"
                 viewBox="0 0 60 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

@@ -29,16 +29,17 @@
 @media screen and (min-width: 1040px) {
     .gmc__proof_title {
         font-size: 18px;
-        margin-top: 2rem;
+        margin: 4rem 0 1.5rem 0;
     }
 
     .gmc__proof {
-        padding: 0 9rem 2rem;
+        padding: 0 11rem 2rem;
         margin-bottom: 1rem;
+        max-width: 90%;
     }
 
     .gmc__proof div {
-        width: 120px;
+        min-width: 155px;
         padding: .3rem;
         margin: 0 .2rem;
     }
