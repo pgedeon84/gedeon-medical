@@ -1,31 +1,25 @@
 .gmc__contact {
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
-.gmc__contact_form_survey {
+/* .gmc__contact_form_survey {
     margin-top: -.4rem;
     width: 100%;
     height: 400px;
-}
+} */
 
-.gmc__contact_header__form_container {
+/* .gmc__contact_header__form_container {
     background: var(--bg-color-dark);
     padding: 0 0 6rem;
-}
+} */
 
-.gmc__contact_header__form_image_container {
-    width: 14rem;
-    padding: 0 0 2rem;
-    margin: -1rem auto 1rem;
-}
-
-.gmc__contact_header__form_container h1 {
+/* .gmc__contact_header__form_container h1 {
     font-size: 20px;
     font-family: var(--font-family-text);
     color: var(--color-text-alt);
     padding: 5rem 0;
     text-align: center;
-}
+} */
 
 /* ---------- */
 
@@ -33,8 +27,7 @@
 
 .gmc__contact_iFrame_Container {
     text-align: center;
-    margin: 3.5rem 0;
-    /* background-color: #46008B; */
+    margin: 3rem 0 5rem 0;
     padding-top: 0.8rem;
 }
 
@@ -47,6 +40,10 @@
 
 @media screen and (min-width:1050px) {
 
+    .gmc__contact {
+        padding-top: 2rem;
+    }
+
     /* .gmc__contact_form_survey {
         width: 50% !important;
         height: 575px;
@@ -55,17 +52,11 @@
     } */
 
     .gmc__contact_iFrame_Container {
-        margin-top: 5rem;
+        margin: 4rem 0 6rem 0;
     }
 
     .gmc__contact_iFrame {
          width: 100%;
          height: 360px;
-    }
-
-    .gmc__contact_header__form_image_container {
-        width: 24rem;
-        margin-top: -6rem;
-        margin-bottom: 5rem;
     }
 }

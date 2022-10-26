@@ -1,4 +1,6 @@
 import classes from "./footer.module.css";
+import Image from "next/image";
+import logo from "../../public/images/GMC-alternate-logo-large.svg";
 import {
   EmailIcon,
   FacebookIcon,
@@ -9,6 +11,9 @@ import {
 function Footer() {
   return (
     <footer className={classes.gmc__footer}>
+      <div className={classes.gmc__footer_image_container}>
+        <Image src={logo} alt="GMC Logo" layout="responsive" />
+      </div>
       <div className={classes.gmc__footer_content}>
         <p>
           11011 SHERIDAN STREET, SUITE 215 COOPER CITY, FLORIDA 33026,

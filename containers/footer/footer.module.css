@@ -5,7 +5,15 @@
 }
 
 .gmc__footer_content {
+    /* display: flex;
+    flex-direction: column; */
     padding-bottom: 2rem;
+}
+
+.gmc__footer_image_container {
+    width: 14rem;
+    padding: 0 0 2rem;
+    margin: .8rem auto;
 }
 
 .gmc__footer_content p {
@@ -50,5 +58,14 @@
 .gmc__footer {
         padding: 6rem;
     }
+
+.gmc__footer_content {
+    flex-direction: row;
+}
+
+.gmc__footer_image_container {
+    width: 24rem;
+    margin-bottom: 2rem;
+}
 }
 
