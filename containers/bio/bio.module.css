@@ -69,6 +69,16 @@
     color: var(--color-text);
 }
 
+.gmc__bio_content_container__content h3 {
+        font-family: var(--font-family-heading);
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: -0.01em;
+        color: var(--color-subtext);
+        margin-bottom: 1rem;
+}
+
 .gmc__bio_content_container__content p {
     font-family: var(--font-family-heading);
     font-size: 14px;
@@ -80,7 +90,6 @@
 .gmc__bio_content_container__content_rating {
     display: flex;
     justify-content: center;
-
     margin: .4rem 0;
 }
 
@@ -89,13 +98,26 @@
     font-weight: 400;
     font-size: 16px;
     letter-spacing: -0.01em;
-    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 
 @media screen and (min-width: 1050px) {
     .gmc__bio {
         padding-top: 5rem;
+        margin-bottom: 6rem;
+        position: relative;
+    }
+
+    .gmc__bio::after {
+        content: "";
+        height: 400px;
+        width: 400px;
+        position: absolute;
+        top: 15%;
+        right: 12%;
+        opacity: .6;
+        background: url(../../public//images/medical-insignia3.svg) no-repeat top right;
     }
 
     .gmc__bio_header {
@@ -113,32 +135,38 @@
 
     .gmc__bio_content>p {
         font-size: 18px;
-         margin-top: 0;
+        margin-top: 0;
     }
 
     .gmc__bio_content_container {
         width: 100%;
         flex-direction: row;
         justify-content:flex-start;
+        margin-top: 4rem;
     }
 
     .gmc__bio_content_container__content {
         align-items: flex-start;
-        margin-left: 3%;
+        margin-left: 1%;
+        margin-top: 8rem;
     }
 
     .gmc__bio_content_container__content h1 {
-    font-size: 36px;
-    margin-bottom: 3%;
+        font-size: 36px;
+        margin-bottom: 3%;
+    }
+
+    .gmc__bio_content_container__content h3 {
+        font-size: 20px;
     }
 
     .gmc__bio_content_container__content p {
-    font-size: 18px;
-    padding: .2rem 0;
+        font-size: 18px;
+        padding: .2rem 0;
     }
 
     .gmc__bio_content_container__content_rating {
-    margin: .6rem 0;
+        margin: .4rem 0;
     }
 
      /* .gmc__bio_content_container__content_rating span {
@@ -146,7 +174,7 @@
      } */
 
       .gmc__bio_content_container__content_rating p {
-          font-size: 22px;
+          font-size: 20px;
           line-height: 22px;
       }
     
