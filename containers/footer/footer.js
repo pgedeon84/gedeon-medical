@@ -29,13 +29,13 @@ function Footer() {
             <WhatsappIcon size={42} round={true} />
             <LinkedinIcon size={42} round={true} />
           </div>
+          <div className={classes.gmc__footer_copyrights}>
+            <p>© 2022 GEDEON MEDICAL CENTER</p>
+            <p>
+              Designed and Built by <span>@prince_da_prettyboy</span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div className={classes.gmc__footer_copyrights}>
-        <p>© 2022 GEDEON MEDICAL CENTER</p>
-        <p>
-          Designed and Built by <span>@prince_da_prettyboy</span>
-        </p>
       </div>
     </footer>
   );

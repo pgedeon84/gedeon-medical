@@ -116,7 +116,7 @@
         position: absolute;
         top: 25%;
         right: 18%;
-        /* opacity: .6; */
+        opacity: .7;
         background: url(../../public//images/medical-insignia4.svg) no-repeat top right;
     }
 

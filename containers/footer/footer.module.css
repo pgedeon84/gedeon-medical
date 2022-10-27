@@ -61,6 +61,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 6rem;
     margin-bottom: 2rem;
 }
 
@@ -75,7 +76,7 @@
 
 .gmc__footer_content_container {
     flex: 1;
-    max-width: 45rem;
+    max-width: 35rem;
 }
 }
 
