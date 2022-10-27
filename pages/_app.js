@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
             perform sports physicals, testosterone replacements, botox injections, fillers and more!"
         />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="icon" type="image/png" href="GMC-favicon-logo.png" />
+        <link rel="icon" type="image/svg" href="gmc-favicon.svg" />
       </Head>
       <Component {...pageProps} />
     </>
