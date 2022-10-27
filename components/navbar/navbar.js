@@ -80,7 +80,7 @@ function Navbar() {
       <div className={classes.gmc__navbar_links__contact}>
         <Link href="#contact" passHref>
           <button className={utils.gradient_animation} type="button">
-            <a>Contact</a>
+            <a>Book Now</a>
           </button>
         </Link>
       </div>
