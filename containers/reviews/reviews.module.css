@@ -1,3 +1,7 @@
+.gmc__reviews {
+    margin-bottom: 3rem;
+}
+
 .gmc__reviews>svg>path {
     width: auto;
 }
@@ -10,7 +14,7 @@
 .gmc__reviews__review_swiper__container {
     padding: 4rem 0;
     margin: 2rem 0 0;
-    background: #fdfdfd url("../../public/images/Intersect.svg") no-repeat center;
+    background: url("../../public/images/Intersect.svg") no-repeat center;
     background-size: cover;
 }
 
@@ -30,8 +34,8 @@
        margin-top: -1rem;
     }
     .gmc__reviews__review_swiper__container {
-        background: rgba(180, 201, 253, 0.15);
-        height: 500px;
+        background: linear-gradient(180deg, rgba(180, 201, 253, 0.253) -107.24%, #fdfdfd 64.22%);
+        height: 685px;
         margin: 6rem 0 12rem 0;
     }
 }

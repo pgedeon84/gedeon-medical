@@ -29,6 +29,8 @@
     text-align: center;
     margin: 3rem 0 5rem 0;
     padding-top: 0.8rem;
+    background-color: #F7F7F7;
+    /* background: linear-gradient(180deg, rgba(180, 201, 253, 0.253) -107.24%, #fdfdfd 64.22%); */
 }
 
 .gmc__contact_iFrame {
@@ -36,13 +38,7 @@
     height: 450px;
 }
 
-
-
 @media screen and (min-width:1050px) {
-
-    .gmc__contact {
-        padding-top: 2rem;
-    }
 
     /* .gmc__contact_form_survey {
         width: 50% !important;
@@ -51,8 +47,16 @@
         padding: 4rem 0 0;
     } */
 
+    .gmc__contact {
+        margin-top: -3rem;
+    }
+
     .gmc__contact_iFrame_Container {
-        margin: 4rem 0 10rem 0;
+        margin: 4rem 0 0 0;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .gmc__contact_iFrame {
