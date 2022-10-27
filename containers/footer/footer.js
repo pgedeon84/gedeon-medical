@@ -32,7 +32,7 @@ function Footer() {
           <div className={classes.gmc__footer_copyrights}>
             <p>© 2022 GEDEON MEDICAL CENTER</p>
             <p>
-              Designed and Built by <span>@prince_da_prettyboy</span>
+              Designed and Built by <span>IG: @prince_da_prettyboy</span>
             </p>
           </div>
         </div>

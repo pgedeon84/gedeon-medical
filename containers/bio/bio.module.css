@@ -105,6 +105,7 @@
 @media screen and (min-width: 1050px) {
     .gmc__bio {
         padding-top: 5rem;
+        /* margin-top: 3rem; */
         margin-bottom: 5rem;
         position: relative;
     }
@@ -133,7 +134,7 @@
     }
 
     .gmc__bio_content>p {
-        font-size: 18px;
+        font-size: 21px;
         margin-top: 0;
     }
 
@@ -169,7 +170,7 @@
     }
 
      .gmc__bio_content_container__content_rating span {
-        font-size: 18px;
+        font-size: 16px;
      }
 
       .gmc__bio_content_container__content_rating p {

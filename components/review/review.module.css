@@ -1,5 +1,6 @@
 .gmc__review_card {
  padding: 0 2rem 5rem;
+ position: relative;
 }
 
 .gmc__review_card__content {
@@ -48,6 +49,19 @@
         margin: 0 auto;
         font-size: 18px;
         padding-bottom: 6rem;
+    }
+
+    .gmc__review_card::after {
+        content: "";
+        height: 20px;
+        width: 20px;
+        background: url(../../public/images/gmc-logo-sm.svg) no-repeat;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 2rem;
+        margin: 1rem .4rem;
+        opacity: .7;
     }
 
     .gmc__review_card__content {
