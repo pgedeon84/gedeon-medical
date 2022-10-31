@@ -121,7 +121,7 @@
     .gmc__navbar {
         position: fixed;
         top: 0;
-        padding: .5rem 6rem;
+        padding: 0 6rem;
     }
      .gmc__navbar_hamburger {
         display: none;
