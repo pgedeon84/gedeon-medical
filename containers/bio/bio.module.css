@@ -130,12 +130,13 @@
     }
 
     .gmc__bio_content{
-        padding: 6rem 14rem;
+        padding: 6rem 13rem;
     }
 
     .gmc__bio_content>p {
-        font-size: 21px;
+        font-size: 18px;
         margin-top: 0;
+        line-height: 32px;
     }
 
     .gmc__bio_content_container {
@@ -147,13 +148,11 @@
 
     .gmc__bio_content_container__content {
         align-items: flex-start;
-        margin-left: 1%;
-        margin-top: 6rem;
     }
 
     .gmc__bio_content_container__content h1 {
         font-size: 36px;
-        margin-bottom: 3%;
+        margin-bottom: 2%;
     }
 
     .gmc__bio_content_container__content h3 {

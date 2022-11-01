@@ -19,7 +19,7 @@
 }
 
 .gmc__reviews__review_swiper__container>p {
-    color: #6abf4b;
+    color: var(--color-text);
     font-family: var(--font-family-heading);
     font-weight: 700;
     text-transform: capitalize;
