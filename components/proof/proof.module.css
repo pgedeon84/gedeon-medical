@@ -35,11 +35,11 @@
     .gmc__proof {
         padding: 0 11rem 2rem;
         margin-bottom: 1rem;
-        max-width: 90%;
+        max-width: 85%;
     }
 
     .gmc__proof div {
-        min-width: 155px;
+        min-width: 150px;
         padding: .3rem;
         margin: 0 .2rem;
     }
