@@ -31,11 +31,11 @@
      justify-content: center;
      align-items: center;
      flex-direction: column;
-     padding-top: 2rem;
+     padding-top: 1rem;
 }
 
 .gmc__bio_content_container__image {
-    width: 20rem;
+    width: 18rem;
     position: relative;
     margin-bottom: 3rem;
 }
