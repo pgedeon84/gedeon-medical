@@ -45,8 +45,9 @@
     bottom: 0;
     width: 100%;
     height: 7px;
-    background-color: #e2eafd;
+    background: linear-gradient(274.93deg, rgba(96, 181, 65, 1) -15.76%, rgba(145, 196, 168, 1) 38.17%, rgba(161, 198, 208, 1) 71.28%, #B4C9FD 111.59%);
     z-index: 10;
+    border-radius: 2px;
 }
 
 .gmc__bio_content_container__image img {
@@ -64,19 +65,19 @@
     font-family: var(--font-family-heading);
     font-weight: 400;
     font-size: 24px;
-    line-height: 36px;
+    line-height: 32px;
     letter-spacing: -0.01em;
     color: var(--color-text);
+    margin-bottom: .8rem;
 }
 
-.gmc__bio_content_container__content h3 {
+.gmc__bio_content_container__content p {
     font-family: var(--font-family-text);
     font-weight: 400;
     font-size: 14px;
-    line-height: 26px;
+    line-height: 16px;
     letter-spacing: -0.01em;
     color: var(--color-subtext);
-    margin-bottom: 1rem;
 }
 
 .gmc__bio_content_container__content p {
@@ -90,13 +91,14 @@
 .gmc__bio_content_container__content_rating {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: .4rem 0;
 }
 
 .gmc__bio_content_container__content_rating p {
     font-family: var(--font-family-heading);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: -0.01em;
     margin-right: .5rem;
 }
@@ -151,8 +153,8 @@
     }
 
     .gmc__bio_content_container__content h1 {
-        font-size: 36px;
-        margin-bottom: 2%;
+        font-size: 30px;
+        margin-bottom: 1.5rem;
     }
 
     .gmc__bio_content_container__content h3 {
@@ -161,6 +163,7 @@
 
     .gmc__bio_content_container__content p {
         font-size: 16px;
+        /* line-height: 22px; */
         padding: 0;
     }
 
@@ -169,7 +172,7 @@
     }
 
      .gmc__bio_content_container__content_rating span {
-        font-size: 16px;
+        font-size: 14px;
      }
 
       .gmc__bio_content_container__content_rating p {
@@ -178,7 +181,7 @@
       }
     
       .gmc__bio_content_container__image {
-          width: 22rem;
+          width: 21rem;
           margin-right: 3rem;
       }
 
