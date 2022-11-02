@@ -47,13 +47,9 @@
         padding: 4rem 0 0;
     } */
 
-    .gmc__contact {
-        margin-top: -3rem;
-    }
-
     .gmc__contact_iFrame_Container {
         margin: 4rem 0 0 0;
-        height: 650px;
+        height: 600px;
         display: flex;
         justify-content: center;
         align-items: center;
