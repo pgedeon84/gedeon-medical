@@ -190,7 +190,7 @@
      .gmc__header_content p {
         font-size: 20px;
         line-height: 28px;
-        letter-spacing: -0.01em;
+        /* letter-spacing: -0.01em; */
      }
 
      .gmc__header_content button {
