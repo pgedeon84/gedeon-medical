@@ -199,10 +199,6 @@
         font-weight: 700;
      }
 
-     .gmc__header_content__button_icon {
-         margin-right: .5rem;
-     }
-
      .gmc__header_content button svg {
          font-size: 28px;
      }
@@ -284,3 +280,9 @@
     }
 
 }
+
+/* @keyframes iconSlide {
+    from {
+        margin: 
+    }
+} */
