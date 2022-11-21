@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Navbar, Proof } from "../components";
 import { Header } from "../containers";
+import BackToTopButton from "../components/ui/backToTopButton/backToTopButton";
 
 const AboutLazy = dynamic(() => import("../containers/about/about"));
 const ServicesLazy = dynamic(() => import("../containers/services/services"));
@@ -27,6 +28,7 @@ function Home() {
         <ContactLazy />
         <FooterLazy />
       </main>
+      <BackToTopButton />
     </>
   );
 }

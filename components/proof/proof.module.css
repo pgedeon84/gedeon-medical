@@ -4,6 +4,7 @@
     margin: 3rem 0 .3rem 0;
     font-family: var(--font-family-text);
     opacity: .8;
+    font-size: 12px;
 }
 
 .gmc__proof {
