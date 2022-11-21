@@ -2,12 +2,12 @@
     position:fixed;
     bottom: 2rem;
     right: 1.3rem;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border: none;
     border-radius: 15%;
     background-color: #6abf4b;
-    font-size: 20px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
