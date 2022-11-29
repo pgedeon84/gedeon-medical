@@ -19,15 +19,15 @@
 .gmc__navbar_links__logo {
     display: none;
 }
+.gmc__navbar_links__logo_fav {
+    display: inline-block;
+    width: 45px;
+}
 
 .gmc__navbar_links__container ul {
     display: none;
 }
 
-.gmc__navbar_links__logo_fav {
-    display: inline-block;
-    width: 45px;
-}
 
 .gmc__navbar_links__contact button {
     display: none;

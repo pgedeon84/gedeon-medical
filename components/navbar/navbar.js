@@ -68,7 +68,7 @@ function Navbar() {
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
           <Link href="#home">
-            <a onClick={scrollToTop}>
+            <a>
               <Image src={logo_favi} alt="Logo" layout="responsive" />
             </a>
           </Link>
@@ -117,7 +117,7 @@ function Navbar() {
                     onClick={() => setToggleMenu(false)}
                   >
                     {" "}
-                    Contact
+                    Book Now
                   </button>
                 </Link>
               </div>
