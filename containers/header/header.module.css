@@ -15,9 +15,9 @@
 .gmc__header_content h1 {
     font-family: var(--font-family-heading);
     font-weight: 900;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 40px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     color: var(--color-text);
     position: relative;
      -webkit-animation-duration: 1s;
@@ -45,7 +45,7 @@
     letter-spacing: 0.01em;
 
     color: var(--color-subtext);
-    padding: .5rem 0 0;
+    padding: .8rem 0 0;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-name: fadeIn;
