@@ -9,6 +9,9 @@ import mhn from "../../public/images/memorial-health-network.svg";
 import brightHealth from "../../public/images/BrightHealth.svg";
 import solis from "../../public/images/SolisHealth.svg";
 import devoted from "../../public/images/DevotedHealth.svg";
+import sunshineHealth from "../../public/images/sunshine_health.svg";
+import simplyHealthCare from "../../public/images/SimplyHealthCare.svg";
+import wellcare from "../../public/images/Wellcare.svg";
 
 function Proof() {
   return (
@@ -57,8 +60,8 @@ function Proof() {
         </div>
         <div>
           <Image
-            src={oscar}
-            alt="oscar insurance"
+            src={sunshineHealth}
+            alt="sunshine health insurance"
             layout="responsive"
             priority
           />
@@ -83,6 +86,30 @@ function Proof() {
           <Image
             src={solis}
             alt="solis insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div>
+          <Image
+            src={oscar}
+            alt="oscar insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        {/* <div className={classes.gmc__proof_img}>
+          <Image
+            src={wellcare}
+            alt="wellcare insurance"
+            layout="responsive"
+            priority
+          />
+        </div> */}
+        <div>
+          <Image
+            src={simplyHealthCare}
+            alt="simply healthcare insurance"
             layout="responsive"
             priority
           />

@@ -24,7 +24,11 @@
 .gmc__proof div {
     min-width: 80px;
     margin: .7rem;
-    /* min-height: 20px; */
+}
+
+.gmc__proof_img {
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (min-width: 1040px) {
@@ -36,12 +40,12 @@
     .gmc__proof {
         padding: 0 11rem 2rem;
         margin-bottom: 1rem;
-        max-width: 85%;
+        max-width: 88%;
     }
 
     .gmc__proof div {
         min-width: 150px;
-        padding: .3rem;
+        padding: 1rem;
         margin: 0 .2rem;
     }
 }
