@@ -1,5 +1,5 @@
 .gmc__aboutCard {
-    padding: 1.3rem 1rem;
+    padding: 1.3rem;
     margin-top: 2rem;
     background-color: #f6f8ff;
     border: 5px solid #FFFFFF;
@@ -42,5 +42,12 @@
 }
 
 @media screen and (min-width: 1050px) {
-   
+.gmc__aboutCard {
+        padding: 1.8rem;
+    }
+
+.gmc__aboutCard_description {
+    line-height: 1.9;
+    font-size: 16px;
+}
 }

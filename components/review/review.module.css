@@ -51,21 +51,22 @@
         padding-bottom: 6rem;
     }
 
-    .gmc__review_card::after {
+    .gmc__review_card__content {
+        padding: 4rem;
+    }
+
+    /* .gmc__review_card__content::after {
         content: "";
         height: 20px;
         width: 20px;
         background: url(../../public/images/gmc-logo-sm.svg) no-repeat;
         position: absolute;
-        top: 0;
-        right: 0;
-        padding: 2rem;
+        top: 20px;
+        right: 20px;
+        padding: 1rem;
         margin: 1rem .4rem;
-    }
+    } */
 
-    .gmc__review_card__content {
-        padding: 4rem;
-    }
 
     .gmc__review_card__content__review {
         font-size: 18px;
