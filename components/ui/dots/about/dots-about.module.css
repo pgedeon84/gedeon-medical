@@ -20,7 +20,7 @@
 .gmc__effect_dots div {
     height: 3px;
     width: 3px;
-    background-color: var(--color-accent);
+    background-color: var(--color-dots);
     margin: 0 1.3px 3.3px;
 }
 

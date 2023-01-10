@@ -10,11 +10,13 @@
   --color-accent: #B1BBD2;
   --color-btn: #B4C9FD;
   --color-star: #F6B703;
+  --color-dots: #6abf4b;
   --bg-color-dark: #385CAD;
   --bg-color-gradient: linear-gradient(180deg, #B4C9FD -107.24%, #FFFFFF 64.22%);
   /* Swiper Colors */
   --swiper-pagination-bullet-inactive-color: #748DC6 !important;
   --swiper-theme-color: #6abf4b !important;
+  --swiper-navigation-size: 36px !important;
 }
 
 * {
@@ -51,6 +53,7 @@ body {
   .swiper-button-prev {
     display: block !important;
     top: 35% !important;
+  
   }
 
   .swiper-button-prev,
