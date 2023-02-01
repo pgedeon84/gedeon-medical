@@ -11,7 +11,7 @@ import solis from "../../public/images/SolisHealth.svg";
 import devoted from "../../public/images/DevotedHealth.svg";
 import sunshineHealth from "../../public/images/sunshine_health.svg";
 import simplyHealthCare from "../../public/images/SimplyHealthCare.svg";
-import wellcare from "../../public/images/Wellcare.svg";
+import aetna from "../../public/images/Aetna.svg";
 
 function Proof() {
   return (
@@ -98,18 +98,18 @@ function Proof() {
             priority
           />
         </div>
-        {/* <div className={classes.gmc__proof_img}>
-          <Image
-            src={wellcare}
-            alt="wellcare insurance"
-            layout="responsive"
-            priority
-          />
-        </div> */}
         <div>
           <Image
             src={simplyHealthCare}
             alt="simply healthcare insurance"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div className={classes.gmc__proof_img}>
+          <Image
+            src={aetna}
+            alt="aetna insurance"
             layout="responsive"
             priority
           />

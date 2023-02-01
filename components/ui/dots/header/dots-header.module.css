@@ -1,7 +1,8 @@
 .gmc__effect_wrap  {
     position: absolute;
     z-index: -1;
-    top: 24rem;
+    /* top: 24rem; */
+    top: 19rem;
 }
 
 .gmc__effect_dots {
@@ -36,7 +37,8 @@
 
 @media screen and (min-width: 1050px) {
     .gmc__effect_wrap {
-        top: 36rem;
+        /* top: 36rem; */
+        top: 30rem;
         left: 10rem;
     }
 
