@@ -77,13 +77,13 @@ function Navbar() {
           <NavbarLinks />
         </nav>
       </div>
-      <div className={classes.gmc__navbar_links__contact}>
+      {/* <div className={classes.gmc__navbar_links__contact}>
         <Link href="#contact" passHref>
           <button className={utils.gradient_animation} type="button">
             <a>Book Now</a>
           </button>
         </Link>
-      </div>
+      </div> */}
       {/* Hamburger Menu */}
       <div className={classes.gmc__navbar_hamburger}>
         {toggleMenu ? (
@@ -105,7 +105,7 @@ function Navbar() {
           >
             <nav className={classes.gmc__navbar_hamburger_container__links}>
               <NavbarLinks />
-              <div
+              {/* <div
                 className={
                   classes.gmc__navbar_hamburger_container__links_contact
                 }
@@ -120,7 +120,7 @@ function Navbar() {
                     Book Now
                   </button>
                 </Link>
-              </div>
+              </div> */}
             </nav>
           </div>
         )}
