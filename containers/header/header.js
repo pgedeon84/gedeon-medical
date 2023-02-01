@@ -55,7 +55,7 @@ function Header() {
             <p>Medical Board Certified Doctor</p>
           </div>
         </div>
-        <Link href="#contact" passHref>
+        {/* <Link href="#contact" passHref>
           <button className={utils.gradient_animation} type="button">
             Book an Appointment
             <span>
@@ -64,7 +64,7 @@ function Header() {
               />
             </span>
           </button>
-        </Link>
+        </Link> */}
         <DotsHeader />
       </motion.div>
       <div className={classes.gmc__header_image_sm}>

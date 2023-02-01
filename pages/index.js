@@ -25,7 +25,7 @@ function Home() {
         <ServicesLazy />
         <BioLazy />
         <ReviewsLazy />
-        <ContactLazy />
+        {/* <ContactLazy /> */}
         <FooterLazy />
       </main>
       <BackToTopButton />

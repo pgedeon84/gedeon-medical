@@ -31,12 +31,12 @@
 @media screen and (min-width: 1050px) {
 
     .gmc__reviews_container {
-       margin-top: -1rem;
+        margin-top: -1rem;
     }
+
     .gmc__reviews__review_swiper__container {
         background: linear-gradient(180deg, rgba(180, 201, 253, 0.253) -107.24%, #fdfdfd 64.22%);
         height: 685px;
         margin: 6rem 0 9rem 0;
     }
 }
-
