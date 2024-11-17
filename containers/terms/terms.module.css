@@ -1,0 +1,35 @@
+.gmc__terms_section {
+    background: linear-gradient(180deg, #B4C9FD -107.24%, #fdfdfd 64.22%);
+}
+
+.gmc__terms_header {
+    padding-top: 6rem;
+}
+
+.gmc__terms_content h3 {
+     color: var(--color-text);
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 0rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.gmc__terms_content p {
+    font-family: var(--font-family-text);
+    color: var(--color-text);
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    padding: 0rem 2rem 1.3rem 2rem;
+    font-size: 16px;
+    margin: 2em 0;
+    overflow-y: scroll;
+}
+
+.gmc__terms_chart {
+    text-decoration: underline;
+}

@@ -10,6 +10,7 @@ const BioLazy = dynamic(() => import("../containers/bio/bio"));
 const ReviewsLazy = dynamic(() => import("../containers/reviews/reviews"));
 const ContactLazy = dynamic(() => import("../containers/contact/contact"));
 const FooterLazy = dynamic(() => import("../containers/footer/footer"));
+const TermsLazy = dynamic(() => import("../containers/terms/terms"));
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
         <BioLazy />
         <ReviewsLazy />
         {/* <ContactLazy /> */}
+        <TermsLazy />
         <FooterLazy />
       </main>
       <BackToTopButton />
