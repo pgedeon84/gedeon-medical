@@ -13,11 +13,13 @@ function Bio() {
       <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
       </div>
-      <Image src={wave} alt="wave" layout="responsive" />
+      <div>
+        {/* <Image src={wave} alt="wave" className={classes.gmc__bio_img_wave} /> */}
+      </div>
       <div className={classes.gmc__bio_content}>
         <div className={classes.gmc__bio_content_container}>
           <div className={classes.gmc__bio_content_container__image}>
-            <Image src={doctor} alt="Doctor Gedeon" layout="responsive" />
+            <Image src={doctor} alt="Doctor Gedeon" />
           </div>
           <div className={classes.gmc__bio_content_container__content}>
             <h1>Dr. Leon S. Gedeon</h1>

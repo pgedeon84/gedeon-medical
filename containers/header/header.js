@@ -68,10 +68,20 @@ function Header() {
         {/* <DotsHeader /> */}
       </motion.div>
       <div className={classes.gmc__header_image_sm}>
-        <Image src={illustration} alt="Nurses" layout="responsive" priority />
+        <Image
+          src={illustration}
+          alt="Nurses"
+          priority
+          className={classes.gmc__header_image_sm_size}
+        />
       </div>
       <div className={classes.gmc__header_image_lg}>
-        <Image src={illustration} alt="Nurses" layout="responsive" priority />
+        <Image
+          src={illustration}
+          alt="Nurses"
+          priority
+          className={classes.gmc__header_image_lg_size}
+        />
       </div>
     </header>
   );

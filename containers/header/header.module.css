@@ -144,12 +144,18 @@
      z-index: -100;
 }
 
+.gmc__header_image_sm_size {
+    width: 22rem;
+    height: 22rem;
+}
+
 .gmc__header_image_sm span {
     z-index: -100;
 }
 
 .gmc__header_image_lg {
     display: none;
+   
 }
 
 .gmc__header_proof {

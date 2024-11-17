@@ -13,7 +13,11 @@ function Footer() {
     <footer className={classes.gmc__footer}>
       <div className={classes.gmc__footer_content_wrapper}>
         <div className={classes.gmc__footer_image_container}>
-          <Image src={logo} alt="GMC Logo" layout="responsive" />
+          <Image
+            src={logo}
+            alt="GMC Logo"
+            className={classes.gmc__footer_img}
+          />
         </div>
         <div className={classes.gmc__footer_content_container}>
           <div className={classes.gmc__footer_content}>

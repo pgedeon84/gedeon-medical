@@ -57,12 +57,16 @@ function Navbar() {
             href="#home"
             onClick={() => (document.documentElement.scrollTop = 0)}
           >
-            <Image src={logo} alt="Logo" />
+            <Image src={logo} alt="Logo" className={classes.gmc__nav_img} />
           </Link>
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
           <Link href="#home">
-            <Image src={logo_favi} alt="Logo" layout="responsive" />
+            <Image
+              src={logo_favi}
+              alt="Logo"
+              className={classes.gmc__nav_img}
+            />
           </Link>
         </div>
         <nav className={classes.gmc__navbar_links__container}>

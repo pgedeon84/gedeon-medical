@@ -24,6 +24,11 @@
     width: 45px;
 }
 
+.gmc__nav_img {
+    width: 60px;
+  height: 60px;
+}
+
 .gmc__navbar_links__container ul {
     display: none;
 }

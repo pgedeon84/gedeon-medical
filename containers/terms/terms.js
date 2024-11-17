@@ -16,12 +16,12 @@ function Terms() {
           <b>Gedeon Medical Center</b> uses MyChart by Epic - provided by
           Memorial Healthcare System. <br /> <br />
           <b>Signing up</b> for MyChart allows the following: <br /> <br />
-          <ol>
+          <ul className={classes.gmc__terms_list}>
             <li>Access to your medical records</li>
             <li>⁠Electronic communication with providers and staff</li>
             <li>Scheduling</li>
             <li>And more! </li>{" "}
-          </ol>
+          </ul>
           <br />
           Use the following link to sign up for: &nbsp;
           <Link
