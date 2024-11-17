@@ -16,13 +16,19 @@ function Terms() {
           <b>Gedeon Medical Center</b> uses MyChart by Epic - provided by
           Memorial Healthcare System. <br /> <br />
           <b>Signing up</b> for MyChart allows the following: <br /> <br />
-          <li>Access to your medical records</li>
-          <li>⁠Electronic communication with providers and staff</li>
-          <li>Scheduling</li>
-          <li>And more! </li> <br />
+          <ol>
+            <li>Access to your medical records</li>
+            <li>⁠Electronic communication with providers and staff</li>
+            <li>Scheduling</li>
+            <li>And more! </li>{" "}
+          </ol>
+          <br />
           Use the following link to sign up for: &nbsp;
-          <Link href="https://mychart.mhs.net/mychart/Authentication/Login">
-            <a className={classes.gmc__terms_chart}>MyChart</a>
+          <Link
+            href="https://mychart.mhs.net/mychart/Authentication/Login"
+            className={classes.gmc__terms_chart}
+          >
+            MyChart
           </Link>
         </p>
         <p>
@@ -57,8 +63,11 @@ function Terms() {
           message confirming that you have been unsubscribed but no more text
           messages will be sent from this SMS Application after that one. If you
           want to join again, sign up using &nbsp;
-          <Link href="https://mychart.mhs.net/mychart/Authentication/Login">
-            <a className={classes.gmc__terms_chart}>MyChart</a>
+          <Link
+            href="https://mychart.mhs.net/mychart/Authentication/Login"
+            className={classes.gmc__terms_chart}
+          >
+            MyChart
           </Link>
         </p>
       </div>

@@ -9,11 +9,11 @@ import physiciansIcon from "../../public/images/physicians-icon.svg";
 import experienceIcon from "../../public/images/experience-icon.svg";
 import telehealthIcon from "../../public/images/telehealth-icon.svg";
 import Button from "../../components/ui/button/button";
-import DotsAbout from "../../components/ui/dots/about/dots-about";
-import { motion, useViewportScroll } from "framer-motion";
+// import DotsAbout from "../../components/ui/dots/about/dots-about";
+// import { motion, useViewportScroll } from "motion/react";
 
 function About() {
-  const { scrollYProgress } = useViewportScroll();
+  // const { scrollYProgress } = useViewportScroll();
 
   return (
     <section
@@ -70,7 +70,7 @@ function About() {
           className={classes.gmc__about_aboutCard}
         />
       </div>
-      <DotsAbout />
+      {/* <DotsAbout /> */}
     </section>
   );
 }

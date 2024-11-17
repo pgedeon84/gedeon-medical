@@ -33,3 +33,7 @@
 .gmc__terms_chart {
     text-decoration: underline;
 }
+
+.gmc__terms_list {
+    list-style: square;
+}

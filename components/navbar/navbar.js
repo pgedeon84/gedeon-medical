@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
 import logo from "../../public/images/GMC-primary-logo-large.svg";
 import logo_favi from "../../public/images/GMC-favicon-logo.svg";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import classes from "./navbar.module.css";
 import utils from "../../styles/utils.module.css";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -23,23 +22,17 @@ function Navbar() {
     return (
       <ul>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="#about">
-            <a>About us</a>
-          </Link>
+          <Link href="#about">About us</Link>
         </li>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="#services">
-            <a>Services</a>
-          </Link>
+          <Link href="#services">Services</Link>
         </li>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="#meetthedoc">
-            <a>Meet the Doc</a>
-          </Link>
+          <Link href="#meetthedoc">Meet the Doc</Link>
         </li>
         <li>
-          <Link href="#reviews">
-            <a onClick={() => setToggleMenu(false)}>Reviews</a>
+          <Link href="#reviews" onClick={() => setToggleMenu(false)}>
+            Reviews
           </Link>
         </li>
       </ul>
@@ -60,17 +53,16 @@ function Navbar() {
     >
       <div className={classes.gmc__navbar_links}>
         <div className={classes.gmc__navbar_links__logo}>
-          <Link href="#home">
-            <a onClick={() => (document.documentElement.scrollTop = 0)}>
-              <Image src={logo} alt="Logo" />
-            </a>
+          <Link
+            href="#home"
+            onClick={() => (document.documentElement.scrollTop = 0)}
+          >
+            <Image src={logo} alt="Logo" />
           </Link>
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
           <Link href="#home">
-            <a>
-              <Image src={logo_favi} alt="Logo" layout="responsive" />
-            </a>
+            <Image src={logo_favi} alt="Logo" layout="responsive" />
           </Link>
         </div>
         <nav className={classes.gmc__navbar_links__container}>

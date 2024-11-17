@@ -1,5 +1,5 @@
 import classes from "./dots-reviews.module.css";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function DotsReviews() {
   const fadeIn = {

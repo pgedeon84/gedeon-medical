@@ -1,12 +1,12 @@
 import classes from "./header.module.css";
 import Image from "next/image";
-import DotsHeader from "../../components/ui/dots/header/dots-header";
+// import DotsHeader from "../../components/ui/dots/header/dots-header";
 import illustration from "../../public/images/banner-img.svg";
 import { RiArrowRightSLine } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
 import Link from "next/link";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function Header() {
   // Framer Motion props
@@ -65,7 +65,7 @@ function Header() {
             </span>
           </button>
         </Link> */}
-        <DotsHeader />
+        {/* <DotsHeader /> */}
       </motion.div>
       <div className={classes.gmc__header_image_sm}>
         <Image src={illustration} alt="Nurses" layout="responsive" priority />
