@@ -42,8 +42,10 @@ function Terms() {
           your compliance with the terms, conditions, and notices set forth
           below. Memorial Healthcare Systems reserves the right to limit or
           terminate your use of the SMS Application if you fail to abide by the
-          Terms and Conditions. GMC also uses SMS text messaging to communicate
-          limited information upon consent.
+          Terms and Conditions. <br />
+          <br />
+          <b>GMC</b> also uses SMS text messaging to communicate limited
+          information upon consent.
           <br /> <br /> <b>Acceptance of Terms and Conditions</b> <br /> <br />
           By enrolling or otherwise agreeing to participate in the SMS
           Application, you agree to be bound by these terms and conditions of
