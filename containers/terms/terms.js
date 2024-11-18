@@ -13,7 +13,7 @@ function Terms() {
           Text Messaging (SMS) Application Terms and Conditions <br /> <br />
         </h3>{" "}
         <p>
-          <b>Gedeon Medical Center</b> uses MyChart by Epic - provided by
+          <b>Gedeon Medical Center (GMC)</b> uses MyChart by Epic - provided by
           Memorial Healthcare System. <br /> <br />
           <b>Signing up</b> for MyChart allows the following: <br /> <br />
         </p>
@@ -35,15 +35,16 @@ function Terms() {
         </p>
         <p>
           {" "}
-          <b>Gedeon Medical Center (GMC) </b> Text Messaging Application allows
-          patients to receive text message alerts related to their GMC visits,
-          MyChart account, one-time passcode, billing notifications,
-          prescription reminders, test results, and care management (“SMS
-          Application”), subject to your compliance with the terms, conditions,
-          and notices set forth below. GMC reserves the right to limit or
+          <b>MyChart</b> application allows patients to receive text message
+          alerts related to their GMC visits, MyChart account, one-time
+          passcode, Memorial Healthcare System's billing notifications,
+          prescription reminders, test results, and care management, subject to
+          your compliance with the terms, conditions, and notices set forth
+          below. Memorial Healthcare Systems reserves the right to limit or
           terminate your use of the SMS Application if you fail to abide by the
-          Terms and Conditions. <br /> <br />{" "}
-          <b>Acceptance of Terms and Conditions</b> <br /> <br />
+          Terms and Conditions. GMC also uses SMS text messaging to communicate
+          limited information upon consent.
+          <br /> <br /> <b>Acceptance of Terms and Conditions</b> <br /> <br />
           By enrolling or otherwise agreeing to participate in the SMS
           Application, you agree to be bound by these terms and conditions of
           use (“Terms and Conditions”). GMC may revise these Terms and
