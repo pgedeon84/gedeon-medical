@@ -1,5 +1,5 @@
 import classes from "./dots-reviews.module.css";
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 
 function DotsReviews() {
   const fadeIn = {
@@ -8,10 +8,10 @@ function DotsReviews() {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
+    <div
+      // initial="hidden"
+      // animate="visible"
+      // variants={fadeIn}
       className={classes.gmc__effect_wrap}
     >
       <div className={classes.gmc__effect}>
@@ -74,7 +74,7 @@ function DotsReviews() {
           <div></div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -1,12 +1,12 @@
 import classes from "./footer.module.css";
 import Image from "next/image";
 import logo from "../../public/images/GMC-alternate-logo-large.svg";
-import {
-  EmailIcon,
-  FacebookIcon,
-  WhatsappIcon,
-  LinkedinIcon,
-} from "react-share";
+// import {
+//   EmailIcon,
+//   FacebookIcon,
+//   WhatsappIcon,
+//   LinkedinIcon,
+// } from "react-share";
 
 function Footer() {
   return (
@@ -27,12 +27,12 @@ function Footer() {
               UNITED STATES
             </p>
           </div>
-          <div className={classes.gmc__footer_share_container}>
+          {/* <div className={classes.gmc__footer_share_container}>
             <EmailIcon size={42} round={true} />
             <FacebookIcon size={42} round={true} />
             <WhatsappIcon size={42} round={true} />
             <LinkedinIcon size={42} round={true} />
-          </div>
+          </div> */}
           <div className={classes.gmc__footer_copyrights}>
             <p>© 2022 GEDEON MEDICAL CENTER</p>
             <p>

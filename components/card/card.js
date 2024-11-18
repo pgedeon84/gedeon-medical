@@ -7,7 +7,7 @@ function Card(props) {
   return (
     <div className={classes.gmc__card}>
       <div className={classes.gmc__card_img}>
-        <Image src={image} alt={title} layout="responsive" />
+        <Image src={image} alt={title} />
       </div>
       <div className={classes.gmc__card_content_container}>
         <h2>{title}</h2>

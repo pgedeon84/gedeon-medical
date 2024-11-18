@@ -7,7 +7,7 @@ import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import classes from "./navbar.module.css";
 import utils from "../../styles/utils.module.css";
 
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -45,10 +45,10 @@ function Navbar() {
   }
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={top_down}
+    <div
+      // initial="hidden"
+      // animate="visible"
+      // variants={top_down}
       className={classes.gmc__navbar}
     >
       <div className={classes.gmc__navbar_links}>
@@ -73,13 +73,7 @@ function Navbar() {
           <NavbarLinks />
         </nav>
       </div>
-      {/* <div className={classes.gmc__navbar_links__contact}>
-        <Link href="#contact" passHref>
-          <button className={utils.gradient_animation} type="button">
-            <a>Book Now</a>
-          </button>
-        </Link>
-      </div> */}
+
       {/* Hamburger Menu */}
       <div className={classes.gmc__navbar_hamburger}>
         {toggleMenu ? (
@@ -101,27 +95,11 @@ function Navbar() {
           >
             <nav className={classes.gmc__navbar_hamburger_container__links}>
               <NavbarLinks />
-              {/* <div
-                className={
-                  classes.gmc__navbar_hamburger_container__links_contact
-                }
-              >
-                <Link href="#contact" passHref>
-                  <button
-                    className={utils.gradient_animation}
-                    type="button"
-                    onClick={() => setToggleMenu(false)}
-                  >
-                    {" "}
-                    Book Now
-                  </button>
-                </Link>
-              </div> */}
             </nav>
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

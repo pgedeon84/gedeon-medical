@@ -1,5 +1,5 @@
 import classes from "./dots-bio.module.css";
-import { motion } from "framer-motion";
+// import { motion } from "motion/react";
 
 function DotsBio() {
   const fadeIn = {
@@ -8,10 +8,10 @@ function DotsBio() {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
+    <div
+      // initial="hidden"
+      // animate="visible"
+      // variants={fadeIn}
       className={classes.gmc__effect_wrap}
     >
       <div className={classes.gmc__effect}>
@@ -74,7 +74,7 @@ function DotsBio() {
           <div></div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

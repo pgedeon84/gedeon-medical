@@ -1,7 +1,7 @@
 import classes from "./contact.module.css";
 import { Widget } from "@typeform/embed-react";
 import Image from "next/image";
-import waves from "../../public/images/wave.svg";
+// import waves from "../../public/images/wave.svg";
 import SectionTitle from "../../components/ui/section-title/section-title";
 
 function Contact() {

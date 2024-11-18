@@ -10,27 +10,27 @@ function Bio() {
   return (
     <section id="meetthedoc" className={classes.gmc__bio}>
       {/* <DotsBio /> */}
-      <div className={classes.gmc__bio_header}>
+      {/* <div className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
-      </div>
+      </div> */}
       <div>
         {/* <Image src={wave} alt="wave" className={classes.gmc__bio_img_wave} /> */}
       </div>
-      <div className={classes.gmc__bio_content}>
-        <div className={classes.gmc__bio_content_container}>
-          <div className={classes.gmc__bio_content_container__image}>
-            <Image src={doctor} alt="Doctor Gedeon" />
-          </div>
-          <div className={classes.gmc__bio_content_container__content}>
-            <h1>Dr. Leon S. Gedeon</h1>
-            <p>Primary Care - Family Medicine</p>
-            <div className={classes.gmc__bio_content_container__content_rating}>
-              <p>Patient Experience Rating -</p>
-              <Stars hexColor={"#F6B703"} />
+      {/* <div className={classes.gmc__bio_content}>
+          <div className={classes.gmc__bio_content_container}>
+            <div className={classes.gmc__bio_content_container__image}>
+              <Image src={doctor} alt="Doctor Gedeon" />
             </div>
-            <p>U.S. News and World Report</p>
+            <div className={classes.gmc__bio_content_container__content}>
+              <h1>Dr. Leon S. Gedeon</h1>
+              <p>Primary Care - Family Medicine</p>
+              <div className={classes.gmc__bio_content_container__content_rating}>
+                <p>Patient Experience Rating -</p>
+                <Stars hexColor={"#F6B703"} />
+              </div>
+              <p>U.S. News and World Report</p>
+            </div>
           </div>
-        </div>
         <p>
           Dr. Leon Stephane Gedeon is a board-certified family practitioner that
           takes a holistic approach to providing care that focuses on
@@ -49,7 +49,7 @@ function Bio() {
           Medicine in Dominica, Dr. Gedeon completed Family Medicine residency
           at Cleveland Clinic Akron General in Akron, Ohio.
         </p>
-      </div>
+      </div> */}
     </section>
   );
 }

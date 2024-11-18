@@ -6,7 +6,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import utils from "../../styles/utils.module.css";
 import Link from "next/link";
 
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 
 function Header() {
   // Framer Motion props
@@ -17,10 +17,10 @@ function Header() {
 
   return (
     <header className={classes.gmc__header}>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
+      <div
+        // initial="hidden"
+        // animate="visible"
+        // variants={fadeIn}
         className={classes.gmc__header_content}
       >
         <h1>
@@ -55,18 +55,8 @@ function Header() {
             <p>Medical Board Certified Doctor</p>
           </div>
         </div>
-        {/* <Link href="#contact" passHref>
-          <button className={utils.gradient_animation} type="button">
-            Book an Appointment
-            <span>
-              <RiArrowRightSLine
-                className={classes.gmc__header_content__button_icon}
-              />
-            </span>
-          </button>
-        </Link> */}
         {/* <DotsHeader /> */}
-      </motion.div>
+      </div>
       <div className={classes.gmc__header_image_sm}>
         <Image
           src={illustration}

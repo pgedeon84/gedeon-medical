@@ -32,7 +32,7 @@ function About() {
       </div>
       <div className={classes.gmc__about_content__container}>
         <div className={classes.gmc__about_content__image}>
-          <Image src={nurse} alt="nurse" layout="responsive" />
+          <Image src={nurse} alt="nurse" />
         </div>
         <div className={classes.gmc__about_content}>
           <p>
