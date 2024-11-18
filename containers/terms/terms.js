@@ -60,11 +60,8 @@ function Terms() {
           messages and that such electronic communications may not be secure.
           You understand that your consent to participate in the SMS Application
           is not a condition of any treatment. How to Opt Out and Get Help If
-          you choose to no longer receive text messages from GMC, text STOP to
-          59183 at any time. Your opt-out request will generate one final
-          message confirming that you have been unsubscribed but no more text
-          messages will be sent from this SMS Application after that one. If you
-          want to join again, sign up using &nbsp;
+          you choose to no longer receive text messages from GMC, reply STOP to
+          our text messages. &nbsp;
           <Link
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
