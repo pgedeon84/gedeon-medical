@@ -6,3 +6,4 @@ export { default as Reviews } from "./reviews/reviews";
 export { default as Header } from "./header/header";
 export { default as Footer } from "./footer/footer";
 export { default as Terms } from "./terms/terms";
+export { default as Privacy } from "./privacy/privacy-policy";

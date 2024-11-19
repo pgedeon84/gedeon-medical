@@ -11,6 +11,9 @@ const ReviewsLazy = dynamic(() => import("../containers/reviews/reviews"));
 const ContactLazy = dynamic(() => import("../containers/contact/contact"));
 const FooterLazy = dynamic(() => import("../containers/footer/footer"));
 const TermsLazy = dynamic(() => import("../containers/terms/terms"));
+const PrivacyLazy = dynamic(() =>
+  import("../containers/privacy/privacy-policy")
+);
 
 function Home() {
   return (
@@ -28,6 +31,7 @@ function Home() {
         <ReviewsLazy />
         {/* <ContactLazy /> */}
         <TermsLazy />
+        <PrivacyLazy />
         <FooterLazy />
       </main>
       <BackToTopButton />

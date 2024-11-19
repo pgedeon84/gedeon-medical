@@ -1,0 +1,16 @@
+.gmc__privacy_container {
+    margin: 6rem 0 4rem 0;
+    padding-top: 1rem;
+}
+
+.gmc__privacy_link {
+      color: #6abf4b;
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 0rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    text-decoration: underline;    
+}
