@@ -18,12 +18,13 @@ function PrivacyPolicy() {
           <div className={classes.content}>
             <p>
               MyChart usage - Please click on the following link to view
-              Memorial Healthcare System's{" "}
+              Memorial Healthcare System&apos;s{" "}
               <Link
                 href="https://www.mhs.net/privacy-and-security"
+                passHref
                 className={classes.privacy_link}
               >
-                privacy policy
+                Privacy Policy
               </Link>
             </p>
             <div className={classes.emphasis}>

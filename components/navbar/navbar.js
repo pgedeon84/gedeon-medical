@@ -22,21 +22,31 @@ function Navbar() {
     return (
       <ul>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="/#about">About us</Link>
+          <Link href="/#about" passHref>
+            About us
+          </Link>
         </li>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="/#services">Services</Link>
+          <Link href="/#services" passHref>
+            Services
+          </Link>
         </li>
         <li onClick={() => setToggleMenu(false)}>
-          <Link href="/#meetthedoc">Meet the Doc</Link>
+          <Link href="/#meetthedoc" passHref>
+            Meet the Doc
+          </Link>
         </li>
         <li>
-          <Link href="/#reviews" onClick={() => setToggleMenu(false)}>
+          <Link href="/#reviews" passHref onClick={() => setToggleMenu(false)}>
             Reviews
           </Link>
         </li>
         <li>
-          <Link href="/privacy-policy" onClick={() => setToggleMenu(false)}>
+          <Link
+            href="/privacy-policy"
+            passHref
+            onClick={() => setToggleMenu(false)}
+          >
             Privacy Policy
           </Link>
         </li>
@@ -60,13 +70,14 @@ function Navbar() {
         <div className={classes.gmc__navbar_links__logo}>
           <Link
             href="/#home"
+            passHref
             onClick={() => (document.documentElement.scrollTop = 0)}
           >
             <Image src={logo} alt="Logo" className={classes.gmc__nav_img} />
           </Link>
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
-          <Link href="/#home">
+          <Link href="/#home" passHref>
             <Image
               src={logo_favi}
               alt="Logo"
