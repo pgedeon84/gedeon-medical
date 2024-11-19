@@ -1,0 +1,233 @@
+/* Privacy Policy Page Styles - Mobile First */
+
+/* Container styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin: 2rem auto;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Header styles */
+.header {
+  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  color: #385CAD; /* Primary logo color */
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Text content styling */
+.content {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  font-family: var(--font-family-text);
+  color: #333; /* Neutral color for text */
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Links */
+.privacy_link {
+  color: #385CAD;
+  font-family: var(--font-family-text);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #385CAD;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.privacy_link:hover {
+  color: #6abf4b; /* Secondary logo color */
+  border-bottom: 2px solid #6abf4b;
+}
+
+/* Emphasis block for SMS notice */
+.emphasis {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #6abf4b; /* Secondary logo color */
+  color: #fff; /* White text for contrast */
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Responsive styles */
+
+/* For tablets and larger screens */
+@media (min-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 600px;
+  }
+
+  .header {
+    font-size: 2rem;
+  }
+
+  .content {
+    font-size: 1rem;
+  }
+
+  .emphasis {
+    margin-top: 20px;
+    padding: 15px;
+  }
+}
+
+/* For laptops and desktops */
+@media (min-width: 1024px) {
+  .container {
+    padding: 24px;
+    max-width: 800px;
+  }
+
+  .header {
+    font-size: 2.5rem;
+  }
+
+  .content {
+    font-size: 1.1rem;
+  }
+}
+
+/* For large screens */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .header {
+    font-size: 3rem;
+  }
+
+  .content {
+    font-size: 1.2rem;
+  }
+}
+
+.image_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    padding: 0 0 2rem;
+    margin: .8rem auto;
+}
+
+/* Container styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #385CAD, #6ABF4B); /* Gradient background */
+  color: #fff; /* White text for contrast */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.header {
+  font-size: 1.5rem;
+  color: #ffffff; /* White for contrast on gradient */
+   font-family: var(--font-family-heading);
+  text-align: center;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Text content styling */
+.content {
+  font-size: 0.9rem;
+  color: #f9f9f9; /* Slightly off-white for text */
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Links */
+.content a {
+  color: #FFD700; /* A vibrant complementary color */
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #FFD700;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.content a:hover {
+  color: #FF4500; /* Slightly darker hover effect */
+  border-bottom: 2px solid #FF4500;
+}
+
+/* Emphasis block for SMS notice */
+.emphasis {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  color: #333; /* Neutral dark text */
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Responsive styles */
+
+/* For tablets and larger screens */
+@media (min-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 600px;
+  }
+
+  .header {
+    font-size: 2rem;
+  }
+
+  .content {
+    font-size: 1rem;
+  }
+
+  .emphasis {
+    margin-top: 20px;
+    padding: 15px;
+  }
+}
+
+/* For laptops and desktops */
+@media (min-width: 1024px) {
+  .container {
+    padding: 24px;
+    max-width: 800px;
+  }
+
+  .header {
+    font-size: 2.5rem;
+  }
+
+  .content {
+    font-size: 1.1rem;
+  }
+}
+
+/* For large screens */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .header {
+    font-size: 3rem;
+  }
+
+  .content {
+    font-size: 1.2rem;
+  }
+}
