@@ -61,6 +61,7 @@
 /* For tablets and larger screens */
 @media (min-width: 768px) {
   .container {
+    padding-top: 1rem;
     padding: 20px;
     max-width: 600px;
   }
@@ -81,7 +82,11 @@
 
 /* For laptops and desktops */
 @media (min-width: 1024px) {
+    .main {
+        margin-top: 5.5rem;
+    }
   .container {
+    margin-top: 1rem;
     padding: 24px;
     max-width: 800px;
   }
@@ -97,6 +102,9 @@
 
 /* For large screens */
 @media (min-width: 1440px) {
+    .main {
+        margin-top: 5.5rem;
+    }
   .container {
     max-width: 1200px;
   }

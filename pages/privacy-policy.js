@@ -11,7 +11,7 @@ function PrivacyPolicy() {
       <Head>
         <title>Gedeon Medical Center | Book an appointment</title>
       </Head>
-      <main>
+      <main className={classes.main}>
         <Navbar />
         <div className={classes.container}>
           <h1 className={classes.header}>Privacy Policy</h1>
