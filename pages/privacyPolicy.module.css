@@ -82,6 +82,13 @@
         margin-bottom: 5px;
     }
 
+    .gmc__privacy_image_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.7rem 0;
+    }
+
     /* Styles for Larger Screens (Tablet and Up) */
     @media (min-width: 768px) {
         .gmc__privacy_content {
