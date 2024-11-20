@@ -1,241 +1,120 @@
 /* Privacy Policy Page Styles - Mobile First */
 
 /* Container styling */
-.container {
+.gmc__privacy_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px;
-  margin: 2rem auto;
+  padding: 1rem;
   background-color: #f9f9f9; /* Light background for contrast */
 }
 
 /* Header styles */
-.header {
-  font-size: 1.5rem;
-  font-family: var(--font-family-heading);
-  color: #385CAD; /* Primary logo color */
-  text-align: center;
-  margin-bottom: 16px;
-}
 
-/* Text content styling */
-.content {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  font-family: var(--font-family-text);
-  color: #333; /* Neutral color for text */
-  line-height: 1.6;
-  text-align: left;
-}
-
-/* Links */
-.privacy_link {
-  color: #385CAD;
-  font-family: var(--font-family-text);
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid #385CAD;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-
-.privacy_link:hover {
-  color: #6abf4b; /* Secondary logo color */
-  border-bottom: 2px solid #6abf4b;
-}
-
-/* Emphasis block for SMS notice */
-.emphasis {
-  margin-top: 16px;
-  padding: 12px;
-  background-color: #6abf4b; /* Secondary logo color */
-  color: #fff; /* White text for contrast */
-  border-radius: 4px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Responsive styles */
-
-/* For tablets and larger screens */
-@media (min-width: 768px) {
-  .container {
-    padding-top: 1rem;
-    padding: 20px;
-    max-width: 600px;
-  }
-
-  .header {
-    font-size: 2rem;
-  }
-
-  .content {
-    font-size: 1rem;
-  }
-
-  .emphasis {
-    margin-top: 20px;
-    padding: 15px;
-  }
-}
-
-/* For laptops and desktops */
-@media (min-width: 1024px) {
-    .main {
-        margin-top: 5.5rem;
+.gmc__privacy_content {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 10px;
+        color: #333;
     }
-  .container {
-    margin-top: 1rem;
-    padding: 24px;
-    max-width: 800px;
-  }
 
-  .header {
-    font-size: 2.5rem;
-  }
-
-  .content {
-    font-size: 1.1rem;
-  }
-}
-
-/* For large screens */
-@media (min-width: 1440px) {
-    .main {
-        margin-top: 5.5rem;
+    .gmc__privacy_content h1 {
+        font-family: 'Lato', sans-serif;
+        color: #385CAD; /* Primary blue */
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 15px;
     }
-  .container {
-    max-width: 1200px;
-  }
 
-  .header {
-    font-size: 3rem;
-  }
+    .gmc__privacy_content h2 {
+        font-family: 'Lato', sans-serif;
+        color: #385CAD; /* Primary blue */
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
-  .content {
-    font-size: 1.2rem;
-  }
-}
+    .gmc__privacy_content p {
+        margin: 10px 0;
+    }
 
-.image_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 14rem;
-    padding: 0 0 2rem;
-    margin: .8rem auto;
-}
+    .gmc__privacy_content strong {
+        color: #6abf4b; /* Primary green for emphasis */
+    }
 
-/* Container styling */
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #385CAD, #6ABF4B); /* Gradient background */
-  color: #fff; /* White text for contrast */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .gmc__privacy_content ul {
+        margin-left: 20px;
+        padding-left: 0;
+    }
 
-/* Header styles */
-.header {
-  font-size: 1.5rem;
-  color: #ffffff; /* White for contrast on gradient */
-   font-family: var(--font-family-heading);
-  text-align: center;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
-}
+    .gmc__privacy_content ul li {
+        margin: 5px 0;
+        list-style-type: disc;
+    }
 
-/* Text content styling */
-.content {
-  font-size: 0.9rem;
-  color: #f9f9f9; /* Slightly off-white for text */
-  line-height: 1.6;
-  text-align: left;
-}
+    .gmc__privacy_content hr {
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+    }
 
-/* Links */
-.content a {
-  color: #FFD700; /* A vibrant complementary color */
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid #FFD700;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-}
+    .gmc__privacy_content a {
+        color: #385CAD;
+        text-decoration: none;
+    }
 
-.content a:hover {
-  color: #FF4500; /* Slightly darker hover effect */
-  border-bottom: 2px solid #FF4500;
-}
+    .gmc__privacy_content a:hover {
+        text-decoration: underline;
+    }
 
-/* Emphasis block for SMS notice */
-.emphasis {
-  margin-top: 16px;
-  padding: 12px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  color: #333; /* Neutral dark text */
-  border-radius: 4px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
-}
+    .gmc__privacy_content .contact_info {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
 
-/* Responsive styles */
+    .gmc__privacy_content .contact_info strong {
+        display: block;
+        margin-bottom: 5px;
+    }
 
-/* For tablets and larger screens */
-@media (min-width: 768px) {
-  .container {
-    padding: 20px;
-    max-width: 600px;
-  }
+    /* Styles for Larger Screens (Tablet and Up) */
+    @media (min-width: 768px) {
+        .gmc__privacy_content {
+            font-size: 16px;
+            margin: 20px;
+        }
 
-  .header {
-    font-size: 2rem;
-  }
+        .gmc__privacy_content h1 {
+            font-size: 28px;
+        }
 
-  .content {
-    font-size: 1rem;
-  }
+        .gmc__privacy_content h2 {
+            font-size: 22px;
+        }
 
-  .emphasis {
-    margin-top: 20px;
-    padding: 15px;
-  }
-}
+        .gmc__privacy_content ul {
+            margin-left: 30px;
+        }
+    }
 
-/* For laptops and desktops */
-@media (min-width: 1024px) {
-  .container {
-    padding: 24px;
-    max-width: 800px;
-  }
+    /* Styles for Desktop Screens */
+    @media (min-width: 1024px) {
+        .gmc__privacy_content {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
 
-  .header {
-    font-size: 2.5rem;
-  }
+        .gmc__privacy_content h1 {
+            font-size: 32px;
+        }
 
-  .content {
-    font-size: 1.1rem;
-  }
-}
-
-/* For large screens */
-@media (min-width: 1440px) {
-  .container {
-    max-width: 1200px;
-  }
-
-  .header {
-    font-size: 3rem;
-  }
-
-  .content {
-    font-size: 1.2rem;
-  }
-}
+        .gmc__privacy_content h2 {
+            font-size: 24px;
+        }
+    }
