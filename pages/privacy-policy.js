@@ -23,7 +23,8 @@ function PrivacyPolicy() {
 
             <p>
               <b>
-                Gedeon Medical Center (referred to as "we," "our," or "us"){" "}
+                Gedeon Medical Center (referred to as &ldquo;we,&ldquo;
+                &ldquo;our,&ldquo; or &ldquo;us&ldquo;){" "}
               </b>
               is committed to protecting your personal and health information.
               This Privacy Policy explains how we collect, use, disclose, and
