@@ -77,15 +77,45 @@ function PrivacyPolicy() {
               message.
             </p>
             <p>
+              <strong>Types of Messages:</strong> Users can expect to receive
+              messages such as:
+            </p>
+            <ul className="gmc__privacy_list">
+              <li>Appointment reminders</li>
+              <li>Account notifications</li>
+              <li>Health-related updates</li>
+              <li>Order alerts (e.g., prescriptions, test results)</li>
+            </ul>
+            <p>
+              <strong>Messaging Frequency:</strong> Messaging frequency may
+              vary.
+            </p>
+            <p>
+              <strong>Message and Data Rates:</strong> Message and data rates
+              may apply.
+            </p>
+            <p>
               <strong>Opt-Out:</strong> You can opt out of receiving text
               messages at any time by replying STOP to any of our messages. You
               may also opt out of emails by contacting us directly using the
               information below.
             </p>
+            <p className={classes.gmc__privacy_text}>
+              <strong>For Assistance:</strong> Text HELP or visit our website at{" "}
+              <a
+                href="https://www.gedeonmedicalcenter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.gmc__privacy_link}
+              >
+                https://www.gedeonmedicalcenter.com
+              </a>
+              .
+            </p>
             <p>
-              Please note that opting out of communications may affect our
-              ability to send you appointment reminders and other important
-              updates related to your care.
+              <strong>Please note:</strong> that opting out of communications
+              may affect our ability to send you appointment reminders and other
+              important updates related to your care.
             </p>
             <hr />
             <h2>4. How We Share Your Information</h2>
@@ -200,6 +230,21 @@ function PrivacyPolicy() {
                 </a>
               </p>
             </div>
+            <hr />
+
+            <h2>For More Details, Visit:</h2>
+            <ul>
+              <li>
+                <a href="https://www.gedeonmedicalcenter.com/privacy-policy">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gedeonmedicalcenter.com/privacy-policy">
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
           </article>
         </section>
         <div className={classes.gmc__privacy_image_container}>

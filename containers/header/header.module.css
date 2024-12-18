@@ -155,8 +155,8 @@
 
 .gmc__header_image_lg {
     display: none;
-   
 }
+
 
 .gmc__header_proof {
     width: 100%;
@@ -167,7 +167,7 @@
     .gmc__header {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 10rem;
+        margin-top: 4rem;
         padding: 0 6rem;
     }
     
@@ -228,7 +228,7 @@
          margin-left: 15px;
      }
 
-     .gmc__header_image {
+     .gmc__header_image_sm {
          display: none;
      }
 
@@ -241,6 +241,11 @@
           animation-duration: 1s;
           -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
+     }
+
+     .gmc__header_image_lg_size {
+        width: 44rem;
+        height: 44rem;
      }
 
 }
