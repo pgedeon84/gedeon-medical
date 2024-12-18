@@ -11,8 +11,8 @@ function PrivacyPolicy() {
       <Head>
         <title>Gedeon Medical Center | Privacy Policy</title>
       </Head>
+      <Navbar />
       <main className={classes.gmc__privacy_content}>
-        <Navbar />
         <section className={classes.gmc__privacy_container}>
           <h1 className={classes.gmc__privacy_header}>Privacy Policy</h1>
           <article>
