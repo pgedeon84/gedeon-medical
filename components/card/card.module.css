@@ -74,6 +74,12 @@
         position: relative;
     }
 
+    .gmc__card_img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
    .gmc__card_img img {
        border-radius: 0;
    }

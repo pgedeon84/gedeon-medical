@@ -26,7 +26,7 @@
 
 .gmc__nav_img {
     width: 60px;
-  height: 60px;
+    height: 60px;
 }
 
 .gmc__navbar_links__container ul {
@@ -119,19 +119,36 @@
     background-color: #6abf4b79;
 }
 
-@media screen and (min-width: 1050px){
+
+
+/* For laptops */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .gmc__nav_img {
+        width: 170px;
+        height: 80px;
+    }
+}
+
+/* For desktops only */
+@media (min-width: 1440px) {
     .gmc__navbar {
         position: fixed;
         top: 0;
         padding: 0 8rem;
     }
-     .gmc__navbar_hamburger {
-        display: none;
-     }
 
-     .gmc__navbar_links__logo_fav {
+    .gmc__nav_img {
+        width: 180px;
+        height: 85px;
+    }
+
+    .gmc__navbar_hamburger {
         display: none;
-     }
+    }
+
+    .gmc__navbar_links__logo_fav {
+        display: none;
+    }
 
     .gmc__navbar_links__container ul {
         display: flex;
@@ -153,7 +170,7 @@
         display: block;
         margin-right: 0.7rem;
     }
-    
+
     .gmc__navbar_links__logo {
         display: block;
         width: 185px;
