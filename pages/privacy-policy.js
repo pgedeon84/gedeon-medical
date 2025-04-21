@@ -212,7 +212,49 @@ function PrivacyPolicy() {
               our website and at our office.
             </p>
             <hr />
-            <h2>9. Contact Information</h2>
+            <h2>9. Text Messaging (SMS) Program</h2>
+            <p>
+              Gedeon Medical Center offers patients the option to receive text
+              message (SMS) communications for appointment reminders, healthcare
+              updates, medication alerts, and other administrative purposes.
+            </p>
+            <p>
+              By providing your mobile number and opting in, you consent to
+              receive SMS messages from us.
+            </p>
+            <ul>
+              <li>
+                <strong>How to Opt-In:</strong> You may opt in by signing a
+                consent form at our office, by completing the opt-in form on our
+                website, or by texting a keyword to our designated short code or
+                phone number.
+              </li>
+              <li>
+                <strong>Message Frequency:</strong> You may receive up to 4
+                messages per month, depending on your healthcare needs.
+              </li>
+              <li>
+                <strong>Opt-Out Instructions:</strong> To stop receiving
+                messages at any time, text STOP to our number. To resume, you
+                may need to re-enroll.
+              </li>
+              <li>
+                <strong>Help Instructions:</strong> For assistance, text HELP or
+                call our office at 954-842-4285.
+              </li>
+              <li>
+                <strong>Message and Data Rates:</strong> Standard message and
+                data rates may apply based on your mobile carrier plan.
+              </li>
+              <li>
+                <strong>Data Privacy:</strong> Your phone number and SMS consent
+                will not be shared with third parties or used for marketing
+                purposes. All information is protected under our existing
+                privacy safeguards and HIPAA-compliant protocols.
+              </li>
+            </ul>
+            <hr />
+            <h2>10. Contact Information</h2>
             <p>
               For questions, concerns, or to exercise your rights, contact us
               at:
@@ -231,20 +273,6 @@ function PrivacyPolicy() {
               </p>
             </div>
             <hr />
-
-            <h2>For More Details, Visit:</h2>
-            <ul>
-              <li>
-                <a href="https://www.gedeonmedicalcenter.com/privacy-policy">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="https://www.gedeonmedicalcenter.com/privacy-policy">
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
           </article>
         </section>
         <div className={classes.gmc__privacy_image_container}>
