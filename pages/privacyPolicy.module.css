@@ -130,6 +130,7 @@
 
     /* Styles for Larger Screens (Tablet and Up) */
     @media (min-width: 768px) {
+        
         .gmc__privacy_content {
             font-size: 16px;
             margin: 20px;
@@ -145,6 +146,9 @@
 
         .gmc__privacy_content ul {
             margin-left: 30px;
+        }
+        .gmc__privacy_container {
+            padding:0;
         }
     }
 
@@ -166,6 +170,10 @@
 
         .gmc__privacy_content h2 {
             font-size: 24px;
+        }
+
+        .gmc__privacy_container {
+            padding:0;
         }
         
     }

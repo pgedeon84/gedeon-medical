@@ -372,11 +372,6 @@ function SMSConsentForm() {
               )}
           </form>
         )}
-        <style jsx global>{`
-          .grecaptcha-badge {
-            visibility: hidden;
-          }
-        `}</style>
       </div>
     </>
   );
