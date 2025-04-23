@@ -38,24 +38,26 @@ function SMSConsentForm() {
     }
   }, [recaptchaSiteKey]);
 
+  // Check if reCAPTCHA loads properly
   useEffect(() => {
-    const handleScriptError = () => {
-      setSubmissionState((prev) => ({
-        ...prev,
-        error: "Security features failed to load. Please refresh the page.",
-      }));
-    };
-
-    const script = document.querySelector('script[src*="recaptcha/api.js"]');
-    if (script) {
-      script.addEventListener("error", handleScriptError);
-    }
-
-    return () => {
-      if (script) {
-        script.removeEventListener("error", handleScriptError);
+    const checkRecaptchaLoad = () => {
+      if (!window.grecaptcha) {
+        setSubmissionState((prev) => ({
+          ...prev,
+          error: "Security features failed to load. Please refresh the page.",
+        }));
+        return false;
       }
+      return true;
     };
+
+    const timer = setTimeout(() => {
+      if (!checkRecaptchaLoad()) {
+        console.error("reCAPTCHA failed to load within 5 seconds");
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e) => {
@@ -71,18 +73,23 @@ function SMSConsentForm() {
         body: JSON.stringify({ token }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Verification failed with status ${response.status}`);
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        console.error("reCAPTCHA verification failed:", data["error-codes"]);
+        throw new Error(
+          data["error-codes"]?.join(", ") || "Verification failed"
+        );
       }
 
-      const data = await response.json();
-      if (!data.success) {
-        console.error("reCAPTCHA verification failed:", data["error-codes"]);
-      }
       return data;
     } catch (error) {
       console.error("CAPTCHA verification error:", error);
-      return { success: false, score: 0, error: error.message };
+      return {
+        success: false,
+        score: 0,
+        "error-codes": ["verification-error"],
+      };
     }
   };
 
@@ -111,16 +118,19 @@ function SMSConsentForm() {
       });
 
       // Verify with backend
-      const { success, score, error } = await verifyCaptcha(token);
-      if (error) throw new Error(error);
+      const {
+        success,
+        score,
+        "error-codes": errorCodes,
+      } = await verifyCaptcha(token);
 
       // Validate score
       const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.5;
       if (!success || score < threshold) {
         throw new Error(
-          `Security verification failed (score: ${score.toFixed(
-            1
-          )}). Please try again.`
+          `Security verification failed (score: ${
+            score?.toFixed(1) || "N/A"
+          }). Please try again.`
         );
       }
 
@@ -183,8 +193,15 @@ function SMSConsentForm() {
 
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
-        strategy="lazyOnload"
+        strategy="beforeInteractive"
+        onLoad={() => {
+          console.log("reCAPTCHA loaded successfully");
+          window.grecaptcha.ready(() => {
+            console.log("reCAPTCHA ready");
+          });
+        }}
         onError={() => {
+          console.error("reCAPTCHA failed to load");
           setSubmissionState((prev) => ({
             ...prev,
             error: "Failed to load security features. Please refresh.",
@@ -361,15 +378,20 @@ function SMSConsentForm() {
               </a>
             </div>
 
-            {process.env.NODE_ENV === "development" &&
-              submissionState.captchaScore !== null && (
-                <div className={classes.gmc__captcha_debug}>
-                  reCAPTCHA Score: {submissionState.captchaScore.toFixed(2)}
-                  {submissionState.captchaScore < 0.5 && (
-                    <span> (Below recommended threshold)</span>
-                  )}
-                </div>
-              )}
+            {process.env.NODE_ENV === "development" && (
+              <div className={classes.gmc__captcha_debug}>
+                {submissionState.captchaScore !== null ? (
+                  <>
+                    reCAPTCHA Score: {submissionState.captchaScore.toFixed(2)}
+                    {submissionState.captchaScore < 0.5 && (
+                      <span> (Below recommended threshold)</span>
+                    )}
+                  </>
+                ) : (
+                  "reCAPTCHA debug info will appear after submission"
+                )}
+              </div>
+            )}
           </form>
         )}
       </div>
