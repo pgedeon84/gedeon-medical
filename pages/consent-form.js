@@ -25,17 +25,16 @@ function SMSConsentForm() {
   });
 
   const formRef = useRef(null);
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
+  // Debug environment loading
   useEffect(() => {
-    if (!recaptchaSiteKey) {
-      console.error("reCAPTCHA site key is missing");
-      setSubmissionState((prev) => ({
-        ...prev,
-        error: "Security configuration error. Please contact support.",
-      }));
+    if (typeof window !== "undefined") {
+      console.log(
+        "[DEBUG] reCAPTCHA key present:",
+        !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      );
     }
-  }, [recaptchaSiteKey]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,27 +49,13 @@ function SMSConsentForm() {
         body: JSON.stringify({ token, action }),
       });
 
+      if (!response.ok) throw new Error("Verification failed");
+
       const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        console.error("reCAPTCHA verification failed:", data["error-codes"]);
-        throw new Error(
-          data["error-codes"]?.join(", ") || "Verification failed"
-        );
-      }
-
-      return {
-        success: true,
-        score: data.score || 0,
-        action: data.action,
-      };
+      return data;
     } catch (error) {
       console.error("CAPTCHA verification error:", error);
-      return {
-        success: false,
-        score: 0,
-        "error-codes": ["verification-error"],
-      };
+      throw error;
     }
   };
 
@@ -85,78 +70,46 @@ function SMSConsentForm() {
 
     try {
       if (!window.grecaptcha?.enterprise) {
-        throw new Error(
-          "Security verification not loaded. Please refresh the page."
-        );
+        throw new Error("Security verification not loaded. Please refresh.");
       }
 
-      if (!recaptchaSiteKey) {
-        throw new Error(
-          "Security configuration error. Please contact support."
-        );
+      const token = await window.grecaptcha.enterprise.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        { action: "submit_form" }
+      );
+
+      const result = await verifyCaptcha(token, "submit_form");
+      if (!result.success) {
+        throw new Error(result.error || "Verification failed");
       }
 
-      // Added 5s timeout
-      const token = await window.grecaptcha.enterprise
-        .execute(recaptchaSiteKey, {
-          action: "submit_form",
-          timeout: 5000,
-        })
-        .catch((err) => {
-          throw new Error("Security check timed out. Please try again.");
-        });
-
-      const { success, score } = await verifyCaptcha(token, "submit_form");
-
-      const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.7; // Increased threshold
-      if (!success || (score !== undefined && score < threshold)) {
-        throw new Error(
-          `Security verification failed (score: ${
-            score?.toFixed(1) || "N/A"
-          }). Please try again.`
-        );
-      }
-
+      // Form submission logic here
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...formData,
-            _captcha: "true",
             "g-recaptcha-response": token,
             _subject: "New SMS Consent Form - Gedeon Medical Center",
-            _template: "table",
-            _autoresponse: `Dear ${
-              formData.patientName || "Patient"
-            },\n\nThank you for submitting your SMS consent form.`,
-            _honeypot: "",
           }),
         }
       );
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Form submission failed");
-      }
+      if (!response.ok) throw new Error("Form submission failed");
 
       setSubmissionState({
         submitting: false,
         success: true,
         error: null,
-        captchaScore: score,
+        captchaScore: result.score,
       });
-      formRef.current?.reset();
     } catch (error) {
-      console.error("Form submission error:", error);
       setSubmissionState({
         submitting: false,
         success: false,
-        error: error.message || "An unknown error occurred",
+        error: error.message,
         captchaScore: null,
       });
     }
@@ -167,29 +120,23 @@ function SMSConsentForm() {
       <Head>
         <title>Gedeon Medical Center | SMS Consent Form</title>
         <meta name="description" content="SMS communication consent form" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Navbar />
-      <NavbarSpacer />
-
+      {/* reCAPTCHA Script */}
       <Script
-        src={`https://www.google.com/recaptcha/enterprise.js?render=${recaptchaSiteKey}`}
-        strategy="beforeInteractive"
-        onLoad={() => {
-          console.log("reCAPTCHA Enterprise loaded successfully");
-          window.grecaptcha.enterprise.ready(() => {
-            console.log("reCAPTCHA Enterprise ready");
-          });
-        }}
+        src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="afterInteractive"
+        onLoad={() => console.log("reCAPTCHA loaded successfully")}
         onError={() => {
-          console.error("reCAPTCHA Enterprise failed to load");
           setSubmissionState((prev) => ({
             ...prev,
-            error: "Failed to load security features. Please refresh.",
+            error: "Failed to load security features",
           }));
         }}
       />
+
+      <Navbar />
+      <NavbarSpacer />
 
       <div className={classes.gmc__form_container}>
         <h1>Gedeon Medical Center – SMS Communication Consent Form</h1>
@@ -346,7 +293,6 @@ function SMSConsentForm() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {" "}
                 Privacy
               </a>{" "}
               &amp;{" "}
@@ -355,54 +301,10 @@ function SMSConsentForm() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {" "}
                 Terms
               </a>
             </div>
-
-            {process.env.NODE_ENV === "development" && (
-              <div className={classes.gmc__captcha_debug}>
-                {submissionState.captchaScore !== null ? (
-                  <>
-                    reCAPTCHA Score: {submissionState.captchaScore.toFixed(2)}
-                    {submissionState.captchaScore < 0.5 && (
-                      <span> (Below recommended threshold)</span>
-                    )}
-                  </>
-                ) : (
-                  "reCAPTCHA debug info will appear after submission"
-                )}
-              </div>
-            )}
           </form>
-        )}
-
-        {/* Debug Panel - Development Only */}
-        {process.env.NODE_ENV === "development" && (
-          <div className={classes.gmc__debug_panel}>
-            <h4>reCAPTCHA Debug</h4>
-            <button
-              onClick={async () => {
-                try {
-                  if (!window.grecaptcha?.enterprise) {
-                    alert("reCAPTCHA not loaded! Refresh the page.");
-                    return;
-                  }
-                  const token = await window.grecaptcha.enterprise.execute(
-                    recaptchaSiteKey,
-                    { action: "debug_action" }
-                  );
-                  console.log("Debug Token:", token);
-                  alert(`Token Generated!\nCheck console for details`);
-                } catch (error) {
-                  console.error("Debug Error:", error);
-                  alert("Debug failed: " + error.message);
-                }
-              }}
-            >
-              Generate Test Token
-            </button>
-          </div>
         )}
       </div>
     </>
