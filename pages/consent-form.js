@@ -38,39 +38,17 @@ function SMSConsentForm() {
     }
   }, [recaptchaSiteKey]);
 
-  // Check if reCAPTCHA loads properly
-  useEffect(() => {
-    const checkRecaptchaLoad = () => {
-      if (!window.grecaptcha) {
-        setSubmissionState((prev) => ({
-          ...prev,
-          error: "Security features failed to load. Please refresh the page.",
-        }));
-        return false;
-      }
-      return true;
-    };
-
-    const timer = setTimeout(() => {
-      if (!checkRecaptchaLoad()) {
-        console.error("reCAPTCHA failed to load within 5 seconds");
-      }
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const verifyCaptcha = async (token) => {
+  const verifyCaptcha = async (token, action) => {
     try {
       const response = await fetch("/api/verify-captcha", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token }),
+        body: JSON.stringify({ token, action }),
       });
 
       const data = await response.json();
@@ -99,7 +77,7 @@ function SMSConsentForm() {
 
     try {
       // Validate reCAPTCHA is loaded
-      if (!window.grecaptcha) {
+      if (!window.grecaptcha?.enterprise) {
         throw new Error(
           "Security verification not loaded. Please refresh the page."
         );
@@ -112,17 +90,20 @@ function SMSConsentForm() {
         );
       }
 
-      // Execute reCAPTCHA
-      const token = await window.grecaptcha.execute(recaptchaSiteKey, {
-        action: "submit",
-      });
+      // Execute reCAPTCHA Enterprise
+      const token = await window.grecaptcha.enterprise.execute(
+        recaptchaSiteKey,
+        {
+          action: "submit_form",
+        }
+      );
 
       // Verify with backend
       const {
         success,
         score,
         "error-codes": errorCodes,
-      } = await verifyCaptcha(token);
+      } = await verifyCaptcha(token, "submit_form");
 
       // Validate score
       const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.5;
@@ -134,7 +115,7 @@ function SMSConsentForm() {
         );
       }
 
-      // Submit form data
+      // Submit form data (your existing form submission code)
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
@@ -192,16 +173,16 @@ function SMSConsentForm() {
       <NavbarSpacer />
 
       <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+        src={`https://www.google.com/recaptcha/enterprise.js?render=${recaptchaSiteKey}`}
         strategy="beforeInteractive"
         onLoad={() => {
-          console.log("reCAPTCHA loaded successfully");
-          window.grecaptcha.ready(() => {
-            console.log("reCAPTCHA ready");
+          console.log("reCAPTCHA Enterprise loaded successfully");
+          window.grecaptcha.enterprise.ready(() => {
+            console.log("reCAPTCHA Enterprise ready");
           });
         }}
         onError={() => {
-          console.error("reCAPTCHA failed to load");
+          console.error("reCAPTCHA Enterprise failed to load");
           setSubmissionState((prev) => ({
             ...prev,
             error: "Failed to load security features. Please refresh.",
