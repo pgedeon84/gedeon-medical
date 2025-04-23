@@ -27,7 +27,6 @@ function SMSConsentForm() {
   const formRef = useRef(null);
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  // Verify reCAPTCHA site key is available
   useEffect(() => {
     if (!recaptchaSiteKey) {
       console.error("reCAPTCHA site key is missing");
@@ -60,7 +59,11 @@ function SMSConsentForm() {
         );
       }
 
-      return data;
+      return {
+        success: true,
+        score: data.score || 0,
+        action: data.action,
+      };
     } catch (error) {
       console.error("CAPTCHA verification error:", error);
       return {
@@ -73,41 +76,40 @@ function SMSConsentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmissionState({ submitting: true, success: false, error: null });
+    setSubmissionState({
+      submitting: true,
+      success: false,
+      error: null,
+      captchaScore: null,
+    });
 
     try {
-      // Validate reCAPTCHA is loaded
       if (!window.grecaptcha?.enterprise) {
         throw new Error(
           "Security verification not loaded. Please refresh the page."
         );
       }
 
-      // Validate we have a site key
       if (!recaptchaSiteKey) {
         throw new Error(
           "Security configuration error. Please contact support."
         );
       }
 
-      // Execute reCAPTCHA Enterprise
-      const token = await window.grecaptcha.enterprise.execute(
-        recaptchaSiteKey,
-        {
+      // Added 5s timeout
+      const token = await window.grecaptcha.enterprise
+        .execute(recaptchaSiteKey, {
           action: "submit_form",
-        }
-      );
+          timeout: 5000,
+        })
+        .catch((err) => {
+          throw new Error("Security check timed out. Please try again.");
+        });
 
-      // Verify with backend
-      const {
-        success,
-        score,
-        "error-codes": errorCodes,
-      } = await verifyCaptcha(token, "submit_form");
+      const { success, score } = await verifyCaptcha(token, "submit_form");
 
-      // Validate score
-      const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.5;
-      if (!success || score < threshold) {
+      const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.7; // Increased threshold
+      if (!success || (score !== undefined && score < threshold)) {
         throw new Error(
           `Security verification failed (score: ${
             score?.toFixed(1) || "N/A"
@@ -115,7 +117,6 @@ function SMSConsentForm() {
         );
       }
 
-      // Submit form data (your existing form submission code)
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
@@ -156,7 +157,7 @@ function SMSConsentForm() {
         submitting: false,
         success: false,
         error: error.message || "An unknown error occurred",
-        captchaScore: submissionState.captchaScore,
+        captchaScore: null,
       });
     }
   };
@@ -374,6 +375,34 @@ function SMSConsentForm() {
               </div>
             )}
           </form>
+        )}
+
+        {/* Debug Panel - Development Only */}
+        {process.env.NODE_ENV === "development" && (
+          <div className={classes.gmc__debug_panel}>
+            <h4>reCAPTCHA Debug</h4>
+            <button
+              onClick={async () => {
+                try {
+                  if (!window.grecaptcha?.enterprise) {
+                    alert("reCAPTCHA not loaded! Refresh the page.");
+                    return;
+                  }
+                  const token = await window.grecaptcha.enterprise.execute(
+                    recaptchaSiteKey,
+                    { action: "debug_action" }
+                  );
+                  console.log("Debug Token:", token);
+                  alert(`Token Generated!\nCheck console for details`);
+                } catch (error) {
+                  console.error("Debug Error:", error);
+                  alert("Debug failed: " + error.message);
+                }
+              }}
+            >
+              Generate Test Token
+            </button>
+          </div>
         )}
       </div>
     </>
