@@ -25,6 +25,18 @@ function SMSConsentForm() {
   });
 
   const formRef = useRef(null);
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  // Verify reCAPTCHA site key is available
+  useEffect(() => {
+    if (!recaptchaSiteKey) {
+      console.error("reCAPTCHA site key is missing");
+      setSubmissionState((prev) => ({
+        ...prev,
+        error: "Security configuration error. Please contact support.",
+      }));
+    }
+  }, [recaptchaSiteKey]);
 
   useEffect(() => {
     const handleScriptError = () => {
@@ -35,7 +47,6 @@ function SMSConsentForm() {
     };
 
     const script = document.querySelector('script[src*="recaptcha/api.js"]');
-
     if (script) {
       script.addEventListener("error", handleScriptError);
     }
@@ -64,15 +75,13 @@ function SMSConsentForm() {
         throw new Error(`Verification failed with status ${response.status}`);
       }
 
-      const contentLength = response.headers.get("content-length");
-      if (contentLength === "0") {
-        throw new Error("Empty response from CAPTCHA verification");
-      }
-
       const data = await response.json();
+      if (!data.success) {
+        console.error("reCAPTCHA verification failed:", data["error-codes"]);
+      }
       return data;
     } catch (error) {
-      console.error("CAPTCHA verification failed:", error);
+      console.error("CAPTCHA verification error:", error);
       return { success: false, score: 0, error: error.message };
     }
   };
@@ -82,21 +91,30 @@ function SMSConsentForm() {
     setSubmissionState({ submitting: true, success: false, error: null });
 
     try {
+      // Validate reCAPTCHA is loaded
       if (!window.grecaptcha) {
         throw new Error(
-          "Security verification not ready. Please refresh the page."
+          "Security verification not loaded. Please refresh the page."
         );
       }
 
-      // UPDATE THIS LINE WITH YOUR SITE KEY:
-      const token = await window.grecaptcha.execute(
-        "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY", // REPLACE THIS WITH YOUR KEY
-        { action: "submit" }
-      );
+      // Validate we have a site key
+      if (!recaptchaSiteKey) {
+        throw new Error(
+          "Security configuration error. Please contact support."
+        );
+      }
 
+      // Execute reCAPTCHA
+      const token = await window.grecaptcha.execute(recaptchaSiteKey, {
+        action: "submit",
+      });
+
+      // Verify with backend
       const { success, score, error } = await verifyCaptcha(token);
       if (error) throw new Error(error);
 
+      // Validate score
       const threshold = process.env.NODE_ENV === "development" ? 0.1 : 0.5;
       if (!success || score < threshold) {
         throw new Error(
@@ -106,6 +124,7 @@ function SMSConsentForm() {
         );
       }
 
+      // Submit form data
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
@@ -122,7 +141,7 @@ function SMSConsentForm() {
             _template: "table",
             _autoresponse: `Dear ${
               formData.patientName || "Patient"
-            },\n\nThank you for submitting your SMS consent form to Gedeon Medical Center.`,
+            },\n\nThank you for submitting your SMS consent form.`,
             _honeypot: "",
           }),
         }
@@ -130,7 +149,7 @@ function SMSConsentForm() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Submission failed");
+        throw new Error(errorData.message || "Form submission failed");
       }
 
       setSubmissionState({
@@ -139,7 +158,7 @@ function SMSConsentForm() {
         error: null,
         captchaScore: score,
       });
-      formRef.current.reset();
+      formRef.current?.reset();
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmissionState({
@@ -155,19 +174,22 @@ function SMSConsentForm() {
     <>
       <Head>
         <title>Gedeon Medical Center | SMS Consent Form</title>
-        <meta
-          name="description"
-          content="SMS communication consent form for Gedeon Medical Center"
-        />
+        <meta name="description" content="SMS communication consent form" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Navbar />
       <NavbarSpacer />
-      {/* UPDATE THIS LINE WITH YOUR SITE KEY: */}
+
       <Script
-        src="https://www.google.com/recaptcha/api.js?render=process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY" // REPLACE THIS WITH YOUR KEY
-        strategy="afterInteractive"
+        src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+        strategy="lazyOnload"
+        onError={() => {
+          setSubmissionState((prev) => ({
+            ...prev,
+            error: "Failed to load security features. Please refresh.",
+          }));
+        }}
       />
 
       <div className={classes.gmc__form_container}>
@@ -350,6 +372,11 @@ function SMSConsentForm() {
               )}
           </form>
         )}
+        <style jsx global>{`
+          .grecaptcha-badge {
+            visibility: hidden;
+          }
+        `}</style>
       </div>
     </>
   );

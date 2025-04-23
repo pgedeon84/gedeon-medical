@@ -30,7 +30,7 @@ function Terms() {
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
           >
-            MyChart
+            <strong>MyChart</strong>
           </Link>
         </p>
         <p>
@@ -69,7 +69,7 @@ function Terms() {
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
           >
-            MyChart
+            <strong>MyChart</strong>
           </Link>
         </p>
       </div>
