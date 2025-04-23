@@ -1,0 +1,309 @@
+/* SMS Consent Form Styles - Mobile First */
+.gmc__form_container {
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #333;
+  max-width: 95%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.gmc__form_container h1 {
+  font-family: 'Lato', sans-serif;
+  color: #385CAD;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.gmc__consent_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gmc__form_group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+.gmc__form_group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #385CAD;
+  font-size: 0.95rem;
+}
+
+.gmc__form_group input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.gmc__form_group input:focus {
+  outline: none;
+  border-color: #385CAD;
+  box-shadow: 0 0 0 2px rgba(56, 92, 173, 0.2);
+}
+
+.gmc__consent_text {
+  margin: 1.5rem 0;
+  line-height: 1.6;
+  color: #444;
+}
+
+.gmc__consent_text p {
+  margin-bottom: 1rem;
+}
+
+.gmc__consent_text ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+.gmc__consent_text li {
+  margin-bottom: 0.5rem;
+}
+
+.gmc__disclaimer {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 1rem;
+  font-style: italic;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.gmc__radio_group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.gmc__radio_option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gmc__radio_option input[type="radio"] {
+  accent-color: #385CAD;
+  transform: scale(1.2);
+}
+
+.gmc__radio_option:hover {
+  background-color: #f0f7ff;
+}
+
+.gmc__form_button {
+  background: linear-gradient(274.93deg, #6DC74D -15.76%, #91C4A8 38.17%, #A1C6D0 71.28%, #B4C9FD 111.59%);
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gmc__form_button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gmc__form_button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.gmc__consent_image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.gmc__consent_img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+}
+
+.gmc__form_success {
+  padding: 1.5rem;
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  color: #2e7d32;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.gmc__form_success h2 {
+  color: #2e7d32;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.gmc__form_success p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.gmc__form_error {
+  color: #c62828;
+  background-color: #ffebee;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border-left: 4px solid #c62828;
+}
+
+.gmc__form_error p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* reCAPTCHA v3 Styles */
+.gmc__captcha_badge {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  line-height: 1.5;
+}
+
+.gmc__captcha_badge a {
+  color: #385CAD;
+  text-decoration: none;
+  margin: 0 0.2rem;
+  font-weight: 500;
+}
+
+.gmc__captcha_badge a:hover {
+  text-decoration: underline;
+}
+
+.gmc__captcha_debug {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+/* Responsive Styles */
+@media (min-width: 480px) {
+  .gmc__form_container {
+    padding: 1.75rem;
+  }
+  
+  .gmc__form_container h1 {
+    font-size: 1.75rem;
+  }
+  
+  .gmc__form_group label {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gmc__form_container {
+    padding: 2rem;
+    font-size: 16px;
+    max-width: 90%;
+  }
+  
+  .gmc__form_container h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .gmc__form_group input {
+    font-size: 16px;
+    padding: 0.9rem;
+  }
+  
+  .gmc__form_button {
+    font-size: 17px;
+    padding: 16px 32px;
+  }
+
+  .gmc__radio_group {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1.5rem;
+  }
+  
+  .gmc__consent_img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gmc__form_container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    font-size: 17px;
+  }
+  
+  .gmc__form_container h1 {
+    font-size: 2.25rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .gmc__form_group input {
+    padding: 1rem;
+    font-size: 17px;
+  }
+  
+  .gmc__form_button {
+    font-size: 18px;
+    align-self: center;
+    padding: 18px 36px;
+    min-width: 300px;
+  }
+  
+  .gmc__consent_text {
+    font-size: 1.05rem;
+  }
+  
+  .gmc__consent_img {
+    max-width: 350px;
+  }
+}

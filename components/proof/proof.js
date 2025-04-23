@@ -14,108 +14,37 @@ import simplyHealthCare from "../../public/images/SimplyHealthCare.svg";
 import aetna from "../../public/images/Aetna.svg";
 
 function Proof() {
+  const insuranceProviders = [
+    { src: blue_cross, alt: "Blue Cross Blue Shield" },
+    { src: brightHealth, alt: "Bright Health" },
+    { src: medicare, alt: "Medicare" },
+    { src: mhn, alt: "Memorial Healthcare Network" },
+    { src: medicade, alt: "Medicaid" },
+    { src: sunshineHealth, alt: "Sunshine Health" },
+    { src: devoted, alt: "Devoted Health" },
+    { src: cigna, alt: "Cigna" },
+    { src: solis, alt: "Solis Health" },
+    { src: oscar, alt: "Oscar Health" },
+    { src: simplyHealthCare, alt: "Simply Healthcare" },
+    { src: aetna, alt: "Aetna" },
+  ];
+
   return (
-    <>
-      <p className={classes.gmc__proof_title}>Accepted Insurances</p>
+    <section className={classes.gmc__proof_section}>
+      <h2 className={classes.gmc__proof_title}>Accepted Insurances</h2>
       <div className={classes.gmc__proof}>
-        <div>
-          <Image
-            src={blue_cross}
-            alt="blue-cross insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={brightHealth}
-            alt="bright health care"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={medicare}
-            alt="medicare insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={mhn}
-            alt="memorial healthcare network"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={medicade}
-            alt="medicade insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={sunshineHealth}
-            alt="sunshine health insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={devoted}
-            alt="devoted health insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={cigna}
-            alt="cigna insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={solis}
-            alt="solis insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={oscar}
-            alt="oscar insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={simplyHealthCare}
-            alt="simply healthcare insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
-        <div>
-          <Image
-            src={aetna}
-            alt="aetna insurance"
-            priority
-            className={classes.gmc__proof_img}
-          />
-        </div>
+        {insuranceProviders.map((provider, index) => (
+          <div key={index}>
+            <Image
+              src={provider.src}
+              alt={provider.alt}
+              priority={index < 6} // Only priority load first 6 images
+              className={classes.gmc__proof_img}
+            />
+          </div>
+        ))}
       </div>
-    </>
+    </section>
   );
 }
 

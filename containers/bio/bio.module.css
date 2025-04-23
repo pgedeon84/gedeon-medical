@@ -1,6 +1,20 @@
+/* bio.module.css */
+
 .gmc__bio {
     padding-top: 6rem;
     position: relative;
+}
+
+/* Add this new rule for the wave container */
+.gmc__bio_wave_container {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0; /* Removes extra space below SVG */
+}
+
+.gmc__bio_img_wave {
+  width: 100%;
+  height: auto;
 }
 
 .gmc__bio_content {
@@ -22,16 +36,15 @@
     letter-spacing: -0.01em;
     color: var(--color-text);
     margin-top: 2em;
-    overflow-y: scroll;
-    /* max-height: 35ch; */
+    max-width: 800px; /* Added for better text readability */
 }
 
 .gmc__bio_content_container {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
 }
 
 .gmc__bio_content_container__image {
@@ -39,6 +52,7 @@
     position: relative;
     margin-bottom: 3rem;
 }
+
 .gmc__bio_content_container__image::before {
     content: "";
     position: absolute;
@@ -52,7 +66,10 @@
 
 .gmc__bio_content_container__image img {
     border-radius: 5px;
+    width: 100%;
+    height: auto;
 }
+
 
 .gmc__bio_content_container__content {
     display: flex;
@@ -101,9 +118,12 @@
 @media screen and (min-width: 1050px) {
     .gmc__bio {
         padding-top: 5rem;
-        /* margin-top: 3rem; */
         margin-bottom: 3rem;
-        position: relative;
+    }
+
+    /* Add this for wave in desktop */
+    .gmc__bio_img_wave {
+        margin-top: 0;
     }
 
     .gmc__bio::after {
@@ -114,19 +134,13 @@
         top: 25%;
         right: 18%;
         opacity: .7;
-        background: url(../../public//images/medical-insignia4.svg) no-repeat top right;
+        background: url(../../public/images/medical-insignia4.svg) no-repeat top right;
+        z-index: -1; /* Ensure it stays behind content */
     }
 
-    .gmc__bio_header {
-        margin-bottom: -375px;
-    }
-
-    .gmc__bio_title {
-        margin-top: 50rem;
-    }
-
-    .gmc__bio_content{
+    .gmc__bio_content {
         padding: 6rem 13rem;
+        position: relative;
     }
 
     .gmc__bio_content>p {

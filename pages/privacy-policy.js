@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
+import { NavbarSpacer } from "../components";
 import classes from "./privacyPolicy.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +13,7 @@ function PrivacyPolicy() {
         <title>Gedeon Medical Center | Privacy Policy</title>
       </Head>
       <Navbar />
+      <NavbarSpacer />
       <main className={classes.gmc__privacy_content}>
         <section className={classes.gmc__privacy_container}>
           <h1 className={classes.gmc__privacy_header}>Privacy Policy</h1>
@@ -116,6 +118,11 @@ function PrivacyPolicy() {
               <strong>Please note:</strong> that opting out of communications
               may affect our ability to send you appointment reminders and other
               important updates related to your care.
+            </p>
+            <p className={classes.gmc__privacy_link_consent}>
+              <Link href="/consent-form" passHref>
+                <strong>Fill the SMS Consent Form Online</strong>
+              </Link>
             </p>
             <hr />
             <h2>4. How We Share Your Information</h2>
@@ -253,6 +260,11 @@ function PrivacyPolicy() {
                 privacy safeguards and HIPAA-compliant protocols.
               </li>
             </ul>
+            <p className={classes.gmc__privacy_link_consent}>
+              <Link href="/consent-form" passHref>
+                <strong>Fill the SMS Consent Form Online</strong>
+              </Link>
+            </p>
             <hr />
             <h2>10. Contact Information</h2>
             <p>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/images/GMC-primary-logo-large.svg";
@@ -7,16 +7,23 @@ import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import classes from "./navbar.module.css";
 import utils from "../../styles/utils.module.css";
 
-// import { motion } from "motion/react";
-
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
 
-  //Framer Motion props
-  const top_down = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+
+      setVisible(isScrollingDown && currentScrollPos > 100 ? false : true);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
 
   function NavbarLinks() {
     return (
@@ -61,23 +68,18 @@ function Navbar() {
 
   return (
     <div
-      // initial="hidden"
-      // animate="visible"
-      // variants={top_down}
-      className={classes.gmc__navbar}
+      className={`${classes.gmc__navbar} ${
+        visible ? classes.navbar_visible : classes.navbar_hidden
+      }`}
     >
       <div className={classes.gmc__navbar_links}>
         <div className={classes.gmc__navbar_links__logo}>
-          <Link
-            href="/#home"
-            passHref
-            onClick={() => (document.documentElement.scrollTop = 0)}
-          >
+          <Link href="/#home" passHref onClick={scrollToTop}>
             <Image src={logo} alt="Logo" className={classes.gmc__nav_img} />
           </Link>
         </div>
         <div className={classes.gmc__navbar_links__logo_fav}>
-          <Link href="/#home" passHref>
+          <Link href="/#home" passHref onClick={scrollToTop}>
             <Image
               src={logo_favi}
               alt="Logo"

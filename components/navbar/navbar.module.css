@@ -1,20 +1,42 @@
+/* navbar.module.css */
+
 .gmc__navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .8rem 1rem .2rem 1rem;
-
-    /* position: fixed;
-    top: 0; */
     width: 100%;
     z-index: 200;
     box-shadow: 0px 6px 10px rgba(197, 201, 248, 0.05),
-    0px 48px 80px rgba(0, 0, 0, 0.025);
+                0px 48px 80px rgba(0, 0, 0, 0.025);
     background-color: rgba(255, 255, 255, 0.178);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
+
+
+.navbar_hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.navbar_spacer {
+    height: 60px; /* Should match your navbar height */
+    width: 100%;
+    transition: height 0.3s ease-in-out;
+}
+
+.navbar_visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 
 .gmc__navbar_links__logo {
     display: none;
@@ -32,7 +54,6 @@
 .gmc__navbar_links__container ul {
     display: none;
 }
-
 
 .gmc__navbar_links__contact button {
     display: none;
@@ -52,17 +73,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     text-align: start;
     padding: 3.6rem 2rem;
     position: absolute;
     right: -25px;
     top: 45px;
     min-width: 250px;
-    background-color:var(--bg-color-dark);
+    background-color: var(--bg-color-dark);
     border-radius: 5px 0 0 5px;
-    box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
-    transition: all 3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
     z-index: 100;
 }
 
@@ -94,7 +114,6 @@
     color: var(--color-accent);
 }
 
-
 .gmc__navbar_links__contact button,
 .gmc__navbar_hamburger_container__links_contact button {
     padding: 0.6rem 1rem;
@@ -119,8 +138,6 @@
     background-color: #6abf4b79;
 }
 
-
-
 /* For laptops */
 @media (min-width: 1024px) and (max-width: 1439px) {
     .gmc__nav_img {
@@ -132,9 +149,16 @@
 /* For desktops only */
 @media (min-width: 1440px) {
     .gmc__navbar {
-        position: fixed;
-        top: 0;
         padding: 0 8rem;
+    }
+
+    .gmc__navbar {
+        padding: 0 8rem;
+        height: 85px; /* Explicit height for desktop */
+    }
+    
+    .navbar_spacer {
+        height: 85px; /* Match desktop navbar height */
     }
 
     .gmc__nav_img {

@@ -4,13 +4,16 @@
 }
 
 .gmc__privacy_link {
-      color: #6abf4b;
+    color: #6abf4b;
     font-family: var(--font-family-heading);
     font-weight: 700;
     font-size: 18px;
     text-transform: capitalize;
     padding: 0rem 2rem;
     margin-top: 3rem;
-    text-align: center;
-    text-decoration: underline;    
+    text-align: center;    
+}
+
+.gmc__privacy_link:hover {
+    text-decoration: underline;  
 }

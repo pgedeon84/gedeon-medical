@@ -1,6 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { Navbar, Proof } from "../components";
+import { Navbar, Proof, NavbarSpacer } from "../components";
 import { Header } from "../containers";
 import BackToTopButton from "../components/ui/backToTopButton/backToTopButton";
 
@@ -23,6 +23,7 @@ function Home() {
       </Head>
       <main>
         <Navbar />
+        <NavbarSpacer />
         <Header />
         <Proof />
         <AboutLazy />
