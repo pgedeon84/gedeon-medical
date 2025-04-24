@@ -123,7 +123,7 @@
 
     /* Add this for wave in desktop */
     .gmc__bio_img_wave {
-        margin-top: 0;
+        margin-top: -8rem;
     }
 
     .gmc__bio::after {
@@ -141,6 +141,7 @@
     .gmc__bio_content {
         padding: 6rem 13rem;
         position: relative;
+        margin-top: -2rem;
     }
 
     .gmc__bio_content>p {

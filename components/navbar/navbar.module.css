@@ -138,6 +138,124 @@
     background-color: #6abf4b79;
 }
 
+/* Mobile Menu Styles */
+.menu_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 199;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.menu_overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile_menu {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 6rem 2rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 200;
+}
+
+.mobile_menu.menu_open {
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.mobile_nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile_nav a {
+  color: #385CAD;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.mobile_nav a:hover {
+  color: #2a4365;
+  background: rgba(56, 92, 173, 0.1);
+  transform: translateX(5px);
+}
+
+.menu_icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 201;
+}
+
+/* Font Styling */
+.nav_link {
+  font-family: var(--font-family-text); /* Your custom font */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  text-transform: capitalize;
+  color: var(--color-text-alt);
+  transition: color 0.3s ease;
+}
+
+/* Mobile Menu Typography */
+.mobile_nav .nav_link {
+  font-size: 1.1rem;
+  color: #385CAD; /* Or use your variable */
+}
+
+.mobile_nav .nav_link:hover {
+  color: var(--color-accent);
+}
+
+/* Desktop Menu Typography */
+.gmc__navbar_links__container .nav_link {
+  color: var(--color-text);
+  margin: 0 1rem;
+}
+
+.gmc__navbar_links__container .nav_link:hover {
+  color: var(--color-accent);
+}
+
+/* Desktop styles remain the same */
+@media (min-width: 1440px) {
+  .mobile_menu {
+    display: none;
+  }
+  
+  .menu_overlay {
+    display: none;
+  }
+  
+  .gmc__navbar_hamburger {
+    display: none;
+  }
+}
+
 /* For laptops */
 @media (min-width: 1024px) and (max-width: 1439px) {
     .gmc__nav_img {

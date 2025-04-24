@@ -9,12 +9,12 @@ import Script from "next/script";
 
 function SMSConsentForm() {
   const [formData, setFormData] = useState({
-    patientName: "",
-    dateOfBirth: "",
-    mobileNumber: "",
-    consentStatus: "",
-    signature: "",
-    date: new Date().toISOString().split("T")[0],
+    Patient_Name: "",
+    Date_Of_Birth: "",
+    Mobile_Number: "",
+    Consent_Status: "",
+    Signature: "",
+    Date: new Date().toISOString().split("T")[0],
   });
 
   const [submissionState, setSubmissionState] = useState({
@@ -91,7 +91,6 @@ function SMSConsentForm() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...formData,
-            "g-recaptcha-response": token,
             _subject: "New SMS Consent Form - Gedeon Medical Center",
           }),
         }
@@ -139,7 +138,9 @@ function SMSConsentForm() {
       <NavbarSpacer />
 
       <div className={classes.gmc__form_container}>
-        <h1>Gedeon Medical Center – SMS Communication Consent Form</h1>
+        <h1>
+          Gedeon Medical Center <br /> SMS Communication Consent Form
+        </h1>
 
         <div className={classes.gmc__consent_image_container}>
           <Image
@@ -153,7 +154,7 @@ function SMSConsentForm() {
         {submissionState.success ? (
           <div className={classes.gmc__form_success}>
             <h2>✓ Consent Form Submitted</h2>
-            <p>A confirmation has been sent to your email.</p>
+            <p>A confirmation has been sent.</p>
           </div>
         ) : (
           <form
@@ -168,7 +169,7 @@ function SMSConsentForm() {
                 type="text"
                 id="patientName"
                 name="patientName"
-                value={formData.patientName}
+                value={formData.Patient_Name}
                 onChange={handleChange}
                 required
                 minLength={2}
@@ -181,7 +182,7 @@ function SMSConsentForm() {
                 type="date"
                 id="dateOfBirth"
                 name="dateOfBirth"
-                value={formData.dateOfBirth}
+                value={formData.Date_Of_Birth}
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split("T")[0]}
@@ -194,7 +195,7 @@ function SMSConsentForm() {
                 type="tel"
                 id="mobileNumber"
                 name="mobileNumber"
-                value={formData.mobileNumber}
+                value={formData.Mobile_Number}
                 onChange={handleChange}
                 pattern="[0-9]{10}"
                 title="10-digit phone number without spaces or dashes"
@@ -251,7 +252,7 @@ function SMSConsentForm() {
                 type="text"
                 id="signature"
                 name="signature"
-                value={formData.signature}
+                value={formData.Signature}
                 onChange={handleChange}
                 required
                 minLength={2}
@@ -264,7 +265,7 @@ function SMSConsentForm() {
                 type="date"
                 id="date"
                 name="date"
-                value={formData.date}
+                value={formData.Date}
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split("T")[0]}

@@ -1,69 +1,141 @@
+/* terms.module.css */
+
+/* Base Styles - Mobile First */
 .gmc__terms_section {
-    background: linear-gradient(180deg, #B4C9FD -107.24%, #fdfdfd 64.22%);
+  background: linear-gradient(180deg, #B4C9FD -107.24%, #fdfdfd 64.22%);
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .gmc__terms_header {
-    padding: 6rem 0 3rem;
+  padding: 3rem 0 2rem;
+}
+
+.gmc__terms_content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
 }
 
 .gmc__terms_content h3 {
-     color: var(--color-text);
-    font-family: var(--font-family-heading);
-    font-weight: 700;
-    font-size: 18px;
-    text-transform: capitalize;
-    padding: 0rem 2rem;
-    margin-top: 3rem;
-    text-align: center;
-    font-style: italic;
+  color: var(--color-text);
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: capitalize;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 2rem;
 }
 
 .gmc__terms_content p {
-    font-family: var(--font-family-text);
-    color: var(--color-text);
-    font-weight: 300;
-    line-height: 1.6;
-    letter-spacing: -0.01em;
-    padding: 0rem 2rem 0rem 2rem;
-    font-size: 16px;
-    margin: 1em 0 0 0;
-    overflow-y: scroll;
+  font-family: var(--font-family-text);
+  color: var(--color-text);
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  padding: 0 2rem;
+  font-size: 16px;
+  margin: 1em 0 0 0;
 }
 
 .gmc__terms_chart {
-    color: #6abf4b;
-    text-transform: uppercase;
+  color: #6abf4b;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 .gmc__terms_chart:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .gmc__terms_list {
-    list-style: square;
-    margin: 0 2rem;
-    padding: 0 2rem;
-    font-family: var(--font-family-text);
-    color: var(--color-text);
-    font-size: 16px;
-    overflow-y: scroll;
+  list-style-type: square;
+  margin: 0 2rem;
+  padding: 0 1rem;
+  font-family: var(--font-family-text);
+  color: var(--color-text);
+  font-size: 16px;
 }
 
+.gmc__terms_list li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  list-style-type: circle;
+}
+
+/* Hide scrollbars globally */
+.gmc__terms_section::-webkit-scrollbar,
+.gmc__terms_content::-webkit-scrollbar,
+.gmc__terms_content p::-webkit-scrollbar,
+.gmc__terms_list::-webkit-scrollbar {
+  display: none;
+}
+
+.gmc__terms_section,
+.gmc__terms_content,
+.gmc__terms_content p,
+.gmc__terms_list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tablet Styles (min-width: 768px) */
 @media (min-width: 768px) {
-
-    .gmc__terms_header {
+  .gmc__terms_header {
     padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  
+  .gmc__terms_content {
+    margin: 0 6rem;
+  }
+  
+  .gmc__terms_content h3 {
+    font-size: 20px;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .gmc__terms_content p {
+    font-size: 17px;
+  }
 }
-       
-    .gmc__terms_content {
-        margin: 0 6rem;
-}
-    }
 
-    /* Styles for Desktop Screens */
-    @media (min-width: 1024px) {
-       
-        .gmc__terms_content {
+/* Desktop Styles (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .gmc__terms_content {
     margin: 0 10rem;
+  }
+  
+  .gmc__terms_content h3 {
+    font-size: 22px;
+    margin-top: 5rem;
+  }
+  
+  .gmc__terms_content p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  
+  .gmc__terms_list {
+    font-size: 18px;
+  }
 }
-    }
+
+/* Large Desktop Styles (min-width: 1440px) */
+@media (min-width: 1440px) {
+  .gmc__terms_content {
+    margin: 0 auto;
+    padding: 0 12rem 4rem;
+  }
+  
+  .gmc__terms_content h3 {
+    font-size: 24px;
+  }
+}
