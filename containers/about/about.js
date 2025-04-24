@@ -9,7 +9,6 @@ import physiciansIcon from "../../public/images/physicians-icon.svg";
 import experienceIcon from "../../public/images/experience-icon.svg";
 import telehealthIcon from "../../public/images/telehealth-icon.svg";
 import Button from "../../components/ui/button/button";
-import AnimatedSection from "../../components/ui/animatedSection";
 import AnimatedItem from "../../components/ui/animatedItem";
 import { scrollAnimation } from "../../utils/animations"; // Add this import
 
@@ -42,7 +41,7 @@ function About() {
   ];
 
   return (
-    <AnimatedSection
+    <section
       id="about"
       className={`${classes.gmc__about} ${utils.section__padding}`}
     >
@@ -97,7 +96,7 @@ function About() {
           </AnimatedItem>
         ))}
       </AnimatedItem>
-    </AnimatedSection>
+    </section>
   );
 }
 

@@ -5,14 +5,15 @@ import doctor from "../../public/images/doctor.svg";
 import wave from "../../public/images/wave_alt.svg";
 import Stars from "../../components/ui/stars/stars";
 import { motion } from "framer-motion";
+import AnimatedItem from "../../components/ui/animatedItem";
 
 function Bio() {
   return (
     <section id="meetthedoc" className={classes.gmc__bio}>
       {/* Static header */}
-      <div className={classes.gmc__bio_header}>
+      <AnimatedItem className={classes.gmc__bio_header}>
         <SectionTitle title="meet the doc" />
-      </div>
+      </AnimatedItem>
 
       {/* Wave decoration - subtle animation */}
       <motion.div
