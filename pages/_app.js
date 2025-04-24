@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import Head from "next/head";
-import PageTransition from "../components/page-transition/PageTransition";
+import PageTransition from "../components/page-transition/page-transition";
 
 function MyApp({ Component, pageProps, router }) {
   return (
