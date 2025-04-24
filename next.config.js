@@ -1,6 +1,4 @@
 const nextConfig = {
-  // Modern Next.js doesn't need target configuration
-  // Remove the entire 'target' property
   reactStrictMode: true,
   env: {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
@@ -9,7 +7,4 @@ const nextConfig = {
   // output: 'export',
 };
 
-module.exports = {
-  reactStrictMode: true,
-  nextConfig,
-};
+module.exports = nextConfig;
