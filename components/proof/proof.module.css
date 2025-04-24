@@ -1,107 +1,111 @@
 /* proof.module.css */
+.gmc__proof_section {
+  width: 100%;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  background: white; /* or your preferred background */
+}
 
 .gmc__proof_title {
-    color: var(--color-text);
-    text-align: center;
-    margin: 3rem 0 0.3rem 0;
-    font-family: var(--font-family-text);
-    opacity: 0.8;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: var(--font-family-heading); /* Your original font */
+  font-weight: 700; /* Your original weight */
+  font-size: 1.5rem; /* Your original size */
+  color: var(--color-text); /* Your original color */
+  letter-spacing: 0.03em; /* Your original spacing */
+  will-change: transform, opacity;
 }
 
 .gmc__proof {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 1rem;
-    justify-items: center;
-    align-items: center;
-    padding: 1rem 0.8rem;
-    margin: 0 auto;
-    background-color: #fdfdfd;
-    animation: fadeIn 1s ease-in-out;
-    max-width: 1200px;
-}
-
-.gmc__proof div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  padding: 0 1rem;
 }
 
 .gmc__proof_img {
-    width: 100%;
-    height: auto;
-    max-width: 80px;
-    max-height: 80px;
-    object-fit: contain;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    filter: grayscale(30%);
-    opacity: 0.9;
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  object-fit: contain;
+  will-change: transform, opacity;
+  transform-origin: center;
+  transition: filter 0.3s ease; /* Smooth hover effect */
 }
 
 .gmc__proof_img:hover {
-    transform: scale(1.05);
-    opacity: 1;
-    filter: grayscale(0%);
+  filter: contrast(80%) grayscale(70%); /* Color on hover */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        visibility: hidden;     
-    }
-    to {
-        opacity: 1;
-        visibility: visible;    
-    }
+/* proof.module.css */
+/* ... (keep all your existing styles) */
+
+.gmc__proof_img {
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  object-fit: contain;
+  will-change: transform, opacity;
+  transform-origin: center;
+  /* filter: grayscale(100%) contrast(60%); */
+  transition: 
+    filter 0.3s ease,
+    transform 0.2s ease-out; /* Smooth transform on hover */
 }
 
-/* Medium screens (tablets) */
-@media screen and (min-width: 640px) {
-    .gmc__proof {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 1.5rem;
-        padding: 1.5rem 2rem;
-    }
-
-    .gmc__proof_img {
-        max-width: 100px;
-        max-height: 100px;
-    }
-
-    .gmc__proof_title {
-        font-size: 14px;
-        margin: 4rem 0 1rem 0;
-    }
+/* Enhanced hover effects */
+.gmc__proof div:hover .gmc__proof_img {
+  filter: grayscale(80%) contrast(100%);
+  transform: scale(1.1); /* Fallback for browsers not supporting motion */
+  z-index: 1; /* Bring hovered item above others */
 }
 
-/* Large screens (desktops) */
-@media screen and (min-width: 1040px) {
-    .gmc__proof {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-        padding: 2rem 4rem;
-    }
-
-    .gmc__proof_img {
-        max-width: 150px;
-        max-height: 150px;
-    }
-
-    .gmc__proof_title {
-        font-size: 16px;
-        margin: 5rem 0 1.5rem 0;
-        letter-spacing: 1.5px;
-    }
+/* Responsive adjustments remain the same */
+@media screen and (min-width: 768px) {
+  /* ... (keep your existing media queries) */
 }
 
-/* Extra large screens */
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .gmc__proof_title {
+    font-size: 1.8rem; /* Larger on tablets */
+    margin-bottom: 2.5rem;
+  }
+  
+  .gmc__proof {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .gmc__proof_section {
+    padding: 4rem 2rem;
+  }
+
+  .gmc__proof_title {
+    font-size: 2rem; /* Larger on desktop */
+    margin-bottom: 3rem;
+  }
+
+  .gmc__proof {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2.5rem;
+  }
+
+  .gmc__proof_img {
+    max-width: 180px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
-    .gmc__proof {
-        padding: 2rem 11rem;
-    }
+  .gmc__proof {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3rem;
+  }
 }

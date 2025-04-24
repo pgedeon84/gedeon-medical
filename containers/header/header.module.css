@@ -162,6 +162,94 @@
     width: 100%;
     
 }
+/* Add this to your header.module.css */
+
+/* Underline element for the h1 animation */
+.gmc__header_content h1 {
+  position: relative;
+  overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+}
+
+.underline {
+  position: absolute;
+  height: 4px;
+  background: var(--color-accent);
+  top: -10px;
+  left: 0;
+}
+
+@media screen and (min-width: 1050px) {
+  .underline {
+    height: 6px;
+    top: -20px;
+  }
+}
+
+/* Remove the existing h1::before styles since we're replacing it with motion animation */
+.gmc__header_content h1::before {
+  content: none;
+}
+
+/* Remove the existing CSS animations since we're using Framer Motion */
+.gmc__header_content h1,
+.gmc__header_content p,
+.gmc__header_content button,
+.gmc__header_content__trust_container,
+.gmc__header_image_sm,
+.gmc__header_image_lg {
+  animation-name: none;
+  -webkit-animation-name: none;
+}
+
+/* Add to your header.module.css */
+
+/* SVG specific optimizations */
+.gmc__header_content__trust_container_item svg {
+  width: 12px;
+  height: 12px;
+  transform-origin: center; /* Ensures scaling happens from center */
+  backface-visibility: hidden; /* Improves rendering performance */
+  will-change: transform, opacity; /* Hint to browser for optimization */
+}
+
+@media screen and (min-width: 1050px) {
+  .gmc__header_content__trust_container_item svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Image container optimizations */
+.gmc__header_image_sm,
+.gmc__header_image_lg {
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
+}
+
+/* Remove any existing transitions that might conflict */
+.gmc__header_image_sm_size,
+.gmc__header_image_lg_size {
+  transition: none !important;
+}
+
+/* Underline animation adjustments */
+.underline {
+  position: absolute;
+  height: 4px;
+  background: var(--color-accent);
+  top: -10px;
+  left: 0;
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+@media screen and (min-width: 1050px) {
+  .underline {
+    height: 6px;
+    top: -20px;
+  }
+}
 
 @media screen and (min-width: 1050px) {
     .gmc__header {

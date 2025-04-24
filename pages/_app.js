@@ -1,7 +1,9 @@
+import { AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import Head from "next/head";
+import PageTransition from "../components/page-transition/PageTransition";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <Head>
@@ -14,7 +16,12 @@ function MyApp({ Component, pageProps }) {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="icon" type="image/svg" href="gmc-favicon.svg" />
       </Head>
-      <Component {...pageProps} />
+
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
     </>
   );
 }

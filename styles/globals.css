@@ -26,6 +26,15 @@
   scroll-behavior: smooth;
 }
 
+/* styles/globals.css */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
 
 ul {
   list-style: none;
@@ -52,6 +61,19 @@ body {
   pointer-events: none;
 }
 
+[data-animate] {
+  will-change: transform, opacity;
+}
+
+.animate-item {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.animate-icon {
+  transform-origin: center;
+  will-change: transform, opacity;
+}
 
 @media screen and (min-width: 1050px){
 

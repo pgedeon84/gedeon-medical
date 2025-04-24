@@ -1,31 +1,97 @@
 import SectionTitle from "../../components/ui/section-title/section-title";
 import classes from "./terms.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import AnimatedSection from "../../components/ui/animatedSection";
+import AnimatedItem from "../../components/ui/animatedItem";
 
 function Terms() {
   return (
     <section id="gmc_communications" className={classes.gmc__terms_section}>
-      <div className={classes.gmc__terms_header}>
+      <AnimatedItem className={classes.gmc__terms_header}>
         <SectionTitle title="GMC Communications" />
-      </div>
-      <div className={classes.gmc__terms_content}>
-        <h3 className={classes.terms_title}>
+      </AnimatedItem>
+
+      <AnimatedItem className={classes.gmc__terms_content}>
+        <motion.h3
+          className={classes.terms_title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        >
           Text Messaging (SMS) Application Terms and Conditions
-        </h3>
-        <p className={classes.terms_paragraph}>
+        </motion.h3>
+
+        <motion.p
+          className={classes.terms_paragraph}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <strong>Gedeon Medical Center (GMC)</strong> uses MyChart by Epic -
           provided by Memorial Healthcare System.
-        </p>
-        <p className={classes.terms_paragraph}>
+        </motion.p>
+
+        <motion.p
+          className={classes.terms_paragraph}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <strong>Signing up</strong> for MyChart allows the following:
-        </p>
-        <ul className={classes.gmc__terms_list}>
-          <li>Access to your medical records</li>
-          <li>Electronic communication with providers and staff</li>
-          <li>Scheduling</li>
-          <li>And more!</li>
-        </ul>
-        <p className={classes.terms_paragraph}>
+        </motion.p>
+
+        <motion.ul
+          className={classes.gmc__terms_list}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Access to your medical records
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Electronic communication with providers and staff
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Scheduling
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            And more!
+          </motion.li>
+        </motion.ul>
+
+        <motion.p
+          className={classes.terms_paragraph}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
           Use the following link to sign up for:{" "}
           <Link
             href="https://mychart.mhs.net/mychart/Authentication/Login"
@@ -33,8 +99,15 @@ function Terms() {
           >
             <strong>MyChart</strong>
           </Link>
-        </p>
-        <div className={classes.terms_text_block}>
+        </motion.p>
+
+        <motion.div
+          className={classes.terms_text_block}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          viewport={{ once: true }}
+        >
           <p>
             <strong>MyChart</strong> application allows patients to receive text
             message alerts related to their GMC visits, MyChart account,
@@ -79,8 +152,8 @@ function Terms() {
               <strong>MyChart</strong>
             </Link>
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </AnimatedItem>
     </section>
   );
 }

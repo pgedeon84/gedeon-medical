@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function AboutCard(props) {
   return (
-    <div className={classes.gmc__aboutCard}>
+    <div className={`${classes.gmc__aboutCard} h-full flex flex-col`}>
       <div className={classes.gmc__aboutCard_icon}>
         <Image src={props.imgSrc} alt="icon" />
       </div>

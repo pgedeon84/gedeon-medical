@@ -1,5 +1,7 @@
 import classes from "./proof.module.css";
 import Image from "next/image";
+import AnimatedSection from "../ui/animatedSection";
+import AnimatedItem from "../ui/animatedItem";
 import medicare from "../../public/images/medicare.svg";
 import cigna from "../../public/images/cigna.svg";
 import blue_cross from "../../public/images/blue-cross.svg";
@@ -30,21 +32,47 @@ function Proof() {
   ];
 
   return (
-    <section className={classes.gmc__proof_section}>
-      <h2 className={classes.gmc__proof_title}>Accepted Insurances</h2>
-      <div className={classes.gmc__proof}>
+    <AnimatedSection className={classes.gmc__proof_section}>
+      <AnimatedItem>
+        <h2 className={classes.gmc__proof_title}>Accepted Insurances</h2>
+      </AnimatedItem>
+
+      <AnimatedItem
+        className={classes.gmc__proof}
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.1,
+              delayChildren: 0.3,
+            },
+          },
+        }}
+      >
         {insuranceProviders.map((provider, index) => (
-          <div key={index}>
+          <AnimatedItem
+            key={index}
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.6,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              },
+            }}
+          >
             <Image
               src={provider.src}
               alt={provider.alt}
-              priority={index < 6} // Only priority load first 6 images
+              priority={index < 6}
               className={classes.gmc__proof_img}
             />
-          </div>
+          </AnimatedItem>
         ))}
-      </div>
-    </section>
+      </AnimatedItem>
+    </AnimatedSection>
   );
 }
 

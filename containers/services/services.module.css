@@ -1,47 +1,127 @@
+/* Base Styles (Mobile First) */
+.gmc__service {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
 .gmc__service_header {
-    margin: 0 0 4rem;
+  margin: 0 0 3rem;
+  text-align: center;
+  will-change: transform, opacity;
 }
 
-/* .gmc__service_card__container {
-    
-} */
-
-.gmc__service_card__container span {
-    margin-right: .6rem;
+.gmc__service_card__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  will-change: transform, opacity;
 }
-
- .gmc__service_card__container span svg {
-     width: 2rem;
-     height: 2rem;
- }
 
 .gmc__service_card__container li {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-weight: 300;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: 300;
+  line-height: 1.5;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
-@media screen and (min-width: 1050px){
-    .gmc__service {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 85%;
-        margin: 3rem auto 2rem;
-        position: relative;
-    }
+.gmc__service_card__container span {
+  display: inline-flex;
+  margin-right: 0.6rem;
+  will-change: transform, opacity;
+}
 
-    .gmc__service_card__container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 85%;
-    }
+.gmc__service_card__container span svg {
+  width: 2rem;
+  height: 2rem;
+  transform-origin: center;
+  flex-shrink: 0;
+}
 
-    .gmc__service_card__container span svg{
-        width: 1.8rem;
-        height: 1.8rem;
-    }
+/* Tablet Styles (min-width: 768px) */
+@media screen and (min-width: 768px) {
+  .gmc__service {
+    padding: 3rem 2rem;
+  }
+
+  .gmc__service_card__container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Added space-around */
+    align-items: stretch; /* Better card alignment */
+  }
+
+  .gmc__service_card__container > * {
+    flex: 1 1 45%; /* Allows two cards per row with space-around */
+    min-width: 300px; /* Minimum card width */
+    max-width: 400px; /* Maximum card width */
+  }
+
+  .gmc__service_card__container span svg {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+}
+
+/* Desktop Styles (min-width: 1050px) */
+@media screen and (min-width: 1050px) {
+  .gmc__service {
+    width: 85%;
+    margin: 4rem auto;
+    padding: 3rem 0;
+  }
+
+  .gmc__service_card__container {
+    justify-content: space-around; /* Ensures centered spacing */
+    gap: 2rem;
+  }
+
+  .gmc__service_card__container > * {
+    flex: 1 1 40%; /* More balanced card distribution */
+  }
+
+  .gmc__service_card__container span svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+.gmc__service_header,
+.gmc__service_card__container,
+.gmc__service_card__container li {
+  will-change: transform, opacity;
+}
+
+.gmc__service_card__container li {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.gmc__service_card__container span svg {
+  transform-origin: center;
+}
+
+/* Large Desktop Styles (min-width: 1440px) */
+@media screen and (min-width: 1440px) {
+  .gmc__service {
+    width: 80%;
+    max-width: 1400px;
+  }
+
+  .gmc__service_card__container {
+    gap: 3rem;
+    justify-content: space-around; /* Consistent spacing */
+  }
+
+  .gmc__service_card__container > * {
+    flex: 0 1 400px; /* Fixed card width with space-around */
+  }
 }

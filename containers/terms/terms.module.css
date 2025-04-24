@@ -85,6 +85,47 @@
   scrollbar-width: none;
 }
 
+.terms_title,
+.terms_paragraph,
+.gmc__terms_list,
+.terms_text_block {
+  will-change: transform, opacity; /* Optimize animations */
+}
+
+.gmc__terms_list li {
+  will-change: transform, opacity;
+}
+
+/* Enhanced link hover effect */
+.gmc__terms_chart {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.gmc__terms_chart:hover {
+  text-decoration: none;
+  color: #5aa83a; /* Slightly darker green on hover */
+}
+
+.gmc__terms_chart::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #6abf4b;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.gmc__terms_chart:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
 /* Tablet Styles (min-width: 768px) */
 @media (min-width: 768px) {
   .gmc__terms_header {

@@ -114,6 +114,35 @@
     margin-right: .5rem;
 }
 
+/* Animation optimizations */
+.gmc__bio_content_container__image,
+.gmc__bio_content_container__content,
+.gmc__bio_content_container__content h1,
+.gmc__bio_content_container__content p,
+.gmc__bio_content_container__content_rating,
+.gmc__bio_content > p {
+  will-change: transform, opacity;
+}
+
+/* Enhanced doctor image effect */
+.gmc__bio_content_container__image {
+  transform-origin: bottom center;
+}
+
+/* Smooth transitions for desktop layout */
+@media screen and (min-width: 1050px) {
+  .gmc__bio_content_container {
+    transition: all 0.5s ease-out;
+  }
+  
+  .gmc__bio_content_container__image {
+    transition: transform 0.3s ease;
+  }
+  
+  .gmc__bio_content_container__image:hover {
+    transform: translateY(-5px);
+  }
+}
 
 @media screen and (min-width: 1050px) {
     .gmc__bio {

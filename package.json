@@ -10,6 +10,7 @@
   "dependencies": {
     "@typeform/embed-react": "^1.13.0",
     "aos": "^3.0.0-beta.6",
+    "framer-motion": "^12.9.1",
     "motion": "^11.11.17",
     "next": "^15.0.3",
     "node": "^23.2.0",
