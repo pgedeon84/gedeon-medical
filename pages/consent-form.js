@@ -17,6 +17,7 @@ function SMSConsentForm() {
     Date: new Date().toISOString().split("T")[0],
   });
 
+  const [formErrors, setFormErrors] = useState({});
   const [submissionState, setSubmissionState] = useState({
     submitting: false,
     success: false,
@@ -26,7 +27,6 @@ function SMSConsentForm() {
 
   const formRef = useRef(null);
 
-  // Debug environment loading
   useEffect(() => {
     if (typeof window !== "undefined") {
       console.log(
@@ -39,6 +39,44 @@ function SMSConsentForm() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error when user starts typing
+    if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.Patient_Name.trim()) {
+      errors.Patient_Name = "Patient name is required";
+    }
+
+    if (!formData.Date_Of_Birth) {
+      errors.Date_Of_Birth = "Date of birth is required";
+    }
+
+    if (!formData.Mobile_Number) {
+      errors.Mobile_Number = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.Mobile_Number)) {
+      errors.Mobile_Number = "Please enter a valid 10-digit number";
+    }
+
+    if (!formData.Consent_Status) {
+      errors.Consent_Status = "Consent selection is required";
+    }
+
+    if (!formData.Signature.trim()) {
+      errors.Signature = "Signature is required";
+    }
+
+    if (!formData.Date) {
+      errors.Date = "Date is required";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const verifyCaptcha = async (token, action) => {
@@ -61,6 +99,11 @@ function SMSConsentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate form before submission
+    const isValid = validateForm();
+    if (!isValid) return;
+
     setSubmissionState({
       submitting: true,
       success: false,
@@ -121,7 +164,6 @@ function SMSConsentForm() {
         <meta name="description" content="SMS communication consent form" />
       </Head>
 
-      {/* reCAPTCHA Script */}
       <Script
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
@@ -164,43 +206,58 @@ function SMSConsentForm() {
             noValidate
           >
             <div className={classes.gmc__form_group}>
-              <label htmlFor="patientName">Patient Name:</label>
+              <label htmlFor="Patient_Name">Patient Name:</label>
               <input
                 type="text"
-                id="patientName"
-                name="patientName"
+                id="Patient_Name"
+                name="Patient_Name"
                 value={formData.Patient_Name}
                 onChange={handleChange}
                 required
                 minLength={2}
               />
+              {formErrors.Patient_Name && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Patient_Name}
+                </span>
+              )}
             </div>
 
             <div className={classes.gmc__form_group}>
-              <label htmlFor="dateOfBirth">Date of Birth:</label>
+              <label htmlFor="Date_Of_Birth">Date of Birth:</label>
               <input
                 type="date"
-                id="dateOfBirth"
-                name="dateOfBirth"
+                id="Date_Of_Birth"
+                name="Date_Of_Birth"
                 value={formData.Date_Of_Birth}
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split("T")[0]}
               />
+              {formErrors.Date_Of_Birth && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Date_Of_Birth}
+                </span>
+              )}
             </div>
 
             <div className={classes.gmc__form_group}>
-              <label htmlFor="mobileNumber">Mobile Number:</label>
+              <label htmlFor="Mobile_Number">Mobile Number:</label>
               <input
                 type="tel"
-                id="mobileNumber"
-                name="mobileNumber"
+                id="Mobile_Number"
+                name="Mobile_Number"
                 value={formData.Mobile_Number}
                 onChange={handleChange}
                 pattern="[0-9]{10}"
                 title="10-digit phone number without spaces or dashes"
                 required
               />
+              {formErrors.Mobile_Number && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Mobile_Number}
+                </span>
+              )}
             </div>
 
             <div className={classes.gmc__consent_text}>
@@ -224,13 +281,18 @@ function SMSConsentForm() {
 
             <fieldset className={classes.gmc__radio_group}>
               <legend>Consent to Receive SMS Messages</legend>
+              {formErrors.Consent_Status && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Consent_Status}
+                </span>
+              )}
               <label className={classes.gmc__radio_option}>
                 <input
                   type="radio"
-                  name="consentStatus"
+                  name="Consent_Status"
                   value="agree"
                   onChange={handleChange}
-                  required
+                  checked={formData.Consent_Status === "agree"}
                 />
                 <span>I consent to receive SMS messages</span>
               </label>
@@ -238,38 +300,49 @@ function SMSConsentForm() {
               <label className={classes.gmc__radio_option}>
                 <input
                   type="radio"
-                  name="consentStatus"
+                  name="Consent_Status"
                   value="decline"
                   onChange={handleChange}
+                  checked={formData.Consent_Status === "decline"}
                 />
                 <span>I do not consent at this time</span>
               </label>
             </fieldset>
 
             <div className={classes.gmc__form_group}>
-              <label htmlFor="signature">Signature (Type Full Name):</label>
+              <label htmlFor="Signature">Signature (Type Full Name):</label>
               <input
                 type="text"
-                id="signature"
-                name="signature"
+                id="Signature"
+                name="Signature"
                 value={formData.Signature}
                 onChange={handleChange}
                 required
                 minLength={2}
               />
+              {formErrors.Signature && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Signature}
+                </span>
+              )}
             </div>
 
             <div className={classes.gmc__form_group}>
-              <label htmlFor="date">Today&apos;s Date:</label>
+              <label htmlFor="Date">Today&apos;s Date:</label>
               <input
                 type="date"
-                id="date"
-                name="date"
+                id="Date"
+                name="Date"
                 value={formData.Date}
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split("T")[0]}
               />
+              {formErrors.Date && (
+                <span className={classes.gmc__form_error_text}>
+                  {formErrors.Date}
+                </span>
+              )}
             </div>
 
             <button

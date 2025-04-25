@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import Head from "next/head";
 import PageTransition from "../components/page-transition/page-transition";
 
 function MyApp({ Component, pageProps, router }) {
+  useEffect(() => {
+    // Remove no-js class and make visible
+    const html = document.documentElement;
+    html.classList.remove("no-js");
+    html.classList.add("visible");
+  }, []);
+
   return (
     <>
       <Head>

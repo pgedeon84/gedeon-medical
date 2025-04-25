@@ -1,5 +1,7 @@
 import classes from "./navbar.module.css";
 
-export default function NavbarSpacer() {
+const NavbarSpacer = () => {
   return <div className={classes.navbar_spacer} />;
-}
+};
+
+export default NavbarSpacer;

@@ -1,22 +1,26 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
+
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" className="no-js">
         <Head>
-          {/* Add this critical CSS to prevent initial FOUC */}
           <style
             dangerouslySetInnerHTML={{
               __html: `
-              body {
-                opacity: 0;
+              html.no-js {
                 visibility: hidden;
+                opacity: 0;
               }
-              body.visible {
-                opacity: 1;
+              html.visible {
                 visibility: visible;
-                transition: opacity 0.4s ease;
+                opacity: 1;
+                transition: opacity 400ms ease;
               }
             `,
             }}

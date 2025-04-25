@@ -225,7 +225,18 @@
   border-radius: 6px;
   font-family: monospace;
 }
+/* consentForm.module.css */
+.gmc__date_input {
+  /* Add any original date input styling you had */
+  appearance: none; /* Ensures consistent styling across browsers */
+  /* Other original styles for your date picker */
+}
 
+/* Style the calendar picker icon */
+.gmc__date_input::-webkit-calendar-picker-indicator {
+  /* Your original icon styling */
+  filter: invert(0.5); /* Example - adjust to match your design */
+}
 /* Responsive Styles */
 @media (min-width: 480px) {
   .gmc__form_container {
@@ -272,6 +283,13 @@
   .gmc__consent_img {
     max-width: 300px;
   }
+}
+
+.gmc__form_error_text {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
 }
 
 @media (min-width: 1024px) {
