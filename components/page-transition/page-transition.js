@@ -3,11 +3,13 @@ import { useEffect } from "react";
 
 const PageTransition = ({ children }) => {
   useEffect(() => {
-    // Make page visible when component mounts
-    document.body.classList.add("visible");
+    // Use requestAnimationFrame for better timing
+    const frame = requestAnimationFrame(() => {
+      document.body.classList.add("visible");
+    });
 
     return () => {
-      // Optional: Only needed if you want to reset during route changes
+      cancelAnimationFrame(frame);
       document.body.classList.remove("visible");
     };
   }, []);

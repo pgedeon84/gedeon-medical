@@ -17,16 +17,16 @@ import aetna from "../../public/images/Aetna.svg";
 
 function Proof() {
   const insuranceProviders = [
-    { src: blue_cross, alt: "Blue Cross Blue Shield" },
     { src: brightHealth, alt: "Bright Health" },
     { src: medicare, alt: "Medicare" },
+    { src: oscar, alt: "Oscar Health" },
     { src: mhn, alt: "Memorial Healthcare Network" },
+    { src: blue_cross, alt: "Blue Cross Blue Shield" },
     { src: medicade, alt: "Medicaid" },
     { src: sunshineHealth, alt: "Sunshine Health" },
     { src: devoted, alt: "Devoted Health" },
     { src: cigna, alt: "Cigna" },
     { src: solis, alt: "Solis Health" },
-    { src: oscar, alt: "Oscar Health" },
     { src: simplyHealthCare, alt: "Simply Healthcare" },
     { src: aetna, alt: "Aetna" },
   ];
