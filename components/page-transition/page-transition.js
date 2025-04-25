@@ -1,7 +1,17 @@
-// components/PageTransition.js
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const PageTransition = ({ children }) => {
+  useEffect(() => {
+    // Make page visible when component mounts
+    document.body.classList.add("visible");
+
+    return () => {
+      // Optional: Only needed if you want to reset during route changes
+      document.body.classList.remove("visible");
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
