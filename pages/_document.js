@@ -15,29 +15,20 @@ class MyDocument extends Document {
               __html: `
               html.no-js {
                 visibility: hidden;
-                opacity: 0;
+                overflow: hidden;
               }
               html.visible {
                 visibility: visible;
-                opacity: 1;
-                transition: opacity 400ms ease;
-              }
-              body {
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease;
-              }
-              body.visible {
-                opacity: 1;
-                visibility: visible;
+                overflow: auto;
               }
             `,
             }}
           />
-          {/* Preload critical CSS */}
-          <link rel="preload" href="/styles/globals.css" as="style" />
+          {/* Inline critical CSS */}
+          {/* <link rel="preload" href="/styles/globals.css" as="style" /> */}
+          {/* <link rel="stylesheet" href="/styles/globals.css" /> */}
         </Head>
-        <body>
+        <body className="no-js">
           <Main />
           <NextScript />
         </body>

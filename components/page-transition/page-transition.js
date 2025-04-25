@@ -3,22 +3,26 @@ import { useEffect } from "react";
 
 const PageTransition = ({ children }) => {
   useEffect(() => {
-    // Only make body visible after animation is ready
-    const timer = setTimeout(() => {
-      document.body.classList.add("visible");
-    }, 100);
-
     return () => {
-      clearTimeout(timer);
-      document.body.classList.remove("visible");
+      document.body.classList.add("changing-route");
     };
   }, []);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transitionEnd: {
+          display: "block",
+        },
+      }}
+      exit={{
+        opacity: 0,
+        y: -20,
+        transition: { duration: 0.2 },
+      }}
       transition={{
         type: "spring",
         stiffness: 100,
@@ -26,11 +30,12 @@ const PageTransition = ({ children }) => {
         duration: 0.15,
       }}
       onAnimationStart={() => {
-        document.body.classList.remove("visible");
+        document.body.classList.add("animating");
       }}
       onAnimationComplete={() => {
-        document.body.classList.add("visible");
+        document.body.classList.remove("animating", "changing-route");
       }}
+      style={{ display: "block" }}
     >
       {children}
     </motion.div>
