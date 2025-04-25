@@ -128,12 +128,12 @@ function SMSConsentForm() {
 
       // Form submission logic here
       const response = await fetch(
-        "https://formsubmit.co/ajax/pgedeon84@gmail.com",
+        "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            Message: `I,${formData.Patient_Name},consent to receive SMS text messages from Gedeon Medical Center regarding my healthcare, submitted via gedeonmedicalcenter.com`,
+            Message: `I, ${formData.Patient_Name}, give consent to receive SMS text messages from Gedeon Medical Center regarding my healthcare.`,
             ...formData,
             _subject: "New SMS Consent Form - Gedeon Medical Center",
           }),
@@ -324,24 +324,6 @@ function SMSConsentForm() {
               {formErrors.Signature && (
                 <span className={classes.gmc__form_error_text}>
                   {formErrors.Signature}
-                </span>
-              )}
-            </div>
-
-            <div className={classes.gmc__form_group}>
-              <label htmlFor="Date">Today&apos;s Date:</label>
-              <input
-                type="date"
-                id="Date"
-                name="Date"
-                value={formData.Date}
-                onChange={handleChange}
-                required
-                max={new Date().toISOString().split("T")[0]}
-              />
-              {formErrors.Date && (
-                <span className={classes.gmc__form_error_text}>
-                  {formErrors.Date}
                 </span>
               )}
             </div>
