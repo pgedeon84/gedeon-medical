@@ -38,9 +38,16 @@ body {
   right: 0;
 }
 
+body:not(.visible) {
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
 body.visible {
   opacity: 1;
   visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .main-wrapper {

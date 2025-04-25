@@ -3,13 +3,13 @@ import { useEffect } from "react";
 
 const PageTransition = ({ children }) => {
   useEffect(() => {
-    // Use requestAnimationFrame for better timing
-    const frame = requestAnimationFrame(() => {
+    // Only make body visible after animation is ready
+    const timer = setTimeout(() => {
       document.body.classList.add("visible");
-    });
+    }, 100);
 
     return () => {
-      cancelAnimationFrame(frame);
+      clearTimeout(timer);
       document.body.classList.remove("visible");
     };
   }, []);
@@ -24,6 +24,12 @@ const PageTransition = ({ children }) => {
         stiffness: 100,
         damping: 20,
         duration: 0.15,
+      }}
+      onAnimationStart={() => {
+        document.body.classList.remove("visible");
+      }}
+      onAnimationComplete={() => {
+        document.body.classList.add("visible");
       }}
     >
       {children}
