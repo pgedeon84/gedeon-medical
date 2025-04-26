@@ -18,6 +18,16 @@ html.visible {
   opacity: 1;
 }
 
+html.visible [data-animate-presence] {
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+/* Only enable transitions after load */
+html.fonts-loaded .page-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
 /* Font handling */
 html.fonts-loaded body {
   font-family: 'Lato', 'Poppins', -apple-system, sans-serif;
