@@ -42,21 +42,6 @@ export default class Document extends React.Component {
             }"
           />
         </Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-    // First make visible
-    document.documentElement.classList.add('visible');
-    
-    // Then handle fonts
-    if (document.fonts) {
-      document.fonts.ready.then(() => {
-        document.documentElement.classList.add('fonts-ready');
-      });
-    }
-  `,
-          }}
-        />
         <body>
           <Main />
           <NextScript />
