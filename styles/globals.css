@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@300;400;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@300;400;500&display=swap'); */
 /* ===== CRITICAL CSS - LOADS FIRST ===== */
 /* Initial hidden state */
 html.no-js,
@@ -21,6 +21,14 @@ body.visible {
   opacity: 1;
   overflow: auto;
   height: auto;
+  
+}
+html.visible {
+transform: translateZ(0);
+  will-change: transform, opacity;
+}
+html.visible * {
+  transition: none !important;
 }
 
 /* Layout structure - prevents layout shifts */

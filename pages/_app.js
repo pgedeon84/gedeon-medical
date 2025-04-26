@@ -8,34 +8,22 @@ function MyApp({ Component, pageProps, router }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      document.body.classList.add("changing-route");
-    };
-
-    const handleRouteComplete = () => {
-      document.body.classList.remove("changing-route");
-    };
-
-    router.events.on("routeChangeStart", handleRouteChange);
-    router.events.on("routeChangeComplete", handleRouteComplete);
-
-    // Initial load handling
-    const html = document.documentElement;
-    html.classList.remove("no-js");
-
-    // Wait for styles to load
-    const timer = setTimeout(() => {
+    // Wait for EVERYTHING (fonts, CSS, DOM)
+    const showPage = async () => {
+      await document.fonts.ready;
+      const html = document.documentElement;
+      html.classList.remove("no-js");
       html.classList.add("visible");
-      document.body.classList.remove("no-js");
-      setIsMounted(true);
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      router.events.off("routeChangeStart", handleRouteChange);
-      router.events.off("routeChangeComplete", handleRouteComplete);
+      // Optional: Force reflow to ensure CSS applies
+      html.getBoundingClientRect();
     };
-  }, [router.events]);
+
+    if (document.readyState === "complete") {
+      showPage();
+    } else {
+      window.addEventListener("load", showPage);
+    }
+  }, []);
 
   return (
     <>

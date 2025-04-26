@@ -9,33 +9,48 @@ const PageTransition = ({ children }) => {
   }, []);
 
   return (
+    // <motion.div
+    //   initial={{ opacity: 0, y: 20 }}
+    //   animate={{
+    //     opacity: 1,
+    //     y: 0,
+    //     transitionEnd: {
+    //       display: "block",
+    //     },
+    //   }}
+    //   exit={{
+    //     opacity: 0,
+    //     y: -20,
+    //     transition: { duration: 0.2 },
+    //   }}
+    //   transition={{
+    //     type: "spring",
+    //     stiffness: 100,
+    //     damping: 20,
+    //     duration: 0.2,
+    //   }}
+    //   onAnimationStart={() => {
+    //     document.body.classList.add("animating");
+    //   }}
+    //   onAnimationComplete={() => {
+    //     document.body.classList.remove("animating", "changing-route");
+    //   }}
+    //   style={{ display: "block" }}
+    // >
+    //   {children}
+    // </motion.div>
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        transitionEnd: {
-          display: "block",
-        },
-      }}
-      exit={{
-        opacity: 0,
-        y: -20,
-        transition: { duration: 0.2 },
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.2,
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
       onAnimationStart={() => {
-        document.body.classList.add("animating");
+        // Lock scroll during transitions
+        document.documentElement.style.overflow = "hidden";
       }}
       onAnimationComplete={() => {
-        document.body.classList.remove("animating", "changing-route");
+        document.documentElement.style.overflow = "";
       }}
-      style={{ display: "block" }}
     >
       {children}
     </motion.div>
