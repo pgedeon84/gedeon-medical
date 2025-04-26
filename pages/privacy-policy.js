@@ -5,6 +5,28 @@ import classes from "./privacyPolicy.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/images/GMC-alternate-logo-large.svg";
+import { motion } from "framer-motion";
+
+// Animation configuration
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      when: "beforeChildren",
+    },
+  },
+};
 
 function PrivacyPolicy() {
   return (
@@ -14,14 +36,30 @@ function PrivacyPolicy() {
       </Head>
       <Navbar />
       <NavbarSpacer />
+
       <main className={classes.gmc__privacy_content}>
-        <section className={classes.gmc__privacy_container}>
-          <h1 className={classes.gmc__privacy_header}>Privacy Policy</h1>
-          <article>
+        <motion.section
+          className={classes.gmc__privacy_container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          variants={containerVariants}
+        >
+          {/* Header */}
+          <motion.div variants={fadeInUp}>
+            <h1 className={classes.gmc__privacy_header}>Privacy Policy</h1>
+          </motion.div>
+
+          {/* Effective Date */}
+          <motion.article variants={fadeInUp}>
             <p>
               <strong>Effective Date:</strong> November 19, 2024
             </p>
             <hr />
+          </motion.article>
+
+          {/* Introduction */}
+          <motion.div variants={fadeInUp}>
             <p>
               <strong>
                 Gedeon Medical Center (referred to as &quot;we,&quot;
@@ -34,6 +72,10 @@ function PrivacyPolicy() {
               (HIPAA).
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 1 */}
+          <motion.div variants={fadeInUp}>
             <h2>1. Information We Collect</h2>
             <p>We may collect the following types of information:</p>
             <ul>
@@ -52,6 +94,10 @@ function PrivacyPolicy() {
               </li>
             </ul>
             <hr />
+          </motion.div>
+
+          {/* Section 2 */}
+          <motion.div variants={fadeInUp}>
             <h2>2. How We Use Your Information</h2>
             <p>
               We use your information for purposes including but not limited to:
@@ -71,6 +117,10 @@ function PrivacyPolicy() {
               shared with third parties or affiliates for marketing purposes.
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 3 */}
+          <motion.div variants={fadeInUp}>
             <h2>3. Opt-In and Opt-Out</h2>
             <p>
               <strong>Opt-In:</strong> By providing your contact information,
@@ -82,7 +132,7 @@ function PrivacyPolicy() {
               <strong>Types of Messages:</strong> Users can expect to receive
               messages such as:
             </p>
-            <ul className="gmc__privacy_list">
+            <ul className={classes.gmc__privacy_list}>
               <li>Appointment reminders</li>
               <li>Account notifications</li>
               <li>Health-related updates</li>
@@ -125,6 +175,10 @@ function PrivacyPolicy() {
               </Link>
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 4 */}
+          <motion.div variants={fadeInUp}>
             <h2>4. How We Share Your Information</h2>
             <p>
               We may share your information as permitted or required by law,
@@ -155,6 +209,10 @@ function PrivacyPolicy() {
               purposes.
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 5 */}
+          <motion.div variants={fadeInUp}>
             <h2>5. How We Protect Your Information</h2>
             <p>
               We implement appropriate administrative, technical, and physical
@@ -172,6 +230,10 @@ function PrivacyPolicy() {
               </li>
             </ul>
             <hr />
+          </motion.div>
+
+          {/* Section 6 */}
+          <motion.div variants={fadeInUp}>
             <h2>6. Your Rights</h2>
             <p>
               You have the following rights regarding your personal and health
@@ -204,6 +266,10 @@ function PrivacyPolicy() {
               details below.
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 7 */}
+          <motion.div variants={fadeInUp}>
             <h2>7. Cookies and Online Privacy</h2>
             <p>
               If you use our website, we may collect non-identifiable data such
@@ -212,6 +278,10 @@ function PrivacyPolicy() {
               our website unless explicitly provided by you.
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 8 */}
+          <motion.div variants={fadeInUp}>
             <h2>8. Changes to This Privacy Policy</h2>
             <p>
               We may update this Privacy Policy periodically to reflect changes
@@ -219,6 +289,10 @@ function PrivacyPolicy() {
               our website and at our office.
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 9 */}
+          <motion.div variants={fadeInUp}>
             <h2>9. Text Messaging (SMS) Program</h2>
             <p>
               Gedeon Medical Center offers patients the option to receive text
@@ -266,6 +340,10 @@ function PrivacyPolicy() {
               </Link>
             </p>
             <hr />
+          </motion.div>
+
+          {/* Section 10 */}
+          <motion.div variants={fadeInUp}>
             <h2>10. Contact Information</h2>
             <p>
               For questions, concerns, or to exercise your rights, contact us
@@ -285,15 +363,21 @@ function PrivacyPolicy() {
               </p>
             </div>
             <hr />
-          </article>
-        </section>
-        <div className={classes.gmc__privacy_image_container}>
-          <Image
-            src={logo}
-            alt="GMC Logo"
-            className={classes.gmc__privacy_footer_img}
-          />
-        </div>
+          </motion.div>
+
+          {/* Footer Image */}
+          <motion.div
+            variants={fadeInUp}
+            className={classes.gmc__privacy_image_container}
+          >
+            <Image
+              src={logo}
+              alt="GMC Logo"
+              className={classes.gmc__privacy_footer_img}
+              priority
+            />
+          </motion.div>
+        </motion.section>
       </main>
     </>
   );

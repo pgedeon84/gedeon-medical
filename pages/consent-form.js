@@ -6,6 +6,28 @@ import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
+import { motion } from "framer-motion";
+
+// Animation configuration
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      when: "beforeChildren",
+    },
+  },
+};
 
 function SMSConsentForm() {
   const [formData, setFormData] = useState({
@@ -40,7 +62,6 @@ function SMSConsentForm() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user starts typing
     if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -88,9 +109,7 @@ function SMSConsentForm() {
       });
 
       if (!response.ok) throw new Error("Verification failed");
-
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error("CAPTCHA verification error:", error);
       throw error;
@@ -99,10 +118,7 @@ function SMSConsentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form before submission
-    const isValid = validateForm();
-    if (!isValid) return;
+    if (!validateForm()) return;
 
     setSubmissionState({
       submitting: true,
@@ -122,11 +138,9 @@ function SMSConsentForm() {
       );
 
       const result = await verifyCaptcha(token, "submit_form");
-      if (!result.success) {
+      if (!result.success)
         throw new Error(result.error || "Verification failed");
-      }
 
-      // Form submission logic here
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
@@ -180,33 +194,48 @@ function SMSConsentForm() {
       <Navbar />
       <NavbarSpacer />
 
-      <div className={classes.gmc__form_container}>
-        <h1>
-          Gedeon Medical Center <br /> SMS Communication Consent Form
-        </h1>
+      <motion.div
+        className={classes.gmc__form_container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        variants={containerVariants}
+      >
+        {/* Header */}
+        <motion.div variants={fadeInUp}>
+          <h1>
+            Gedeon Medical Center <br /> SMS Communication Consent Form
+          </h1>
+        </motion.div>
 
-        <div className={classes.gmc__consent_image_container}>
+        {/* Logo */}
+        <motion.div
+          variants={fadeInUp}
+          className={classes.gmc__consent_image_container}
+        >
           <Image
             src={logo}
             alt="GMC Logo"
             className={classes.gmc__consent_img}
             priority
           />
-        </div>
+        </motion.div>
 
         {submissionState.success ? (
-          <div className={classes.gmc__form_success}>
+          <motion.div variants={fadeInUp} className={classes.gmc__form_success}>
             <h2>✓ Consent Form Submitted</h2>
             <p>A confirmation has been sent.</p>
-          </div>
+          </motion.div>
         ) : (
-          <form
+          <motion.form
+            variants={fadeInUp}
             ref={formRef}
             onSubmit={handleSubmit}
             className={classes.gmc__consent_form}
             noValidate
           >
-            <div className={classes.gmc__form_group}>
+            {/* Patient Name */}
+            <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
               <label htmlFor="Patient_Name">Patient Name:</label>
               <input
                 type="text"
@@ -218,13 +247,18 @@ function SMSConsentForm() {
                 minLength={2}
               />
               {formErrors.Patient_Name && (
-                <span className={classes.gmc__form_error_text}>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={classes.gmc__form_error_text}
+                >
                   {formErrors.Patient_Name}
-                </span>
+                </motion.span>
               )}
-            </div>
+            </motion.div>
 
-            <div className={classes.gmc__form_group}>
+            {/* Date of Birth */}
+            <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
               <label htmlFor="Date_Of_Birth">Date of Birth:</label>
               <input
                 type="date"
@@ -236,13 +270,18 @@ function SMSConsentForm() {
                 max={new Date().toISOString().split("T")[0]}
               />
               {formErrors.Date_Of_Birth && (
-                <span className={classes.gmc__form_error_text}>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={classes.gmc__form_error_text}
+                >
                   {formErrors.Date_Of_Birth}
-                </span>
+                </motion.span>
               )}
-            </div>
+            </motion.div>
 
-            <div className={classes.gmc__form_group}>
+            {/* Mobile Number */}
+            <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
               <label htmlFor="Mobile_Number">Mobile Number:</label>
               <input
                 type="tel"
@@ -255,17 +294,25 @@ function SMSConsentForm() {
                 required
               />
               {formErrors.Mobile_Number && (
-                <span className={classes.gmc__form_error_text}>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={classes.gmc__form_error_text}
+                >
                   {formErrors.Mobile_Number}
-                </span>
+                </motion.span>
               )}
-            </div>
+            </motion.div>
 
-            <div className={classes.gmc__consent_text}>
-              <p>
+            {/* Consent Text */}
+            <motion.div
+              variants={fadeInUp}
+              className={classes.gmc__consent_text}
+            >
+              <legend>
                 I consent to receive SMS text messages from Gedeon Medical
                 Center regarding my healthcare, including:
-              </p>
+              </legend>
               <ul>
                 <li>Appointment reminders</li>
                 <li>Test results</li>
@@ -278,14 +325,22 @@ function SMSConsentForm() {
                   messaging rates apply.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <fieldset className={classes.gmc__radio_group}>
+            {/* Radio Group */}
+            <motion.fieldset
+              variants={fadeInUp}
+              className={classes.gmc__radio_group}
+            >
               <legend>Consent to Receive SMS Messages</legend>
               {formErrors.Consent_Status && (
-                <span className={classes.gmc__form_error_text}>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={classes.gmc__form_error_text}
+                >
                   {formErrors.Consent_Status}
-                </span>
+                </motion.span>
               )}
               <label className={classes.gmc__radio_option}>
                 <input
@@ -308,9 +363,10 @@ function SMSConsentForm() {
                 />
                 <span>I do not consent at this time</span>
               </label>
-            </fieldset>
+            </motion.fieldset>
 
-            <div className={classes.gmc__form_group}>
+            {/* Signature */}
+            <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
               <label htmlFor="Signature">Signature (Type Full Name):</label>
               <input
                 type="text"
@@ -322,48 +378,50 @@ function SMSConsentForm() {
                 minLength={2}
               />
               {formErrors.Signature && (
-                <span className={classes.gmc__form_error_text}>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={classes.gmc__form_error_text}
+                >
                   {formErrors.Signature}
-                </span>
+                </motion.span>
               )}
-            </div>
+            </motion.div>
 
-            <button
-              type="submit"
-              className={classes.gmc__form_button}
-              disabled={submissionState.submitting}
+            {/* Submit Button */}
+            <motion.div
+              variants={fadeInUp}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+              }}
             >
-              {submissionState.submitting ? "Submitting..." : "Submit Consent"}
-            </button>
+              <button
+                type="submit"
+                className={classes.gmc__form_button}
+                disabled={submissionState.submitting}
+              >
+                {submissionState.submitting
+                  ? "Submitting..."
+                  : "Submit Consent"}
+              </button>
+            </motion.div>
 
+            {/* Error Message */}
             {submissionState.error && (
-              <div className={classes.gmc__form_error}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className={classes.gmc__form_error}
+              >
                 <p>{submissionState.error}</p>
                 <p>Need help? Call 954-842-4285</p>
-              </div>
+              </motion.div>
             )}
-
-            <div className={classes.gmc__captcha_badge}>
-              Protected by reCAPTCHA -
-              <a
-                href="https://policies.google.com/privacy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy
-              </a>{" "}
-              &amp;{" "}
-              <a
-                href="https://policies.google.com/terms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Terms
-              </a>
-            </div>
-          </form>
+          </motion.form>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }

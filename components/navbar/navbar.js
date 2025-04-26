@@ -84,6 +84,11 @@ function Navbar() {
             Privacy Policy
           </Link>
         </li>
+        <li onClick={() => setToggleMenu(false)}>
+          <Link href="/consent-form" className={classes.nav_link}>
+            SMS Consent Form
+          </Link>
+        </li>
       </ul>
     );
   }
