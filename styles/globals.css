@@ -11,7 +11,7 @@ body.no-js {
 
 /* Base visibility transitions */
 html, body {
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 /* Visible state */

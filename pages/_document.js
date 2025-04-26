@@ -10,15 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en" className="no-js">
         <Head>
-          {process.env.NODE_ENV === "production" && (
-            <link
-              rel="preload"
-              href={`${
-                process.env.NEXT_PUBLIC_BASE_PATH || ""
-              }/_next/static/css/${getCssFilename()}`}
-              as="style"
-            />
-          )}
           <style
             dangerouslySetInnerHTML={{
               __html: `
