@@ -8,20 +8,37 @@ function MyApp({ Component, pageProps, router }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Wait for EVERYTHING (fonts, CSS, DOM)
-    const showPage = async () => {
-      await document.fonts.ready;
-      const html = document.documentElement;
-      html.classList.remove("no-js");
-      html.classList.add("visible");
-      // Optional: Force reflow to ensure CSS applies
-      html.getBoundingClientRect();
+    const handleReady = () => {
+      Promise.all([
+        document.fonts.ready,
+        new Promise((resolve) => {
+          if (document.styleSheets.length > 0) resolve();
+          else {
+            const checkStyles = setInterval(() => {
+              if (document.styleSheets.length > 0) {
+                clearInterval(checkStyles);
+                resolve();
+              }
+            }, 50);
+          }
+        }),
+      ]).then(() => {
+        const html = document.documentElement;
+        html.classList.remove("no-js");
+        html.classList.add("visible");
+
+        // Force reflow
+        html.getBoundingClientRect();
+
+        // Now enable transitions
+        html.style.transition = "opacity 400ms ease, visibility 400ms ease";
+      });
     };
 
     if (document.readyState === "complete") {
-      showPage();
+      handleReady();
     } else {
-      window.addEventListener("load", showPage);
+      window.addEventListener("load", handleReady);
     }
   }, []);
 
