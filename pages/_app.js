@@ -1,38 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
-import Head from "next/head";
 import PageTransition from "../components/page-transition/page-transition";
 
 function MyApp({ Component, pageProps, router }) {
-  const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
     const handleReady = () => {
-      Promise.all([
-        document.fonts.ready,
-        new Promise((resolve) => {
-          if (document.styleSheets.length > 0) resolve();
-          else {
-            const checkStyles = setInterval(() => {
-              if (document.styleSheets.length > 0) {
-                clearInterval(checkStyles);
-                resolve();
-              }
-            }, 50);
-          }
-        }),
-      ]).then(() => {
-        const html = document.documentElement;
-        html.classList.remove("no-js");
-        html.classList.add("visible");
+      // First make sure fonts are loaded
+      document.fonts.ready.then(() => {
+        // Then check if stylesheets are loaded
+        const styleSheetsLoaded = document.styleSheets.length > 0;
 
-        // Force reflow
-        html.getBoundingClientRect();
+        // If stylesheets aren't loaded yet, wait for them
+        if (!styleSheetsLoaded) {
+          const interval = setInterval(() => {
+            if (document.styleSheets.length > 0) {
+              clearInterval(interval);
+              showPage();
+            }
+          }, 50);
+          return;
+        }
 
-        // Now enable transitions
-        html.style.transition = "opacity 400ms ease, visibility 400ms ease";
+        showPage();
       });
+    };
+
+    const showPage = () => {
+      const html = document.documentElement;
+      html.classList.remove("no-js");
+      html.classList.add("visible");
+      document.body.classList.remove("no-js");
+      document.body.classList.add("visible");
+
+      // Force reflow to ensure styles apply
+      html.getBoundingClientRect();
     };
 
     if (document.readyState === "complete") {
@@ -40,27 +42,18 @@ function MyApp({ Component, pageProps, router }) {
     } else {
       window.addEventListener("load", handleReady);
     }
+
+    return () => {
+      window.removeEventListener("load", handleReady);
+    };
   }, []);
 
   return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="At Gedeon Medical Center..." />
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="icon" type="image/svg" href="gmc-favicon.svg" />
-      </Head>
-
-      {isMounted ? (
-        <AnimatePresence mode="wait" initial={false}>
-          <PageTransition key={router.route}>
-            <Component {...pageProps} />
-          </PageTransition>
-        </AnimatePresence>
-      ) : (
-        <div style={{ visibility: "hidden" }} />
-      )}
-    </>
+    <AnimatePresence mode="wait">
+      <PageTransition key={router.route}>
+        <Component {...pageProps} />
+      </PageTransition>
+    </AnimatePresence>
   );
 }
 
