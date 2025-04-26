@@ -24,9 +24,6 @@ class MyDocument extends Document {
             `,
             }}
           />
-          {/* Inline critical CSS */}
-          {/* <link rel="preload" href="/styles/globals.css" as="style" /> */}
-          {/* <link rel="stylesheet" href="/styles/globals.css" /> */}
         </Head>
         <body className="no-js">
           <Main />
