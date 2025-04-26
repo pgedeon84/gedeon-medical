@@ -21,13 +21,13 @@ const PageTransition = ({ children }) => {
       exit={{
         opacity: 0,
         y: -20,
-        transition: { duration: 1 },
+        transition: { duration: 0.2 },
       }}
       transition={{
         type: "spring",
         stiffness: 100,
         damping: 20,
-        duration: 0.1,
+        duration: 0.2,
       }}
       onAnimationStart={() => {
         document.body.classList.add("animating");

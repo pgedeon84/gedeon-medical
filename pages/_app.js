@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }) {
       html.classList.add("visible");
       document.body.classList.remove("no-js");
       setIsMounted(true);
-    }, 100);
+    }, 200);
 
     return () => {
       clearTimeout(timer);
