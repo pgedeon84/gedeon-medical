@@ -7,6 +7,21 @@ html.visible, body.visible {
   height: auto !important;
   position: static !important;
 }
+html {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+html.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Font handling */
+html.fonts-loaded body {
+  font-family: 'Lato', 'Poppins', -apple-system, sans-serif;
+}
 
 /* Enable transitions only after load */
 html.fonts-loaded * {

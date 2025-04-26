@@ -1,28 +1,31 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
 
-class MyDocument extends Document {
+export default class Document extends React.Component {
   render() {
     return (
       <Html lang="en" className="no-js">
         <Head>
+          {/* Inline critical CSS */}
           <style
             dangerouslySetInnerHTML={{
               __html: `
-                html.no-js, body.no-js {
-                  visibility: hidden !important;
-                  opacity: 0 !important;
-                  overflow: hidden !important;
-                  height: 100vh !important;
-                  position: fixed !important;
-                  width: 100% !important;
-                }
-                body {
-                  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-                }
-              `,
+              html.no-js {
+                visibility: hidden;
+                opacity: 0;
+              }
+              html.visible {
+                visibility: visible;
+                opacity: 1;
+              }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+              }
+            `,
             }}
           />
 
+          {/* Font loading */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -39,17 +42,15 @@ class MyDocument extends Document {
             }"
           />
         </Head>
-        <body className="no-js">
+        <body>
           <Main />
           <NextScript />
-          {/* Add this script for production reliability */}
+          {/* Critical hydration script */}
           <script
             dangerouslySetInnerHTML={{
               __html: `
-              if (document.readyState === 'complete') {
-                document.documentElement.classList.add('visible');
-                document.body.classList.add('visible');
-              }
+              document.documentElement.classList.add('visible');
+              document.documentElement.classList.remove('no-js');
             `,
             }}
           />
@@ -58,5 +59,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;
