@@ -1,35 +1,28 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
-
   render() {
     return (
       <Html lang="en" className="no-js">
         <Head>
-          {/* Critical CSS */}
           <style
             dangerouslySetInnerHTML={{
               __html: `
-      html.no-js, body.no-js {
-        visibility: hidden !important;
-        opacity: 0 !important;
-        overflow: hidden !important;
-        height: 100vh !important;
-        position: fixed !important;
-        width: 100% !important;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      }
-    `,
+                html.no-js, body.no-js {
+                  visibility: hidden !important;
+                  opacity: 0 !important;
+                  overflow: hidden !important;
+                  height: 100vh !important;
+                  position: fixed !important;
+                  width: 100% !important;
+                }
+                body {
+                  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+                }
+              `,
             }}
           />
 
-          {/* Proper font loading */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -41,14 +34,25 @@ class MyDocument extends Document {
             rel="stylesheet"
             media="print"
             onLoad="e => { 
-      e.target.media = 'all';
-      document.documentElement.classList.add('fonts-loaded');
-    }"
+              e.target.media = 'all';
+              document.documentElement.classList.add('fonts-loaded');
+            }"
           />
         </Head>
         <body className="no-js">
           <Main />
           <NextScript />
+          {/* Add this script for production reliability */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              if (document.readyState === 'complete') {
+                document.documentElement.classList.add('visible');
+                document.body.classList.add('visible');
+              }
+            `,
+            }}
+          />
         </body>
       </Html>
     );
