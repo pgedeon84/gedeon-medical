@@ -38,6 +38,15 @@ html.fonts-loaded * {
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
+[data-animate-presence] {
+  position: relative;
+}
+
+.page-transition {
+  opacity: 1 !important;
+}
+
+
 :root {
   --font-family-heading: 'Lato', sans-serif;
   --font-family-text: 'Poppins', sans-serif;
