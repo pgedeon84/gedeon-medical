@@ -93,7 +93,10 @@ function Terms() {
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          Use the following link to sign in or sign up and Book Now:{"   "}
+          <strong>
+            Use the following link to sign in or sign up and Book Now
+          </strong>
+          :{"   "}
           <Link
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
