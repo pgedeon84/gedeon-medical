@@ -20,7 +20,7 @@ function Terms() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "0px 0px -50px 0px" }}
         >
-          Booking Your Appointment with Dr. Gedeon using MyChart
+          Book Your Appointment with Dr. Gedeon using MyChart
         </motion.h3>
 
         <motion.p
@@ -30,9 +30,7 @@ function Terms() {
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <strong>
-            You're just a few steps away from booking your appointment:
-          </strong>{" "}
+          <strong></strong>{" "}
         </motion.p>
 
         <motion.p

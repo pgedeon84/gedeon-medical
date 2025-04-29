@@ -7,6 +7,7 @@ import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
 import { motion } from "framer-motion";
+import html2canvas from "html2canvas";
 
 // Animation configuration
 const fadeInUp = {
@@ -116,6 +117,34 @@ function SMSConsentForm() {
     }
   };
 
+  const captureFormScreenshot = async () => {
+    try {
+      // Mobile-friendly config
+      const options = {
+        scale: Math.min(2, window.devicePixelRatio || 1),
+        useCORS: true,
+        logging: false,
+        scrollX: -window.scrollX,
+        scrollY: -window.scrollY,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: document.documentElement.offsetHeight,
+        onclone: (clonedDoc) => {
+          // Force mobile viewport meta tag during capture
+          const meta = clonedDoc.createElement("meta");
+          meta.name = "viewport";
+          meta.content = "width=device-width, initial-scale=1.0";
+          clonedDoc.head.appendChild(meta);
+        },
+      };
+
+      const canvas = await html2canvas(formRef.current, options);
+      return canvas.toDataURL("image/png", 0.8); // 80% quality
+    } catch (error) {
+      console.error("Screenshot failed (non-critical):", error);
+      return null; // Fails silently
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -141,24 +170,47 @@ function SMSConsentForm() {
       if (!result.success)
         throw new Error(result.error || "Verification failed");
 
+      // Capture screenshot silently
+      const screenshot = await captureFormScreenshot();
+
+      // Prepare payload with ALL original data
+      const formPayload = new FormData();
+      formPayload.append(
+        "Message",
+        `"By providing my consent below, I, ${formData.Patient_Name}, authorize...`
+      ); // Your full message
+
+      // Add all other fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formPayload.append(key, value);
+      });
+
+      formPayload.append(
+        "_subject",
+        "New SMS Consent Form - Gedeon Medical Center"
+      );
+
+      // Attach screenshot if successful
+      if (screenshot) {
+        const blob = await fetch(screenshot).then((res) => res.blob());
+        formPayload.append("attachment", blob, "consent-form.png");
+      }
+
+      // Submit form
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
-            ...formData,
-            _subject: "New SMS Consent Form - Gedeon Medical Center",
-          }),
+          body: formPayload,
         }
       );
 
       if (!response.ok) throw new Error("Form submission failed");
 
+      // SHOW SUCCESS MESSAGE (kept from original code)
       setSubmissionState({
         submitting: false,
-        success: true,
+        success: true, // This triggers your existing success UI
         error: null,
         captchaScore: result.score,
       });
