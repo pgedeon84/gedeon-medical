@@ -231,7 +231,7 @@ function SMSConsentForm() {
       // 4. Submit to endpoint
       console.log("[DEBUG] Submitting form data...");
       const response = await fetch(
-        "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
+        "https://formsubmit.co/ajax/pgedeon84@gmail.com",
         {
           method: "POST",
           body: formPayload,
