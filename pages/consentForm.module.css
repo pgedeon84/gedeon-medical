@@ -163,6 +163,25 @@
   object-fit: contain;
 }
 
+/* Ensure form is capture-ready */
+.gmc__consent_form {
+  position: relative;
+  background: white;
+  z-index: 10;
+}
+
+/* Fix for Next.js Image components */
+.gmc__consent_img {
+  position: relative !important;
+}
+
+/* Force visible elements during capture */
+.gmc__form_container * {
+  box-shadow: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
 .gmc__form_success {
   padding: 1.5rem;
   background-color: #e8f5e9;
