@@ -147,7 +147,7 @@ function SMSConsentForm() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            Message: `I, ${formData.Patient_Name}, give consent to receive SMS text messages from Gedeon Medical Center regarding my healthcare.`,
+            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
             ...formData,
             _subject: "New SMS Consent Form - Gedeon Medical Center",
           }),
@@ -310,8 +310,10 @@ function SMSConsentForm() {
               className={classes.gmc__consent_text}
             >
               <legend>
-                I consent to receive SMS text messages from Gedeon Medical
-                Center regarding my healthcare, including:
+                I consent to receive SMS text messages from{" "}
+                <b>Gedeon Medical Center</b> to the phone number I have provided
+                via the use of an automated messaging system regarding my
+                healthcare, including:
               </legend>
               <ul>
                 <li>Appointment reminders</li>

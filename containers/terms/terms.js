@@ -7,9 +7,9 @@ import AnimatedItem from "../../components/ui/animatedItem";
 
 function Terms() {
   return (
-    <section id="gmc_communications" className={classes.gmc__terms_section}>
+    <section id="gmc_book-now" className={classes.gmc__terms_section}>
       <AnimatedItem className={classes.gmc__terms_header}>
-        <SectionTitle title="GMC Communications" />
+        <SectionTitle title="Booking Your Appointment" />
       </AnimatedItem>
 
       <AnimatedItem className={classes.gmc__terms_content}>
@@ -20,7 +20,7 @@ function Terms() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "0px 0px -50px 0px" }}
         >
-          Text Messaging (SMS) Application Terms and Conditions
+          Booking Your Appointment with Dr. Gedeon using MyChart
         </motion.h3>
 
         <motion.p
@@ -30,8 +30,9 @@ function Terms() {
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <strong>Gedeon Medical Center (GMC)</strong> uses MyChart by Epic -
-          provided by Memorial Healthcare System.
+          <strong>
+            You're just a few steps away from booking your appointment:
+          </strong>{" "}
         </motion.p>
 
         <motion.p
@@ -57,7 +58,7 @@ function Terms() {
             transition={{ duration: 0.4, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Access to your medical records
+            Booking Appoinments with Dr. Gedeon
           </motion.li>
           <motion.li
             initial={{ opacity: 0, x: -10 }}
@@ -73,7 +74,7 @@ function Terms() {
             transition={{ duration: 0.4, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            Scheduling
+            Access to your medical records
           </motion.li>
           <motion.li
             initial={{ opacity: 0, x: -10 }}
@@ -92,7 +93,7 @@ function Terms() {
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          Use the following link to sign up for:{" "}
+          Use the following link to sign in or sign up and Book Now:{"   "}
           <Link
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
@@ -109,30 +110,17 @@ function Terms() {
           viewport={{ once: true }}
         >
           <p>
-            <strong>MyChart</strong> application allows patients to receive text
-            message alerts related to their GMC visits, MyChart account,
-            one-time passcode, Memorial Healthcare System's billing
-            notifications, prescription reminders, test results, and care
-            management, subject to your compliance with the terms, conditions,
-            and notices set forth below. Memorial Healthcare Systems reserves
-            the right to limit or terminate your use of the SMS Application if
-            you fail to abide by the Terms and Conditions.
+            <strong>MyChart</strong> application also allows patients to receive
+            text message alerts related to their GMC visits, Memorial Healthcare
+            System's billing notifications, prescription reminders, test
+            results, and care management.
           </p>
           <p>
             <strong>GMC</strong> also uses SMS text messaging to communicate
-            limited information upon consent.
-          </p>
-          <p>
-            <strong>Acceptance of Terms and Conditions</strong>
-            <br />
-            By enrolling or otherwise agreeing to participate in the SMS
-            Application, you agree to be bound by these terms and conditions of
-            use ("Terms and Conditions"). GMC may revise these Terms and
-            Conditions at any time by updating this document on its applicable
-            website. If you use the SMS Application after such revisions have
-            been made, you will be bound by the revised Terms and Conditions. If
-            you disagree with these Terms and Conditions, please text STOP at
-            any time to opt out of the SMS Application.
+            limited information upon consent.{"   "}
+            <Link href="/consent-form" className={classes.gmc__terms_chart}>
+              <strong>GMC Consent Form</strong>
+            </Link>
           </p>
           <p>
             <strong>Disclosures</strong>
@@ -144,7 +132,7 @@ function Terms() {
             secure. You understand that your consent to participate in the SMS
             Application is not a condition of any treatment. How to Opt Out and
             Get Help If you choose to no longer receive text messages from GMC,
-            reply STOP to our text messages.{" "}
+            reply STOP to our text messages.{"   "}
             <Link
               href="https://mychart.mhs.net/mychart/Authentication/Login"
               className={classes.gmc__terms_chart}

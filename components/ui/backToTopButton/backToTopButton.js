@@ -1,6 +1,7 @@
 import classes from "./backToTopButton.module.css";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 function BackToTopButton() {
   const [backToTopButton, setBackToTopButton] = useState(false);
@@ -23,8 +24,10 @@ function BackToTopButton() {
   return (
     <>
       {backToTopButton && (
-        <button className={classes.gmc__backToTopButton} onClick={scrollUp}>
-          <RiArrowUpSFill />
+        <button onClick={scrollUp}>
+          <Link href="/#home" className={classes.gmc__backToTopButton}>
+            <RiArrowUpSFill />
+          </Link>
         </button>
       )}
     </>

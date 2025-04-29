@@ -27,7 +27,7 @@
      z-index: -1;
 }
 
-.gmc__header_content h1::before {
+/* .gmc__header_content h1::before {
     content: "";
     height: 4px;
     width: 36px;
@@ -35,7 +35,7 @@
     background: var(--color-accent);
     top: -10px;
     animation: leftBounce 3000ms ease-in-out infinite;
-}
+} */
 
 .gmc__header_content> p {
     font-family: var(--font-family-text);
@@ -52,36 +52,20 @@
     animation-name: fadeIn;
 }
 
-.gmc__header_content button {
-    font-family: var(--font-family-heading);
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 14px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-
-    color: var(--color-text);
-    padding: 1rem 2rem;
-    margin-top: 1.5rem;
-    box-shadow: 0.3px 2.1px 2.2px rgba(56, 92, 173, 0.02),
-    0.8px 5.1px 5.3px rgba(56, 92, 173, 0.028),
-    1.5px 9.5px 10px rgba(56, 92, 173, 0.035),
-    2.7px 17px 17.9px rgba(56, 92, 173, 0.042),
-    5px 31.8px 33.4px rgba(56, 92, 173, 0.05),
-    12px 76px 80px rgba(56, 92, 173, 0.07);
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    /* -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn; */
+.gmc__header_content_button {
+  background: linear-gradient(274.93deg, #6DC74D -15.76%, #91C4A8 38.17%, #A1C6D0 71.28%, #B4C9FD 111.59%);
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
  .gmc__header_content button:hover {
@@ -135,8 +119,8 @@
 
 
 .gmc__header_image_sm {
-    padding: 2rem 2rem 2rem;
-    margin-top: 2rem;
+    padding: 2rem 1rem 2rem;
+    /* margin-top: 1.5rem; */
      -webkit-animation-duration: 1s;
      animation-duration: 1s;
      -webkit-animation-name: fadeIn;
