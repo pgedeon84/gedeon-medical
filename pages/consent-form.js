@@ -119,29 +119,39 @@ function SMSConsentForm() {
 
   const captureFormScreenshot = async () => {
     try {
-      // Mobile-friendly config
+      console.log("[DEBUG] Starting screenshot capture...");
+
       const options = {
         scale: Math.min(2, window.devicePixelRatio || 1),
         useCORS: true,
-        logging: false,
+        logging: true, // Enable for debugging
         scrollX: -window.scrollX,
         scrollY: -window.scrollY,
         windowWidth: document.documentElement.offsetWidth,
         windowHeight: document.documentElement.offsetHeight,
         onclone: (clonedDoc) => {
-          // Force mobile viewport meta tag during capture
+          // Ensure proper rendering during capture
           const meta = clonedDoc.createElement("meta");
           meta.name = "viewport";
           meta.content = "width=device-width, initial-scale=1.0";
           clonedDoc.head.appendChild(meta);
+
+          // Force visible state for all form elements
+          const form = clonedDoc.querySelector("form");
+          if (form) {
+            form.style.opacity = "1";
+            form.style.transform = "none";
+          }
         },
       };
 
       const canvas = await html2canvas(formRef.current, options);
+      console.log("[DEBUG] Screenshot captured successfully");
+
       return canvas.toDataURL("image/png", 0.8); // 80% quality
     } catch (error) {
-      console.error("Screenshot failed (non-critical):", error);
-      return null; // Fails silently
+      console.error("[ERROR] Screenshot capture failed:", error);
+      return null;
     }
   };
 
@@ -168,57 +178,73 @@ function SMSConsentForm() {
       );
 
       const result = await verifyCaptcha(token, "submit_form");
-      if (!result.success)
+      if (!result.success) {
         throw new Error(result.error || "Verification failed");
+      }
 
-      // 2. Prepare form data WITHOUT screenshot first
+      // 2. Capture screenshot using the dedicated function
+      const screenshotDataUrl = await captureFormScreenshot();
+      let screenshotBlob = null;
+
+      if (screenshotDataUrl) {
+        try {
+          screenshotBlob = await fetch(screenshotDataUrl).then((res) =>
+            res.blob()
+          );
+          console.log("[DEBUG] Screenshot converted to blob successfully");
+        } catch (blobError) {
+          console.warn(
+            "[WARNING] Failed to convert screenshot to blob:",
+            blobError
+          );
+        }
+      }
+
+      // 3. Prepare form data
       const formPayload = new FormData();
+
+      // Add regular form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formPayload.append(key, value);
+      });
+
+      // Add consent message
       formPayload.append(
         "Message",
         `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
       );
-
-      Object.entries(formData).forEach(([key, value]) => {
-        formPayload.append(key, value);
-      });
 
       formPayload.append(
         "_subject",
         "New SMS Consent Form - Gedeon Medical Center"
       );
 
-      // 3. Try to add screenshot (but don't fail if it doesn't work)
-      try {
-        const canvas = await html2canvas(formRef.current, {
-          scale: 1,
-          logging: false,
-          useCORS: true,
-          backgroundColor: null,
-        });
-        const screenshot = canvas.toDataURL("image/png");
-        const blob = await fetch(screenshot).then((res) => res.blob());
-        formPayload.append("attachment", blob, "consent-form.png");
-      } catch (screenshotError) {
-        console.warn("Screenshot failed (non-critical):", screenshotError);
-        // Continue without screenshot
+      // Add screenshot if available
+      if (screenshotBlob) {
+        formPayload.append("attachment", screenshotBlob, "consent-form.png");
+        console.log("[DEBUG] Screenshot attached to form data");
+      } else {
+        formPayload.append("screenshot_status", "Not available");
+        console.log("[DEBUG] No screenshot available to attach");
       }
 
-      // 4. Submit to CORRECT endpoint
+      // 4. Submit to endpoint
+      console.log("[DEBUG] Submitting form data...");
       const response = await fetch(
-        "https://formsubmit.co/ajax/pgedeon84@gmail.com", //
+        "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
           body: formPayload,
         }
       );
 
-      const responseData = await response.json();
-
-      if (!response.ok || !responseData.success) {
-        throw new Error(responseData.message || "Form submission failed");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Form submission failed");
       }
 
-      // 5. FORCE UI UPDATE
+      // 5. Update UI state
+      console.log("[DEBUG] Form submitted successfully");
       setSubmissionState({
         submitting: false,
         success: true,
@@ -226,7 +252,7 @@ function SMSConsentForm() {
         captchaScore: result.score,
       });
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error("[ERROR] Submission failed:", error);
       setSubmissionState({
         submitting: false,
         success: false,
