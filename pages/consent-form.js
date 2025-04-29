@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "@formspree/react";
 import classes from "./consentForm.module.css";
 import Image from "next/image";
@@ -89,11 +89,14 @@ function SMSConsentForm() {
     return Object.keys(errors).length === 0;
   };
 
-  const captureFormScreenshot = async () => {
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
     try {
-      setScreenshotError(null);
-      const options = {
-        scale: Math.min(2, window.devicePixelRatio || 1),
+      // 1. Capture screenshot
+      const canvas = await html2canvas(formRef.current, {
+        scale: 1,
         useCORS: true,
         logging: true,
         scrollX: -window.scrollX,
@@ -112,37 +115,14 @@ function SMSConsentForm() {
             form.style.transform = "none";
           }
         },
-      };
+      });
 
-      const canvas = await html2canvas(formRef.current, options);
-      return canvas.toDataURL("image/png", 0.8);
-    } catch (error) {
-      console.error("Screenshot capture failed:", error);
-      setScreenshotError(
-        "Failed to capture form screenshot. Form will still be submitted."
-      );
-      return null;
-    }
-  };
+      // 2. Convert canvas to blob
+      const blob = await new Promise((resolve) => {
+        canvas.toBlob(resolve, "image/png", 0.8);
+      });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
-      // 1. Capture screenshot
-      const screenshotDataUrl = await captureFormScreenshot();
-      let screenshotFile = null;
-
-      if (screenshotDataUrl) {
-        // Convert data URL to a File object
-        const blob = await fetch(screenshotDataUrl).then((res) => res.blob());
-        screenshotFile = new File([blob], "consent-form.png", {
-          type: "image/png",
-        });
-      }
-
-      // 2. Prepare FormData
+      // 3. Create FormData
       const formPayload = new FormData(e.target);
 
       // Add your custom message
@@ -151,16 +131,24 @@ function SMSConsentForm() {
         `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
       );
 
-      // Add screenshot if available
-      if (screenshotFile) {
+      // 4. Add screenshot if available
+      if (blob) {
+        const screenshotFile = new File([blob], "consent-form.png", {
+          type: "image/png",
+        });
         formPayload.append("attachment", screenshotFile);
       }
 
-      // 3. Submit to Formspree
+      // 5. Submit to Formspree
       await handleFormspreeSubmit(formPayload);
     } catch (error) {
-      console.error("Submission error:", error);
-      // Error state is handled by Formspree's state object
+      console.error("Screenshot or submission failed:", error);
+      setScreenshotError(
+        "Failed to capture form screenshot. Form submitted without it."
+      );
+
+      // Fallback: Submit without attachment
+      await handleFormspreeSubmit(e);
     }
   };
 
@@ -210,7 +198,7 @@ function SMSConsentForm() {
           <motion.form
             variants={fadeInUp}
             ref={formRef}
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSubmit}
             className={classes.gmc__consent_form}
             noValidate
           >
