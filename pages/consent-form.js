@@ -45,19 +45,9 @@ function SMSConsentForm() {
     submitting: false,
     success: false,
     error: null,
-    captchaScore: null,
   });
 
   const formRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log(
-        "[DEBUG] reCAPTCHA key present:",
-        !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-      );
-    }
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,50 +83,26 @@ function SMSConsentForm() {
       errors.Signature = "Signature is required";
     }
 
-    if (!formData.Date) {
-      errors.Date = "Date is required";
-    }
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  const verifyCaptcha = async (token, action) => {
-    try {
-      const response = await fetch("/api/verify-captcha", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, action }),
-      });
-
-      if (!response.ok) throw new Error("Verification failed");
-      return await response.json();
-    } catch (error) {
-      console.error("CAPTCHA verification error:", error);
-      throw error;
-    }
-  };
-
   const captureFormScreenshot = async () => {
     try {
-      console.log("[DEBUG] Starting screenshot capture...");
-
       const options = {
         scale: Math.min(2, window.devicePixelRatio || 1),
         useCORS: true,
-        logging: true, // Enable for debugging
+        logging: true,
         scrollX: -window.scrollX,
         scrollY: -window.scrollY,
         windowWidth: document.documentElement.offsetWidth,
         windowHeight: document.documentElement.offsetHeight,
         onclone: (clonedDoc) => {
-          // Ensure proper rendering during capture
           const meta = clonedDoc.createElement("meta");
           meta.name = "viewport";
           meta.content = "width=device-width, initial-scale=1.0";
           clonedDoc.head.appendChild(meta);
 
-          // Force visible state for all form elements
           const form = clonedDoc.querySelector("form");
           if (form) {
             form.style.opacity = "1";
@@ -146,11 +112,9 @@ function SMSConsentForm() {
       };
 
       const canvas = await html2canvas(formRef.current, options);
-      console.log("[DEBUG] Screenshot captured successfully");
-
-      return canvas.toDataURL("image/png", 0.8); // 80% quality
+      return canvas.toDataURL("image/png", 0.8);
     } catch (error) {
-      console.error("[ERROR] Screenshot capture failed:", error);
+      console.error("Screenshot capture failed:", error);
       return null;
     }
   };
@@ -163,101 +127,61 @@ function SMSConsentForm() {
       submitting: true,
       success: false,
       error: null,
-      captchaScore: null,
     });
 
     try {
-      // 1. Verify reCAPTCHA
-      if (!window.grecaptcha?.enterprise) {
-        throw new Error("Security verification not loaded. Please refresh.");
-      }
-
-      const token = await window.grecaptcha.enterprise.execute(
-        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-        { action: "submit_form" }
-      );
-
-      const result = await verifyCaptcha(token, "submit_form");
-      if (!result.success) {
-        throw new Error(result.error || "Verification failed");
-      }
-
-      // 2. Capture screenshot using the dedicated function
+      // 1. Capture screenshot
       const screenshotDataUrl = await captureFormScreenshot();
       let screenshotBlob = null;
 
       if (screenshotDataUrl) {
-        try {
-          screenshotBlob = await fetch(screenshotDataUrl).then((res) =>
-            res.blob()
-          );
-          console.log("[DEBUG] Screenshot converted to blob successfully");
-        } catch (blobError) {
-          console.warn(
-            "[WARNING] Failed to convert screenshot to blob:",
-            blobError
-          );
-        }
+        screenshotBlob = await fetch(screenshotDataUrl).then((res) =>
+          res.blob()
+        );
       }
 
-      // 3. Prepare form data
+      // 2. Prepare FormData for Formspree
       const formPayload = new FormData();
 
-      // Add regular form fields
-      Object.entries(formData).forEach(([key, value]) => {
-        formPayload.append(key, value);
-      });
-
-      // Add consent message
+      // Add your custom message
       formPayload.append(
         "Message",
         `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
       );
-
-      formPayload.append(
-        "_subject",
-        "New SMS Consent Form - Gedeon Medical Center"
-      );
+      // Add all form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formPayload.append(key, value);
+      });
 
       // Add screenshot if available
       if (screenshotBlob) {
         formPayload.append("attachment", screenshotBlob, "consent-form.png");
-        console.log("[DEBUG] Screenshot attached to form data");
-      } else {
-        formPayload.append("screenshot_status", "Not available");
-        console.log("[DEBUG] No screenshot available to attach");
       }
 
-      // 4. Submit to endpoint
-      console.log("[DEBUG] Submitting form data...");
-      const response = await fetch(
-        "https://formsubmit.co/ajax/pgedeon84@gmail.com",
-        {
-          method: "POST",
-          body: formPayload,
-        }
-      );
+      // 3. Submit to Formspree
+      const response = await fetch("https://formspree.io/f/xgeeazjy", {
+        method: "POST",
+        body: formPayload,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Form submission failed");
+        throw new Error("Form submission failed");
       }
 
-      // 5. Update UI state
-      console.log("[DEBUG] Form submitted successfully");
       setSubmissionState({
         submitting: false,
         success: true,
         error: null,
-        captchaScore: result.score,
       });
     } catch (error) {
-      console.error("[ERROR] Submission failed:", error);
+      console.error("Submission error:", error);
       setSubmissionState({
         submitting: false,
         success: false,
         error: error.message || "Submission failed. Please try again.",
-        captchaScore: null,
       });
     }
   };
@@ -268,18 +192,6 @@ function SMSConsentForm() {
         <title>Gedeon Medical Center | SMS Consent Form</title>
         <meta name="description" content="SMS communication consent form" />
       </Head>
-
-      <Script
-        src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-        strategy="afterInteractive"
-        onLoad={() => console.log("reCAPTCHA loaded successfully")}
-        onError={() => {
-          setSubmissionState((prev) => ({
-            ...prev,
-            error: "Failed to load security features",
-          }));
-        }}
-      />
 
       <Navbar />
       <NavbarSpacer />
