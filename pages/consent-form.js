@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+import { useForm } from "@formspree/react";
 import classes from "./consentForm.module.css";
 import Image from "next/image";
 import logo from "../public/images/GMC-alternate-logo-large.svg";
 import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
-import Script from "next/script";
 import { motion } from "framer-motion";
 import html2canvas from "html2canvas";
 
@@ -41,13 +41,15 @@ function SMSConsentForm() {
   });
 
   const [formErrors, setFormErrors] = useState({});
-  const [submissionState, setSubmissionState] = useState({
-    submitting: false,
-    success: false,
-    error: null,
-  });
-
+  const [screenshotError, setScreenshotError] = useState(null);
   const formRef = useRef(null);
+
+  // Initialize Formspree
+  const [state, handleFormspreeSubmit] = useForm("xgeeazjy", {
+    data: {
+      _subject: "New SMS Consent Form - Gedeon Medical Center",
+    },
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,6 +91,7 @@ function SMSConsentForm() {
 
   const captureFormScreenshot = async () => {
     try {
+      setScreenshotError(null);
       const options = {
         scale: Math.min(2, window.devicePixelRatio || 1),
         useCORS: true,
@@ -115,6 +118,9 @@ function SMSConsentForm() {
       return canvas.toDataURL("image/png", 0.8);
     } catch (error) {
       console.error("Screenshot capture failed:", error);
+      setScreenshotError(
+        "Failed to capture form screenshot. Form will still be submitted."
+      );
       return null;
     }
   };
@@ -123,66 +129,38 @@ function SMSConsentForm() {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setSubmissionState({
-      submitting: true,
-      success: false,
-      error: null,
-    });
-
     try {
       // 1. Capture screenshot
       const screenshotDataUrl = await captureFormScreenshot();
-      let screenshotBlob = null;
+      let screenshotFile = null;
 
       if (screenshotDataUrl) {
-        screenshotBlob = await fetch(screenshotDataUrl).then((res) =>
-          res.blob()
-        );
+        // Convert data URL to a File object
+        const blob = await fetch(screenshotDataUrl).then((res) => res.blob());
+        screenshotFile = new File([blob], "consent-form.png", {
+          type: "image/png",
+        });
       }
 
-      // 2. Prepare FormData for Formspree
-      const formPayload = new FormData();
+      // 2. Prepare FormData
+      const formPayload = new FormData(e.target);
 
       // Add your custom message
       formPayload.append(
         "Message",
         `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
       );
-      // Add all form fields
-      Object.entries(formData).forEach(([key, value]) => {
-        formPayload.append(key, value);
-      });
 
       // Add screenshot if available
-      if (screenshotBlob) {
-        formPayload.append("attachment", screenshotBlob, "consent-form.png");
+      if (screenshotFile) {
+        formPayload.append("attachment", screenshotFile);
       }
 
       // 3. Submit to Formspree
-      const response = await fetch("https://formspree.io/f/xgeeazjy", {
-        method: "POST",
-        body: formPayload,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Form submission failed");
-      }
-
-      setSubmissionState({
-        submitting: false,
-        success: true,
-        error: null,
-      });
+      await handleFormspreeSubmit(formPayload);
     } catch (error) {
       console.error("Submission error:", error);
-      setSubmissionState({
-        submitting: false,
-        success: false,
-        error: error.message || "Submission failed. Please try again.",
-      });
+      // Error state is handled by Formspree's state object
     }
   };
 
@@ -223,7 +201,7 @@ function SMSConsentForm() {
           />
         </motion.div>
 
-        {submissionState.success ? (
+        {state.succeeded ? (
           <motion.div variants={fadeInUp} className={classes.gmc__form_success}>
             <h2>✓ Consent Form Submitted</h2>
             <p>A confirmation has been sent.</p>
@@ -404,22 +382,30 @@ function SMSConsentForm() {
               <button
                 type="submit"
                 className={classes.gmc__form_button}
-                disabled={submissionState.submitting}
+                disabled={state.submitting}
               >
-                {submissionState.submitting
-                  ? "Submitting..."
-                  : "Submit Consent"}
+                {state.submitting ? "Submitting..." : "Submit Consent"}
               </button>
             </motion.div>
 
-            {/* Error Message */}
-            {submissionState.error && (
+            {/* Error Messages */}
+            {screenshotError && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className={classes.gmc__form_error}
               >
-                <p>{submissionState.error}</p>
+                <p>{screenshotError}</p>
+              </motion.div>
+            )}
+
+            {state.errors && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className={classes.gmc__form_error}
+              >
+                <p>Submission failed. Please try again.</p>
                 <p>Need help? Call 954-842-4285</p>
               </motion.div>
             )}
