@@ -166,6 +166,10 @@
   color: #2e7d32;
   text-align: center;
   margin: 1.5rem 0;
+  position: relative;
+  z-index: 10;
+  margin: 2rem auto;
+  width: 100%;
 }
 
 .gmc__form_success h2 {

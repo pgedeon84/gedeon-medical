@@ -29,6 +29,15 @@ const containerVariants = {
   },
 };
 
+const successVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4 },
+  },
+};
+
 function SMSConsentForm() {
   const [formData, setFormData] = useState({
     Patient_Name: "",
@@ -222,7 +231,13 @@ function SMSConsentForm() {
         </motion.div>
 
         {submissionState.success ? (
-          <motion.div variants={fadeInUp} className={classes.gmc__form_success}>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={successVariants}
+            className={classes.gmc__form_success}
+            key="success-message" // Important for animation reset
+          >
             <h2>✓ Consent Form Submitted</h2>
             <p>A confirmation has been sent.</p>
           </motion.div>
