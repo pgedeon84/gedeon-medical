@@ -7,7 +7,6 @@ import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
 import { motion } from "framer-motion";
-import html2canvas from "html2canvas";
 
 // Animation configuration
 const fadeInUp = {
@@ -47,20 +46,17 @@ function SMSConsentForm() {
     error: null,
     captchaScore: null,
   });
-  const [recaptchaReady, setRecaptchaReady] = useState(false);
+
   const formRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.grecaptcha?.enterprise) {
-      setRecaptchaReady(true);
+    if (typeof window !== "undefined") {
+      console.log(
+        "[DEBUG] reCAPTCHA key present:",
+        !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      );
     }
   }, []);
-
-  const handleRecaptchaLoad = () => {
-    window.grecaptcha.enterprise.ready(() => {
-      setRecaptchaReady(true);
-    });
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -96,6 +92,10 @@ function SMSConsentForm() {
       errors.Signature = "Signature is required";
     }
 
+    if (!formData.Date) {
+      errors.Date = "Date is required";
+    }
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -116,40 +116,6 @@ function SMSConsentForm() {
     }
   };
 
-  const captureFormScreenshot = async () => {
-    try {
-      const options = {
-        scale: 0.8,
-        useCORS: true,
-        logging: true,
-        scrollX: -window.scrollX,
-        scrollY: -window.scrollY,
-        windowWidth: document.documentElement.offsetWidth,
-        windowHeight: document.documentElement.offsetHeight,
-        onclone: (clonedDoc) => {
-          const meta = clonedDoc.createElement("meta");
-          meta.name = "viewport";
-          meta.content = "width=device-width, initial-scale=1.0";
-          clonedDoc.head.appendChild(meta);
-
-          const form = clonedDoc.querySelector("form");
-          if (form) {
-            form.style.opacity = "1";
-            form.style.transform = "none";
-          }
-        },
-      };
-
-      const canvas = await html2canvas(formRef.current, options);
-      return await new Promise((resolve) => {
-        canvas.toBlob(resolve, "image/jpeg", 0.7);
-      });
-    } catch (error) {
-      console.error("Screenshot capture failed:", error);
-      throw error;
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -162,8 +128,7 @@ function SMSConsentForm() {
     });
 
     try {
-      // 1. Verify reCAPTCHA
-      if (!recaptchaReady) {
+      if (!window.grecaptcha?.enterprise) {
         throw new Error("Security verification not loaded. Please refresh.");
       }
 
@@ -173,43 +138,24 @@ function SMSConsentForm() {
       );
 
       const result = await verifyCaptcha(token, "submit_form");
-      if (!result.success) {
+      if (!result.success)
         throw new Error(result.error || "Verification failed");
-      }
 
-      // 2. Capture screenshot
-      const screenshotBlob = await captureFormScreenshot();
-      const screenshotFile = new File([screenshotBlob], "consent-form.jpg", {
-        type: "image/jpeg",
-      });
-
-      // 3. Prepare form data
-      const formPayload = new FormData(e.target);
-
-      // Add your custom message
-      formPayload.append(
-        "Message",
-        `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
-      );
-
-      // Add screenshot
-      formPayload.append("attachment", screenshotFile);
-
-      // 4. Submit to endpoint
       const response = await fetch(
         "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
-          body: formPayload,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
+            ...formData,
+            _subject: "New SMS Consent Form - Gedeon Medical Center",
+          }),
         }
       );
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Form submission failed");
-      }
+      if (!response.ok) throw new Error("Form submission failed");
 
-      // 5. Update UI state
       setSubmissionState({
         submitting: false,
         success: true,
@@ -217,11 +163,10 @@ function SMSConsentForm() {
         captchaScore: result.score,
       });
     } catch (error) {
-      console.error("Submission error:", error);
       setSubmissionState({
         submitting: false,
         success: false,
-        error: error.message || "Submission failed. Please try again.",
+        error: error.message,
         captchaScore: null,
       });
     }
@@ -237,7 +182,7 @@ function SMSConsentForm() {
       <Script
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
-        onLoad={handleRecaptchaLoad}
+        onLoad={() => console.log("reCAPTCHA loaded successfully")}
         onError={() => {
           setSubmissionState((prev) => ({
             ...prev,
@@ -457,7 +402,7 @@ function SMSConsentForm() {
               <button
                 type="submit"
                 className={classes.gmc__form_button}
-                disabled={submissionState.submitting || !recaptchaReady}
+                disabled={submissionState.submitting}
               >
                 {submissionState.submitting
                   ? "Submitting..."
