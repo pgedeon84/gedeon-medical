@@ -1,11 +1,11 @@
-import { useState, useRef } from "react";
-import { useForm } from "@formspree/react";
+import { useState, useRef, useEffect } from "react";
 import classes from "./consentForm.module.css";
 import Image from "next/image";
 import logo from "../public/images/GMC-alternate-logo-large.svg";
 import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
+import Script from "next/script";
 import { motion } from "framer-motion";
 import html2canvas from "html2canvas";
 
@@ -41,15 +41,22 @@ function SMSConsentForm() {
   });
 
   const [formErrors, setFormErrors] = useState({});
-  const [screenshotError, setScreenshotError] = useState(null);
+  const [submissionState, setSubmissionState] = useState({
+    submitting: false,
+    success: false,
+    error: null,
+    captchaScore: null,
+  });
   const formRef = useRef(null);
 
-  // Initialize Formspree
-  const [state, handleFormspreeSubmit] = useForm("xgeeazjy", {
-    data: {
-      _subject: "New SMS Consent Form - Gedeon Medical Center",
-    },
-  });
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log(
+        "[DEBUG] reCAPTCHA key present:",
+        !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      );
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,14 +96,26 @@ function SMSConsentForm() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
+  const verifyCaptcha = async (token, action) => {
     try {
-      // 1. Capture screenshot
-      const canvas = await html2canvas(formRef.current, {
-        scale: 1,
+      const response = await fetch("/api/verify-captcha", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, action }),
+      });
+
+      if (!response.ok) throw new Error("Verification failed");
+      return await response.json();
+    } catch (error) {
+      console.error("CAPTCHA verification error:", error);
+      throw error;
+    }
+  };
+
+  const captureFormScreenshot = async () => {
+    try {
+      const options = {
+        scale: 0.8, // Slightly reduced quality for smaller file size
         useCORS: true,
         logging: true,
         scrollX: -window.scrollX,
@@ -115,14 +134,52 @@ function SMSConsentForm() {
             form.style.transform = "none";
           }
         },
+      };
+
+      const canvas = await html2canvas(formRef.current, options);
+      return await new Promise((resolve) => {
+        canvas.toBlob(resolve, "image/jpeg", 0.7); // Use JPEG at 70% quality
+      });
+    } catch (error) {
+      console.error("Screenshot capture failed:", error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setSubmissionState({
+      submitting: true,
+      success: false,
+      error: null,
+      captchaScore: null,
+    });
+
+    try {
+      // 1. Verify reCAPTCHA
+      if (!window.grecaptcha?.enterprise) {
+        throw new Error("Security verification not loaded. Please refresh.");
+      }
+
+      const token = await window.grecaptcha.enterprise.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        { action: "submit_form" }
+      );
+
+      const result = await verifyCaptcha(token, "submit_form");
+      if (!result.success) {
+        throw new Error(result.error || "Verification failed");
+      }
+
+      // 2. Capture screenshot
+      const screenshotBlob = await captureFormScreenshot();
+      const screenshotFile = new File([screenshotBlob], "consent-form.jpg", {
+        type: "image/jpeg",
       });
 
-      // 2. Convert canvas to blob
-      const blob = await new Promise((resolve) => {
-        canvas.toBlob(resolve, "image/png", 0.8);
-      });
-
-      // 3. Create FormData
+      // 3. Prepare form data
       const formPayload = new FormData(e.target);
 
       // Add your custom message
@@ -131,24 +188,38 @@ function SMSConsentForm() {
         `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`
       );
 
-      // 4. Add screenshot if available
-      if (blob) {
-        const screenshotFile = new File([blob], "consent-form.png", {
-          type: "image/png",
-        });
-        formPayload.append("attachment", screenshotFile);
-      }
+      // Add screenshot
+      formPayload.append("attachment", screenshotFile);
 
-      // 5. Submit to Formspree
-      await handleFormspreeSubmit(formPayload);
-    } catch (error) {
-      console.error("Screenshot or submission failed:", error);
-      setScreenshotError(
-        "Failed to capture form screenshot. Form submitted without it."
+      // 4. Submit to endpoint
+      const response = await fetch(
+        "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
+        {
+          method: "POST",
+          body: formPayload,
+        }
       );
 
-      // Fallback: Submit without attachment
-      await handleFormspreeSubmit(e);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Form submission failed");
+      }
+
+      // 5. Update UI state
+      setSubmissionState({
+        submitting: false,
+        success: true,
+        error: null,
+        captchaScore: result.score,
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmissionState({
+        submitting: false,
+        success: false,
+        error: error.message || "Submission failed. Please try again.",
+        captchaScore: null,
+      });
     }
   };
 
@@ -158,6 +229,18 @@ function SMSConsentForm() {
         <title>Gedeon Medical Center | SMS Consent Form</title>
         <meta name="description" content="SMS communication consent form" />
       </Head>
+
+      <Script
+        src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="afterInteractive"
+        onLoad={() => console.log("reCAPTCHA loaded successfully")}
+        onError={() => {
+          setSubmissionState((prev) => ({
+            ...prev,
+            error: "Failed to load security features",
+          }));
+        }}
+      />
 
       <Navbar />
       <NavbarSpacer />
@@ -189,7 +272,7 @@ function SMSConsentForm() {
           />
         </motion.div>
 
-        {state.succeeded ? (
+        {submissionState.success ? (
           <motion.div variants={fadeInUp} className={classes.gmc__form_success}>
             <h2>✓ Consent Form Submitted</h2>
             <p>A confirmation has been sent.</p>
@@ -198,7 +281,7 @@ function SMSConsentForm() {
           <motion.form
             variants={fadeInUp}
             ref={formRef}
-            onSubmit={handleFormSubmit}
+            onSubmit={handleSubmit}
             className={classes.gmc__consent_form}
             noValidate
           >
@@ -370,30 +453,22 @@ function SMSConsentForm() {
               <button
                 type="submit"
                 className={classes.gmc__form_button}
-                disabled={state.submitting}
+                disabled={submissionState.submitting}
               >
-                {state.submitting ? "Submitting..." : "Submit Consent"}
+                {submissionState.submitting
+                  ? "Submitting..."
+                  : "Submit Consent"}
               </button>
             </motion.div>
 
-            {/* Error Messages */}
-            {screenshotError && (
+            {/* Error Message */}
+            {submissionState.error && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className={classes.gmc__form_error}
               >
-                <p>{screenshotError}</p>
-              </motion.div>
-            )}
-
-            {state.errors && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className={classes.gmc__form_error}
-              >
-                <p>Submission failed. Please try again.</p>
+                <p>{submissionState.error}</p>
                 <p>Need help? Call 954-842-4285</p>
               </motion.div>
             )}
