@@ -142,7 +142,7 @@ function SMSConsentForm() {
         throw new Error(result.error || "Verification failed");
 
       const response = await fetch(
-        "https://formsubmit.co/ajax/pgedeon84@gmail.com",
+        "https://formsubmit.co/ajax/info@gedeonmedicalcenter.com",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
