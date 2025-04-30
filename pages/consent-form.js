@@ -105,17 +105,20 @@ function SMSConsentForm() {
   const captureFormScreenshot = async () => {
     try {
       const canvas = await html2canvas(formContainerRef.current, {
-        scale: 1,
-        logging: false,
-        useCORS: true,
+        scrollX: -window.scrollX,
         scrollY: -window.scrollY,
-        windowWidth: document.documentElement.offsetWidth,
-        windowHeight: formContainerRef.current.offsetHeight,
-        backgroundColor: "#ffffff",
+        width: formContainerRef.current.scrollWidth, // Full width (including overflow)
+        height: formContainerRef.current.scrollHeight, // Full height
+        windowWidth: document.documentElement.scrollWidth,
+        windowHeight: document.documentElement.scrollHeight,
+        scale: 1, // Avoid scaling (capture original size)
+        useCORS: true, // For external images (e.g., your logo)
+        backgroundColor: "#ffffff", // Ensure white background
+        logging: false, // Disable console logs
       });
-      return canvas.toDataURL("image/jpeg", 0.8);
+      return canvas.toDataURL("image/jpeg", 0.8); // 80% quality JPEG
     } catch (error) {
-      console.error("Error capturing screenshot:", error);
+      console.error("Screenshot error:", error);
       return null;
     }
   };
@@ -153,8 +156,8 @@ function SMSConsentForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           formData: {
-            ...formData,
             Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages...`,
+            ...formData,
           },
           screenshot,
         }),
