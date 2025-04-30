@@ -144,11 +144,6 @@
   box-shadow: none;
 }
 
-.gmc__form_container {
-  position: relative;
-  overflow: visible;
-}
-
 .gmc__consent_image_container {
   display: flex;
   justify-content: center;
@@ -161,25 +156,6 @@
   max-width: 250px;
   height: auto;
   object-fit: contain;
-}
-
-/* Ensure form is capture-ready */
-.gmc__consent_form {
-  position: relative;
-  background: white;
-  z-index: 10;
-}
-
-/* Fix for Next.js Image components */
-.gmc__consent_img {
-  position: relative !important;
-}
-
-/* Force visible elements during capture */
-.gmc__form_container * {
-  box-shadow: none !important;
-  transition: none !important;
-  animation: none !important;
 }
 
 .gmc__form_success {
