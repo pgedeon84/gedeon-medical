@@ -7,8 +7,8 @@ import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
 import { motion } from "framer-motion";
-import html2canvas from "html2canvas";
 
+// Animation configuration
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -26,6 +26,15 @@ const containerVariants = {
       staggerChildren: 0.1,
       when: "beforeChildren",
     },
+  },
+};
+
+const successVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4 },
   },
 };
 
@@ -48,7 +57,6 @@ function SMSConsentForm() {
   });
 
   const formRef = useRef(null);
-  const formContainerRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -62,6 +70,7 @@ function SMSConsentForm() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
     if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -69,19 +78,32 @@ function SMSConsentForm() {
 
   const validateForm = () => {
     const errors = {};
-    if (!formData.Patient_Name.trim())
+
+    if (!formData.Patient_Name.trim()) {
       errors.Patient_Name = "Patient name is required";
-    if (!formData.Date_Of_Birth)
+    }
+
+    if (!formData.Date_Of_Birth) {
       errors.Date_Of_Birth = "Date of birth is required";
+    }
+
     if (!formData.Mobile_Number) {
       errors.Mobile_Number = "Mobile number is required";
     } else if (!/^\d{10}$/.test(formData.Mobile_Number)) {
       errors.Mobile_Number = "Please enter a valid 10-digit number";
     }
-    if (!formData.Consent_Status)
+
+    if (!formData.Consent_Status) {
       errors.Consent_Status = "Consent selection is required";
-    if (!formData.Signature.trim()) errors.Signature = "Signature is required";
-    if (!formData.Date) errors.Date = "Date is required";
+    }
+
+    if (!formData.Signature.trim()) {
+      errors.Signature = "Signature is required";
+    }
+
+    if (!formData.Date) {
+      errors.Date = "Date is required";
+    }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -94,32 +116,12 @@ function SMSConsentForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, action }),
       });
+
       if (!response.ok) throw new Error("Verification failed");
       return await response.json();
     } catch (error) {
       console.error("CAPTCHA verification error:", error);
       throw error;
-    }
-  };
-
-  const captureFormScreenshot = async () => {
-    try {
-      const canvas = await html2canvas(formContainerRef.current, {
-        scrollX: -window.scrollX,
-        scrollY: -window.scrollY,
-        width: formContainerRef.current.scrollWidth, // Full width (including overflow)
-        height: formContainerRef.current.scrollHeight, // Full height
-        windowWidth: document.documentElement.scrollWidth,
-        windowHeight: document.documentElement.scrollHeight,
-        scale: 1, // Avoid scaling (capture original size)
-        useCORS: true, // For external images (e.g., your logo)
-        backgroundColor: "#ffffff", // Ensure white background
-        logging: false, // Disable console logs
-      });
-      return canvas.toDataURL("image/jpeg", 0.8); // 80% quality JPEG
-    } catch (error) {
-      console.error("Screenshot error:", error);
-      return null;
     }
   };
 
@@ -144,33 +146,30 @@ function SMSConsentForm() {
         { action: "submit_form" }
       );
 
-      const captchaResult = await verifyCaptcha(token, "submit_form");
-      if (!captchaResult.success) {
-        throw new Error(captchaResult.error || "Verification failed");
-      }
+      const result = await verifyCaptcha(token, "submit_form");
+      if (!result.success)
+        throw new Error(result.error || "Verification failed");
 
-      const screenshot = await captureFormScreenshot();
-
-      const response = await fetch("/api/submit-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          formData: {
-            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages...`,
+      const response = await fetch(
+        "https://formsubmit.co/ajax/pgedeon84@gmail.com",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
             ...formData,
-          },
-          screenshot,
-        }),
-      });
+            _subject: "New SMS Consent Form - Gedeon Medical Center",
+          }),
+        }
+      );
 
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "Submission failed");
+      if (!response.ok) throw new Error("Form submission failed");
 
       setSubmissionState({
         submitting: false,
         success: true,
         error: null,
-        captchaScore: captchaResult.score,
+        captchaScore: result.score,
       });
     } catch (error) {
       setSubmissionState({
@@ -192,6 +191,13 @@ function SMSConsentForm() {
       <Script
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
+        onLoad={() => console.log("reCAPTCHA loaded successfully")}
+        onError={() => {
+          setSubmissionState((prev) => ({
+            ...prev,
+            error: "Failed to load security features",
+          }));
+        }}
       />
 
       <Navbar />
@@ -203,14 +209,15 @@ function SMSConsentForm() {
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         variants={containerVariants}
-        ref={formContainerRef}
       >
+        {/* Header */}
         <motion.div variants={fadeInUp}>
           <h1>
             Gedeon Medical Center <br /> SMS Communication Consent Form
           </h1>
         </motion.div>
 
+        {/* Logo */}
         <motion.div
           variants={fadeInUp}
           className={classes.gmc__consent_image_container}
