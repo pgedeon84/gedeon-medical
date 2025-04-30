@@ -7,8 +7,9 @@ import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
 import { motion } from "framer-motion";
+import html2canvas from "html2canvas";
 
-// Animation configuration
+// Animation configuration (unchanged)
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -39,6 +40,7 @@ const successVariants = {
 };
 
 function SMSConsentForm() {
+  // State declarations (unchanged)
   const [formData, setFormData] = useState({
     Patient_Name: "",
     Date_Of_Birth: "",
@@ -57,6 +59,7 @@ function SMSConsentForm() {
   });
 
   const formRef = useRef(null);
+  const formContainerRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -67,6 +70,7 @@ function SMSConsentForm() {
     }
   }, []);
 
+  // Helper functions (unchanged)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -125,6 +129,25 @@ function SMSConsentForm() {
     }
   };
 
+  // New screenshot capture function
+  const captureFormScreenshot = async () => {
+    try {
+      const canvas = await html2canvas(formContainerRef.current, {
+        scale: 1,
+        logging: false,
+        useCORS: true,
+        scrollY: -window.scrollY,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: formContainerRef.current.offsetHeight,
+      });
+      return canvas.toDataURL("image/png");
+    } catch (error) {
+      console.error("Error capturing screenshot:", error);
+      return null;
+    }
+  };
+
+  // Modified handleSubmit with screenshot capture
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -137,6 +160,9 @@ function SMSConsentForm() {
     });
 
     try {
+      // Capture screenshot first
+      const screenshot = await captureFormScreenshot();
+
       if (!window.grecaptcha?.enterprise) {
         throw new Error("Security verification not loaded. Please refresh.");
       }
@@ -150,16 +176,20 @@ function SMSConsentForm() {
       if (!result.success)
         throw new Error(result.error || "Verification failed");
 
+      // Prepare payload with screenshot
+      const payload = {
+        Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
+        ...formData,
+        _subject: "New SMS Consent Form - Gedeon Medical Center",
+        _screenshot: screenshot || "No screenshot captured",
+      };
+
       const response = await fetch(
         "https://formsubmit.co/ajax/pgedeon84@gmail.com",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Message: `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`,
-            ...formData,
-            _subject: "New SMS Consent Form - Gedeon Medical Center",
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
@@ -181,6 +211,7 @@ function SMSConsentForm() {
     }
   };
 
+  // Render (unchanged except for container ref)
   return (
     <>
       <Head>
@@ -209,6 +240,7 @@ function SMSConsentForm() {
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         variants={containerVariants}
+        ref={formContainerRef} // Added ref for screenshot capture
       >
         {/* Header */}
         <motion.div variants={fadeInUp}>
