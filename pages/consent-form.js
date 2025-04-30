@@ -232,11 +232,11 @@ function SMSConsentForm() {
 
         {submissionState.success ? (
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={successVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             className={classes.gmc__form_success}
-            key="success-message" // Important for animation reset
+            key="form-success"
           >
             <h2>✓ Consent Form Submitted</h2>
             <p>A confirmation has been sent.</p>
@@ -248,6 +248,7 @@ function SMSConsentForm() {
             onSubmit={handleSubmit}
             className={classes.gmc__consent_form}
             noValidate
+            key="consent-form"
           >
             {/* Patient Name */}
             <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
