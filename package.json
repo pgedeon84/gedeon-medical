@@ -10,11 +10,13 @@
   "dependencies": {
     "@typeform/embed-react": "^1.13.0",
     "aos": "^3.0.0-beta.6",
+    "form-data": "^4.0.2",
     "framer-motion": "^12.9.1",
     "html2canvas": "^1.4.1",
     "motion": "^11.11.17",
     "next": "^15.0.3",
     "node": "^23.2.0",
+    "node-fetch": "^3.3.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.3.1",
