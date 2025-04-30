@@ -9,20 +9,23 @@ export default async function handler(req, res) {
   try {
     const { formData, screenshot } = req.body;
 
-    // 1. First submit form data to FormSubmit with proper structure
+    // Construct the complete message as specified
+    const consentMessage = `"By providing my consent below, I, ${formData.Patient_Name}, authorize Gedeon Medical Center to send SMS text messages to the phone number I have provided regarding my healthcare, including but not limited to appointment reminders, treatment information, and administrative updates. I understand that my consent authorizes the use of an automated messaging system, and that my consent is voluntary and not a condition for receiving medical treatment. This authorization applies to communications submitted via gedeonmedicalcenter.com."`;
+
+    // 1. Submit form data to FormSubmit with all required fields
     const formPayload = {
-      // Include all form fields explicitly
       "Patient Name": formData.Patient_Name,
       "Date of Birth": formData.Date_Of_Birth,
       "Mobile Number": formData.Mobile_Number,
       "Consent Status": formData.Consent_Status,
       Signature: formData.Signature,
       Date: formData.Date,
+      Message: consentMessage, // Your complete message included here
       _subject: "New SMS Consent Form - Gedeon Medical Center",
-      _template: "table", // Makes email more readable
-      _autoresponse: "Thank you for submitting your consent form", // Optional auto-reply
-      _replyto: "no-reply@gedeonmedicalcenter.com", // Optional reply-to address
-      _cc: "pgedeon84@gmail.com", // CC to yourself
+      _template: "table",
+      _autoresponse: "Thank you for submitting your consent form",
+      _replyto: "no-reply@gedeonmedicalcenter.com",
+      _cc: "pgedeon84@gmail.com",
     };
 
     const formResponse = await fetch(
@@ -40,7 +43,7 @@ export default async function handler(req, res) {
       throw new Error("Form submission failed");
     }
 
-    // 2. If screenshot exists, upload to ImgBB
+    // 2. Handle screenshot upload
     let screenshotUrl = null;
     if (screenshot) {
       const form = new FormData();
@@ -57,16 +60,18 @@ export default async function handler(req, res) {
       } else {
         screenshotUrl = imgbbData.data.url;
 
-        // 3. Send screenshot link separately
+        // 3. Send screenshot notification with patient reference
         await fetch("https://formsubmit.co/ajax/pgedeon84@gmail.com", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            _subject: "SMS Consent Form Screenshot",
+            _subject: `SMS Consent Screenshot - ${formData.Patient_Name}`,
             _template: "table",
             "Patient Name": formData.Patient_Name,
             "Screenshot URL": screenshotUrl,
-            Message: `Form screenshot for ${formData.Patient_Name}`,
+            Message: `Form screenshot for ${
+              formData.Patient_Name
+            } - ${consentMessage.substring(0, 50)}...`,
           }),
         });
       }
