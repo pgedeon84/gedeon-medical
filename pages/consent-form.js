@@ -47,16 +47,20 @@ function SMSConsentForm() {
     error: null,
     captchaScore: null,
   });
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
   const formRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log(
-        "[DEBUG] reCAPTCHA key present:",
-        !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-      );
+    if (typeof window !== "undefined" && window.grecaptcha?.enterprise) {
+      setRecaptchaReady(true);
     }
   }, []);
+
+  const handleRecaptchaLoad = () => {
+    window.grecaptcha.enterprise.ready(() => {
+      setRecaptchaReady(true);
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -115,7 +119,7 @@ function SMSConsentForm() {
   const captureFormScreenshot = async () => {
     try {
       const options = {
-        scale: 0.8, // Slightly reduced quality for smaller file size
+        scale: 0.8,
         useCORS: true,
         logging: true,
         scrollX: -window.scrollX,
@@ -138,7 +142,7 @@ function SMSConsentForm() {
 
       const canvas = await html2canvas(formRef.current, options);
       return await new Promise((resolve) => {
-        canvas.toBlob(resolve, "image/jpeg", 0.7); // Use JPEG at 70% quality
+        canvas.toBlob(resolve, "image/jpeg", 0.7);
       });
     } catch (error) {
       console.error("Screenshot capture failed:", error);
@@ -159,7 +163,7 @@ function SMSConsentForm() {
 
     try {
       // 1. Verify reCAPTCHA
-      if (!window.grecaptcha?.enterprise) {
+      if (!recaptchaReady) {
         throw new Error("Security verification not loaded. Please refresh.");
       }
 
@@ -233,7 +237,7 @@ function SMSConsentForm() {
       <Script
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
-        onLoad={() => console.log("reCAPTCHA loaded successfully")}
+        onLoad={handleRecaptchaLoad}
         onError={() => {
           setSubmissionState((prev) => ({
             ...prev,
@@ -453,7 +457,7 @@ function SMSConsentForm() {
               <button
                 type="submit"
                 className={classes.gmc__form_button}
-                disabled={submissionState.submitting}
+                disabled={submissionState.submitting || !recaptchaReady}
               >
                 {submissionState.submitting
                   ? "Submitting..."
