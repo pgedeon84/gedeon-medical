@@ -293,45 +293,65 @@ function PrivacyPolicy() {
 
           {/* Section 9 */}
           <motion.div variants={fadeInUp}>
-            <h2>9. Text Messaging (SMS) Program</h2>
+            <h2>9. Terms and Conditions (T&C)</h2>
             <p>
-              Gedeon Medical Center offers patients the option to receive text
-              message (SMS) communications for appointment reminders, healthcare
-              updates, medication alerts, and other administrative purposes.
+              SMS CONSENT: The information (Phone Numbers) obtained as part of
+              the SMS consent process will not be shared with third parties for
+              marketing purposes.
             </p>
             <p>
-              By providing your mobile number and opting in, you consent to
-              receive SMS messages from us.
+              Upon consenting to receive text messages from Gedeon Medical
+              Center, you may receive communications related to appointment
+              reminders; test results; referral, order, prescription
+              notifications; practice updates (see example below). Please note
+              that standard messaging disclosures apply.
             </p>
             <ul>
               <li>
-                <strong>How to Opt-In:</strong> You may opt in by signing a
-                consent form at our office, by completing the opt-in form on our
-                website, or by texting a keyword to our designated short code or
-                phone number.
+                <strong>Message Frequency:</strong> Our SMS message frequency is
+                estimated to be 0-4 text messages daily across all users.
               </li>
               <li>
-                <strong>Message Frequency:</strong> You may receive up to 4
-                messages per month, depending on your healthcare needs.
+                <strong>Potential Fees for SMS Messaging:</strong> Carriers may
+                charge fees for each message sent or received. These fees can
+                vary based on the carrier&apos;s pricing structure and whether
+                the message is sent domestically or internationally.
               </li>
               <li>
-                <strong>Opt-Out Instructions:</strong> To stop receiving
-                messages at any time, text STOP to our number. To resume, you
-                may need to re-enroll.
+                <strong>How to Opt-In:</strong> Customers may opt-in for SMS
+                messaging from Gedeon Medical Center verbally during a call
+                initiated to our office (954-842-4285) or through our website
+                (https://www.gedeonmedicalcenter.com/consent-form) Link below.
+                During the call, customers will be asked: &quot;Do you agree to
+                receive texts from Gedeon Medical Center? Message frequency
+                varies. Message and data rates may apply. Text HELP for help,
+                text STOP to opt-out. On our website, customers may opt-in by
+                checking the box allowing consent on the consent form. This
+                consent agreement will not be shared with third parties and
+                affiliates for marketing purposes. No SMS communication will be
+                initiated without customer consent.
+              </li>
+              <li>
+                <strong>Opt-Out Instructions:</strong> Customers can opt-out of
+                SMS messaging from Gedeon Medical Center by replying STOP at any
+                time to any received SMS message. Once opted-out, they will
+                receive no further SMS communication. Customers can opt back in
+                at any time by replying START.
               </li>
               <li>
                 <strong>Help Instructions:</strong> For assistance, text HELP or
                 call our office at 954-842-4285.
               </li>
+            </ul>
+            <ul>
+              <strong>Standard Messaging Disclosures:</strong> Standard message
+              and data rates may apply based on your mobile carrier plan.
+              <li>Messaging frequency may vary.</li>
+              <li>Message and data rates may apply.</li>
+              <li>To opt out at any time, text STOP.</li>
               <li>
-                <strong>Message and Data Rates:</strong> Standard message and
-                data rates may apply based on your mobile carrier plan.
-              </li>
-              <li>
-                <strong>Data Privacy:</strong> Your phone number and SMS consent
-                will not be shared with third parties or used for marketing
-                purposes. All information is protected under our existing
-                privacy safeguards and HIPAA-compliant protocols.
+                For assistance, text HELP or visit our website at
+                https://www.gedeonmedicalcenter.com/.
               </li>
             </ul>
             <p className={classes.gmc__privacy_link_consent}>

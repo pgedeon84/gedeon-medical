@@ -7,6 +7,7 @@ import Navbar from "../components/navbar/navbar";
 import { NavbarSpacer } from "../components";
 import Script from "next/script";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 // Animation configuration
 const fadeInUp = {
@@ -333,8 +334,10 @@ function SMSConsentForm() {
               </legend>
               <ul>
                 <li>Appointment reminders</li>
+                <li>Insurance information </li>
+                <li>Co-payment information</li>
                 <li>Test results</li>
-                <li>Prescription notifications</li>
+                <li>Referral, order, prescription notifications</li>
                 <li>Practice updates</li>
               </ul>
               <div className={classes.gmc__disclaimer}>
@@ -345,12 +348,49 @@ function SMSConsentForm() {
               </div>
             </motion.div>
 
-            {/* Radio Group */}
-            <motion.fieldset
+            {/* Consent Checkbox (replacing the radio group) */}
+            <motion.div
               variants={fadeInUp}
-              className={classes.gmc__radio_group}
+              className={classes.gmc__checkbox_group}
             >
-              <legend>Consent to Receive SMS Messages</legend>
+              <label className={classes.gmc__checkbox_option}>
+                <input
+                  type="checkbox"
+                  name="Consent_Status"
+                  value="agree"
+                  onChange={(e) =>
+                    handleChange({
+                      target: {
+                        name: "Consent_Status",
+                        value: e.target.checked ? "agree" : "",
+                      },
+                    })
+                  }
+                  checked={formData.Consent_Status === "agree"}
+                  className={classes.gmc__checkbox_input}
+                  required
+                />
+                <span className={classes.gmc__checkbox_text}>
+                  By checking this box, I agree to receive Text messages about
+                  regarding appointment reminders; insurance information;
+                  co-payment information; test results; referral, order,
+                  prescription notifications; practice updates from Gedeon
+                  Medical Center at the phone number provided above. You can
+                  reply STOP at any time to opt out. The SMS message frequency
+                  may vary. Data rates may apply. Text HELP to 954-842-4285 for
+                  assistance. Reply STOP to opt out of receiving SMS messages
+                  from Gedeon Medical Center. You will then receive no further
+                  SMS communication. For more information, please refer to our
+                  privacy policy at{" "}
+                  <Link
+                    href="/privacy-policy"
+                    passHref
+                    className={classes.gmc__privacy_link}
+                  >
+                    Privacy Policy
+                  </Link>
+                </span>
+              </label>
               {formErrors.Consent_Status && (
                 <motion.span
                   initial={{ opacity: 0 }}
@@ -360,30 +400,9 @@ function SMSConsentForm() {
                   {formErrors.Consent_Status}
                 </motion.span>
               )}
-              <label className={classes.gmc__radio_option}>
-                <input
-                  type="radio"
-                  name="Consent_Status"
-                  value="agree"
-                  onChange={handleChange}
-                  checked={formData.Consent_Status === "agree"}
-                />
-                <span>I consent to receive SMS messages</span>
-              </label>
+            </motion.div>
 
-              <label className={classes.gmc__radio_option}>
-                <input
-                  type="radio"
-                  name="Consent_Status"
-                  value="decline"
-                  onChange={handleChange}
-                  checked={formData.Consent_Status === "decline"}
-                />
-                <span>I do not consent at this time</span>
-              </label>
-            </motion.fieldset>
-
-            {/* Signature */}
+            {/* Signature Section (unchanged) */}
             <motion.div variants={fadeInUp} className={classes.gmc__form_group}>
               <label htmlFor="Signature">Signature (Type Full Name):</label>
               <input

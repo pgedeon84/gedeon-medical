@@ -241,6 +241,61 @@
   /* Your original icon styling */
   filter: invert(0.5); /* Example - adjust to match your design */
 }
+
+/* Checkbox Styles */
+.gmc__checkbox_group {
+  margin: .5rem 0;
+  /* padding: 1rem; */
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.gmc__checkbox_option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gmc__checkbox_input {
+  accent-color: #385CAD;
+  transform: scale(1.2);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.gmc__checkbox_text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.gmc__checkbox_option:hover {
+  background-color: #f0f7ff;
+}
+
+.gmc__privacy_link {
+  color: #6abf4b;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  /* font-size: 14px; */
+  text-transform: capitalize;    
+}
+
+@media (min-width: 768px) {
+  .gmc__checkbox_text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gmc__checkbox_text {
+    font-size: 1rem;
+  }
+}
 /* Responsive Styles */
 @media (min-width: 480px) {
   .gmc__form_container {

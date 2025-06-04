@@ -1,19 +1,143 @@
-.gmc__privacy_container {
-    margin: 6rem 0 4rem 0;
-    padding-top: 1rem;
-}
-
-.gmc__privacy_link {
-    color: #6abf4b;
-    font-family: var(--font-family-heading);
+/* smsTerms.module.css */
+.gmc__terms_section {
+    background: linear-gradient(180deg, #B4C9FD -107.24%, #fdfdfd 64.22%);
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .gmc__terms_header {
+    padding: 3rem 0 2rem;
+  }
+  
+  .gmc__terms_content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+  
+  .terms_title {
+    color: #385CAD;
+    font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 18px;
     text-transform: capitalize;
-    padding: 0rem 2rem;
-    margin-top: 3rem;
-    text-align: center;    
-}
-
-.gmc__privacy_link:hover {
-    text-decoration: underline;  
-}
+    padding: 0 2rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  
+  .terms_text_block {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .terms_subheader {
+    color: #385CAD;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .terms_paragraph {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    font-size: 16px;
+    margin: 1rem 0;
+  }
+  
+  .terms_highlight {
+    font-weight: 500;
+    color: #385CAD;
+  }
+  
+  .terms_list {
+    list-style-type: disc;
+    margin: 1rem 0 1.5rem 1rem;
+    padding-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .terms_list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  
+  .terms_link {
+    color: #6abf4b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .terms_link:hover {
+    color: #5aa83a;
+    text-decoration: underline;
+  }
+  
+  @media (min-width: 768px) {
+    .gmc__terms_header {
+      padding-top: 6rem;
+      padding-bottom: 3rem;
+    }
+    
+    .terms_title {
+      font-size: 20px;
+      margin-top: 2rem;
+    }
+    
+    .terms_subheader {
+      font-size: 18px;
+    }
+    
+    .terms_paragraph {
+      font-size: 17px;
+    }
+    
+    .terms_list {
+      font-size: 17px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .terms_title {
+      font-size: 22px;
+      margin-top: 5rem;
+    }
+    
+    .terms_subheader {
+      font-size: 20px;
+    }
+    
+    .terms_paragraph {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    .terms_list {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1440px) {
+    .terms_title {
+      font-size: 24px;
+    }
+    
+    .terms_subheader {
+      font-size: 22px;
+    }
+  }

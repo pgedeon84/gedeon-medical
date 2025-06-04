@@ -2,7 +2,6 @@ import SectionTitle from "../../components/ui/section-title/section-title";
 import classes from "./terms.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import AnimatedSection from "../../components/ui/animatedSection";
 import AnimatedItem from "../../components/ui/animatedItem";
 
 function Terms() {
@@ -98,6 +97,7 @@ function Terms() {
           <Link
             href="https://mychart.mhs.net/mychart/Authentication/Login"
             className={classes.gmc__terms_chart}
+            passHref
           >
             <strong>MyChart</strong>
           </Link>
@@ -113,13 +113,17 @@ function Terms() {
           <p>
             <strong>MyChart</strong> application also allows patients to receive
             text message alerts related to their GMC visits, Memorial Healthcare
-            System's billing notifications, prescription reminders, test
+            System&apos;s billing notifications, prescription reminders, test
             results, and care management.
           </p>
           <p>
             <strong>GMC</strong> also uses SMS text messaging to communicate
             limited information upon consent.{"   "}
-            <Link href="/consent-form" className={classes.gmc__terms_chart}>
+            <Link
+              href="/consent-form"
+              passHref
+              className={classes.gmc__terms_chart}
+            >
               <strong>GMC Consent Form</strong>
             </Link>
           </p>
@@ -137,6 +141,7 @@ function Terms() {
             <Link
               href="https://mychart.mhs.net/mychart/Authentication/Login"
               className={classes.gmc__terms_chart}
+              passHref
             >
               <strong>MyChart</strong>
             </Link>
