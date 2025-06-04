@@ -329,8 +329,9 @@ function SMSConsentForm() {
               <legend>
                 I consent to receive SMS text messages from{" "}
                 <b>Gedeon Medical Center</b> to the phone number I have provided
-                via the use of an automated messaging system regarding my
-                healthcare, including:
+                via the use of an automated messaging system for{" "}
+                <b>CUSTOMER CARE</b> purposes regarding my healthcare,
+                including:
               </legend>
               <ul>
                 <li>Appointment reminders</li>
