@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       _template: "table",
       _autoresponse: "Thank you for submitting your consent form",
       _replyto: "no-reply@gedeonmedicalcenter.com",
-      _cc: "pgedeon84@gmail.com",
+      _cc: "info@gedeonmedicalcenter.com",
     };
 
     const formResponse = await fetch(
